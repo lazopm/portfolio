@@ -1,15 +1,12 @@
 const opacityKeyframes = {
-    'from': {
-        opacity: 0,
-    },
-
-    'to': {
-        opacity: 1,
+   '50%': {
+       opacity: 0
     }
 };
 
 export const blink = {
     animationName: [opacityKeyframes],
-    animationDuration: '500ms',
+    animationDuration: '1s',
     animationIterationCount: 'infinite',
+    animationTimingFunction: 'step-start',
 };

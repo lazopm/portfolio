@@ -8,7 +8,8 @@ class Terminal extends Component {
     render() {
         return (
             <div className={css(styles.Container)}>
-                <span className={css(styles.Blink)}>hello world</span>
+                Sup wor
+                <span className={css(styles.Blink)}>|</span>
             </div>
         );
     }
