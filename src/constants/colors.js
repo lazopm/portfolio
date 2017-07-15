@@ -2,6 +2,7 @@ export const bgLight = '#FEFFFF';
 export const bgDark = '#2D2D2D';
 
 export const textDark = '#181818';
+export const textLight = '#FAFAFA';
 
 export const primary = '#84DCC6';
 export const primaryLight = '#A5FFD6';
