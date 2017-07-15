@@ -10,5 +10,7 @@ export default StyleSheet.create({
         width: 640,
         fontFamily: 'Inconsolata', 
     },
-    Blink: blink
+    Cursor: {
+        ...blink,
+    },
 });
