@@ -17,6 +17,9 @@ Icon.defaultProps = {
     color: textDark,
 };
 
-
+Icon.propTypes = {
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string,
+};
 
 export default Icon;
