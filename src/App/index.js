@@ -1,10 +1,9 @@
 import React from 'react';
-import Icon from 'components/Icon';
+import Terminal from 'components/Terminal';
 
 const App = () =>
     <div>
-        hello
-        <Icon name="coffee" color="red"/>
+        <Terminal/>
     </div>;
 
 export default App;
