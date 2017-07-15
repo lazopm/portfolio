@@ -1,8 +1,11 @@
 import React from 'react';
 import Terminal from 'components/Terminal';
+import { css } from 'aphrodite';
+
+import styles from './styles';
 
 const App = () =>
-    <div>
+    <div className={css(styles.MainContent)}>
         <Terminal/>
     </div>;
 
