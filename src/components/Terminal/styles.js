@@ -7,5 +7,10 @@ export default StyleSheet.create({
         background: theme[0], 
         fontFamily: 'Inconsolata', 
 		flexGrow: 1,
+		display: 'flex',
+		flexDirection: 'column',
     },
+	Lines: {
+		flexGrow: 1,
+	},
 });
