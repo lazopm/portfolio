@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'aphrodite';
 
+import ss from './styles';
 import Cursor from './Cursor';
 
 const Line = ({ cursor, text, number }) =>
-    <div>
-        <span>{number}</span>
-        <span>
+    <div className={css(ss.LineContainer)}>
+        <div className={css(ss.Gutter)}>
+            <span className={css(ss.Number)}>
+                {number}
+            </span>
+        </div>
+        <div>
             {text}
             {cursor && <Cursor/>}
-        </span>
+        </div>
     </div>;
 
 Line.defaultProps = {

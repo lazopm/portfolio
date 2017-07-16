@@ -1,9 +1,9 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
-import styles from './styles';
+import ss from './styles';
 
 const Cursor = () => 
-    <span className={css(styles.Cursor)}>|</span>
+    <span className={css(ss.Cursor)}>|</span>
 
 export default Cursor;

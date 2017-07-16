@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite';
-import { bgDark, textLight } from 'constants/colors';
+import { bgDark, bgLight, textLight } from 'constants/colors';
 import { blink } from 'style/animation';
 
 export default StyleSheet.create({
@@ -9,8 +9,5 @@ export default StyleSheet.create({
         height: 480,
         width: 640,
         fontFamily: 'Inconsolata', 
-    },
-    Cursor: {
-        ...blink,
     },
 });
