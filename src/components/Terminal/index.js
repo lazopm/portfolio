@@ -33,8 +33,12 @@ Terminal.defaultProps = {
         '/_/    \\__,_/_.___/_/\\____/  /_____/\\__,_/ /___/\\____/',
         '     Front End Developer based in Washington, DC.',
         '',
-        'Hello!',
-        'I\'m Pablo, I make web stuff.',
+        'Hello! I\'m Pablo, I make web stuff.',
+        'Thanks for visiting my portfolio!',
+        'Check out some of my work below, or drop me a line at lazopm@gmail.com.',
+        'You can check out the source code for this page at my github.',
+        '',
+        '-Pablo',
     ]
 };
 Terminal.propTypes = {
