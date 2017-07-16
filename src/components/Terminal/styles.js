@@ -1,11 +1,10 @@
 import { StyleSheet } from 'aphrodite';
-import { bgDark, bgLight, textLight } from 'constants/colors';
-import { blink } from 'style/animation';
+import theme from './theme';
 
 export default StyleSheet.create({
     Container: {
-        color: textLight,
-        background: bgDark, 
+        color: theme[7],
+        background: theme[0], 
         height: 480,
         width: 640,
         fontFamily: 'Inconsolata', 

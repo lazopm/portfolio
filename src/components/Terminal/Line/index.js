@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { css } from 'aphrodite';
 
 import ss from './styles';
-import Cursor from './Cursor';
 
 const Line = ({ cursor, text, number }) =>
     <div className={css(ss.LineContainer)}>
@@ -12,9 +11,11 @@ const Line = ({ cursor, text, number }) =>
                 {number}
             </span>
         </div>
-        <div>
+        <div className={css(
+            ss.Text,
+            cursor && ss.Cursor)
+        }>
             {text}
-            {cursor && <Cursor/>}
         </div>
     </div>;
 

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'aphrodite';
 import { blink } from 'style/animation';
+import theme from '../theme';
 
 export default StyleSheet.create({
     //Line
@@ -7,7 +8,7 @@ export default StyleSheet.create({
         display: 'flex',
     },
     Text: {
-        wordWrap: 'break-all',
+        wordBreak: 'break-all',
     },
     Gutter: {
         marginRight: 5,
@@ -15,14 +16,20 @@ export default StyleSheet.create({
         paddingLeft: 5,
         flexGrow: 0,
         flexShrink: 0,
-        background: 'grey',
+        background: theme[2],
     },
     Number: {
         width: 20,
+        color: theme[4],
         textAlign: 'right',
         display: 'inline-block',
     },
     Cursor: {
-        ...blink,
+        ':after': {
+            width: 10,
+            background: theme[7],
+            content: '"|"',
+            ...blink,
+        }
     },
 });
