@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite';
 import { blink } from 'style/animation';
-import theme from '../theme';
+import theme from 'constants/termTheme';
 
 export default StyleSheet.create({
     //Line

@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'aphrodite';
 
 import ss from './styles';
 import Line from './Line';
 
-class Terminal extends Component { 
-    render() {
-        const { lines } = this.props;
-        return (
-            <div className={css(ss.Container)}>
-                {lines.map((line, i) => (
-                    <Line 
-                        key={`${line}${i}`}
-                        text={line}
-                        number={i + 1}
-                        cursor={lines.length - i === 1} 
-                    />
-                ))}
-            </div>
-        );
-    }
-}
+const Terminal = ({ lines }) => 
+	<div className={css(ss.Container)}>
+		{lines.map((line, i) => (
+			<Line 
+				key={`${line}${i}`}
+				text={line}
+				number={i + 1}
+				cursor={lines.length - i === 1} 
+			/>
+		))}
+	</div>;
 
 Terminal.defaultProps = {
     lines: [
