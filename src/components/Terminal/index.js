@@ -6,15 +6,15 @@ import ss from './styles';
 import Line from './Line';
 import Status from './Status';
 
-const Terminal = ({ lines }) => 
+const Terminal = ({ lines }) =>
     <div className={css(ss.Container)}>
         <div className={css(ss.Lines)}>
             {lines.map((line, i) => (
-                <Line 
+                <Line
                     key={`${line}${i}`}
                     text={line}
                     number={i + 1}
-                    cursor={lines.length - i === 1} 
+                    cursor={lines.length - i === 1}
                 />
             ))}
         </div>
