@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite';
-import { largeUp } from 'style/breakpoints';
+import { mediumUp, largeUp } from 'style/breakpoints';
 
 export default StyleSheet.create({
     Wrapper: {
@@ -15,4 +15,10 @@ export default StyleSheet.create({
             flexWrap: 'nowrap',
         },
     },
+    Lazo: {
+        display: 'none',
+        [mediumUp]: {
+            display: 'initial',
+        }
+    }
 });

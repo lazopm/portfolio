@@ -7,6 +7,18 @@ import Terminal from 'components/Terminal';
 import Face from 'components/Face';
 import Links from 'components/Links';
 
+//hides text for mobile
+const hide = css(ss.Lazo);
+const initialLines = [
+    `    ____        __    __<span class="${hide}">        __</span>`,
+    `   / __ \\____ _/ /_  / /___<span class="${hide}">    / /   ____ _____  ____</span>`,
+    `  / /_/ / __ \`/ __ \\/ / __ \\<span class="${hide}">  / /   / __ \`/_  / / __ \\</span>`,
+    ` / ____/ /_/ / /_/ / / /_/ /<span class="${hide}"> / /___/ /_/ / / /_/ /_/ /</span>`,
+    `/_/    \\__,_/_.___/_/\\____/<span class="${hide}"> /_____/\\__,_/ /___/\\____/</span>`,
+    `<span class="${hide}"/>    </span>Front End Developer based in Washington, DC.`,
+    '',
+];
+
 class App extends Component { 
     constructor() { super();
         this.state = {
@@ -14,16 +26,8 @@ class App extends Component {
             cursor: false,
             fileName: '[No Name]',
             fileType: null,
-            lines: [
-                '    ____        __    __        __',
-                '   / __ \\____ _/ /_  / /___    / /   ____ _____  ____',
-                '  / /_/ / __ `/ __ \\/ / __ \\  / /   / __ `/_  / / __ \\',
-                ' / ____/ /_/ / /_/ / / /_/ / / /___/ /_/ / / /_/ /_/ /',
-                '/_/    \\__,_/_.___/_/\\____/ /_____/\\__,_/ /___/\\____/',
-                '    Front End Developer based in Washington, DC.',
-                '',
-            ]
-        }
+            lines: initialLines,
+        };
     }
     async componentDidMount() {
         await sleep(1000)

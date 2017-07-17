@@ -4,7 +4,7 @@ import { largeUp, mediumUp } from 'style/breakpoints';
 
 export default StyleSheet.create({
     Container: {
-        background: theme[3],
+        background: theme[2],
         padding: '10px',
         display: 'flex',
         flexDirection: 'column',
