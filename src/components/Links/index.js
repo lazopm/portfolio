@@ -41,7 +41,7 @@ const Links = () =>
             href=""
         >
             <Icon 
-                name="file-pdf"
+                name="file-alt"
                 sprite="solid"
                 color={theme[4]}
                 className={css(ss.Icon)} 

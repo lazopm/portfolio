@@ -11,12 +11,12 @@ const Line = ({ cursor, text, number }) =>
                 {number}
             </span>
         </div>
-        <div className={css(
+        <div 
+            dangerouslySetInnerHTML={{__html: text}}
+            className={css(
             ss.Text,
             cursor && ss.Cursor)
-        }>
-            {text}
-        </div>
+        }/>
     </div>;
 
 Line.defaultProps = {

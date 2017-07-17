@@ -26,17 +26,16 @@ const Terminal = ({ lines }) =>
 
 Terminal.defaultProps = {
     lines: [
-        '    ____        __    __         __',
-        '   / __ \\____ _/ /_  / /___     / /   ____ _____  ____',
-        '  / /_/ / __ `/ __ \\/ / __ \\   / /   / __ `/_  / / __ \\',
-        ' / ____/ /_/ / /_/ / / /_/ /  / /___/ /_/ / / /_/ /_/ /',
-        '/_/    \\__,_/_.___/_/\\____/  /_____/\\__,_/ /___/\\____/',
-        '     Front End Developer based in Washington, DC.',
+        '   ___       __   __       __                    ',
+        '  / _ \\___  / /  / /__    / /  ___  ___ ___     ',
+        ' / ___/ _ `/ _ \\/ / _ \\  / /__/ _ `/_ // _ \\  ',
+        '/_/   \\___/____/_/\\___/ /____/\\___//__/\\___/ ',
+        'Front End Developer based in Washington, DC.',
         '',
         'Hello! I\'m Pablo, I make web stuff.',
         'Thanks for visiting my portfolio!',
         'Check out some of my work below, or drop me a line at lazopm@gmail.com.',
-        'You can check out the source code for this page at my github.',
+        'You can check out the <a href="banana">source code</a> for this page at my github.',
         '',
         '-Pablo',
     ]

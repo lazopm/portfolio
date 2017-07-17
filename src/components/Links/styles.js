@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite';
 import theme from 'constants/termTheme';
-import { largeUp } from 'style/breakpoints';
+import { largeUp, mediumUp } from 'style/breakpoints';
 
 export default StyleSheet.create({
     Container: {
@@ -39,7 +39,10 @@ export default StyleSheet.create({
         },
     },
     Text: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
+        [mediumUp]: {
+            fontSize: '1.2rem',
+        },
         [largeUp]: {
             display: 'none',
         },
