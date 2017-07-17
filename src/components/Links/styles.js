@@ -13,6 +13,7 @@ export default StyleSheet.create({
         order: 2,
         flexGrow: 1,
         [largeUp]: {
+            background: theme[3],
             order: 3,
             flexGrow: 'initial',
         },
@@ -26,7 +27,10 @@ export default StyleSheet.create({
         ':hover': {
             color: theme[13],
             textDecoration: 'underline',
-        }
+        },
+        [largeUp]: {
+            color: cream,
+        },
     },
     Icon: {
         margin: '3px 10px 3px 0',
@@ -34,6 +38,7 @@ export default StyleSheet.create({
         width: '24px',
         fill: theme[3],
         [largeUp]: {
+            fill: theme[7],
             height: '28px',
             width: '28px',
             marginRight: 0,

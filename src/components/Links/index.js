@@ -5,60 +5,43 @@ import ss from './styles';
 import theme from 'constants/termTheme';
 import Icon from 'components/Icon';
 
+const Link = ({href, icon, text}) =>
+    <a 
+        className={css(ss.Link)} 
+        href={href}
+        title={text}
+    >
+        <Icon 
+            name={icon}
+            className={css(ss.Icon)} 
+        />
+        <span className={css(ss.Text)}>
+            {text}
+        </span>
+    </a>;
+
 const Links = () =>
     <div className={css(ss.Container)}>
-        <a 
-            className={css(ss.Link)} 
+        <Link
+            text="github"
             href="https://www.github.com/lazopm"
-        >
-            <Icon 
-                name="github"
-                color={theme[4]}
-                className={css(ss.Icon)} 
-            />
-            <span className={css(ss.Text)}>
-                github
-            </span>
-        </a>
-        <a 
-            className={css(ss.Link)} 
+            icon="github"
+        />
+        <Link
+            text="linkedin"
             href="https://www.linkedin.com/in/pablo-lazo-b37701ba/"
-        >
-            <Icon 
-                name="linkedin"
-                color={theme[4]}
-                className={css(ss.Icon)} 
-            />
-            <span className={css(ss.Text)}>
-                linkedin
-            </span>
-        </a>
-        <a 
-            className={css(ss.Link)} 
+            icon="linkedin"
+        />
+        <Link 
+            text="resume"
             href=""
-        >
-            <Icon 
-                name="file-alt"
-                color={theme[4]}
-                className={css(ss.Icon)} 
-            />
-            <span className={css(ss.Text)}>
-                resume
-            </span>
-        </a>
-        <a 
-            className={css(ss.Link)} 
-            href="mailto:lazopm@gmail.com"
-        >
-            <Icon 
-                name="envelope"
-                color={theme[4]}
-                className={css(ss.Icon)} 
-            />
-            <span className={css(ss.Text)}>
-                lazopm@gmail.com
-            </span>
-        </a>
+            icon="file-alt"
+        />
+        <Link
+            text="pablo@lazopm.com"
+            icon="envelope"
+            href="mailto:pablo@lazopm.com"
+        />
     </div>;
 
 export default Links;
