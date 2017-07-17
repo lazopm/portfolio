@@ -18,7 +18,7 @@ const Links = () =>
                 className={css(ss.Icon)} 
             />
             <span className={css(ss.Text)}>
-                github.com/lazopm
+                github
             </span>
         </a>
         <a 
@@ -46,7 +46,7 @@ const Links = () =>
                 className={css(ss.Icon)} 
             />
             <span className={css(ss.Text)}>
-                download resume
+                resume
             </span>
         </a>
         <a 

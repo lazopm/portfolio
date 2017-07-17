@@ -35,7 +35,7 @@ Terminal.defaultProps = {
         'Hello! I\'m Pablo, I make web stuff.',
         'Thanks for visiting my portfolio!',
         'Check out some of my work below, or drop me a line at lazopm@gmail.com.',
-        'You can check out the <a href="banana">source code</a> for this page at my github.',
+        'You can check out the <a href="https://github.com/lazopm/portfolio">source code</a> for this page at my <a href="https://github.com/lazopm/portfolio">github</a>.',
         '',
         '-Pablo',
     ]
