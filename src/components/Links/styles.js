@@ -4,7 +4,7 @@ import { largeUp, mediumUp } from 'style/breakpoints';
 
 export default StyleSheet.create({
     Container: {
-        background: theme[1],
+        background: theme[3],
         padding: '10px',
         display: 'flex',
         flexDirection: 'column',
@@ -20,10 +20,10 @@ export default StyleSheet.create({
         textDecoration: 'none',
         display: 'flex',
         alignItems: 'center',
-        color: theme[4],
+        color: theme[7],
         flexGrow: 1,
         ':hover': {
-            color: theme[5],
+            color: theme[13],
             textDecoration: 'underline',
         }
     },
@@ -31,10 +31,10 @@ export default StyleSheet.create({
         marginRight: '10px',
         height: '24px',
         width: '24px',
-        fill: theme[4],
+        fill: theme[7],
         [largeUp]: {
-            height: '36px',
-            width: '36px',
+            height: '28px',
+            width: '28px',
             marginRight: 0,
         },
     },

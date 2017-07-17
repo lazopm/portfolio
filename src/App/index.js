@@ -42,8 +42,7 @@ class App extends Component {
         await sleep(500);
         await this.typeOut('Check out some of my work below, or drop me a line at ');
         this.appendToLastLine('<a href="mailto:lazopm@gmail.com">');
-        await this.typeOut('lazopm@gmail.com');
-        this.appendToLastLine('</a>');
+        await this.typeOut('lazopm@gmail.com'); this.appendToLastLine('</a>');
         await this.typeOut('.');
 
         this.newLine();
@@ -63,7 +62,7 @@ class App extends Component {
         await sleep(500)
         await this.typeOut('-Pablo');
 
-        await sleep(3000)
+        await sleep(2000)
         this.setState({
             mode: 'NORMAL',
             cursor: false,
