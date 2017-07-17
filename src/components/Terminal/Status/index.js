@@ -12,12 +12,16 @@ const Status = ({
         <div className={css(ss.Mode)}>
             {mode}
         </div>
-        <div className={css(ss.File)}>
-            {`~/portfolio/${fileName}`}
-        </div>
-        <div className={css(ss.Type)}>
-            {fileType}
-        </div>
+        {fileName && (
+            <div className={css(ss.File)}>
+                {fileName}
+            </div>
+        )}
+        {fileType && (
+            <div className={css(ss.Type)}>
+                {fileType}
+            </div>
+        )}
         <div className={css(ss.OS)}>
 			utf-8[unix]
         </div>
@@ -26,17 +30,12 @@ const Status = ({
         </div>
     </div>;
 
-Status.defaultProps = {
-    fileName: 'untilted.txt',
-    fileType: 'text',
-};
-
 Status.propTypes = {
     mode: PropTypes.string.isRequired,
     line: PropTypes.number.isRequired,
     char: PropTypes.number.isRequired,
-    fileName: PropTypes.string.isRequired,
-    fileType: PropTypes.string.isRequired,
+    fileName: PropTypes.string,
+    fileType: PropTypes.string,
 };
 
 export default Status;

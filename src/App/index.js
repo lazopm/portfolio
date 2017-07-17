@@ -12,6 +12,7 @@ class App extends Component {
         this.state = {
             mode: 'NORMAL',
             cursor: false,
+            fileName: '[No Name]',
             lines: [
                 '    ____        __    __        __',
                 '   / __ \\____ _/ /_  / /___    / /   ____ _____  ____',
@@ -91,6 +92,7 @@ class App extends Component {
                         mode={this.state.mode}
                         lines={this.state.lines}
                         cursor={this.state.cursor}
+                        fileName={this.state.fileName}
                     />
                     <Links/>
                 </div>

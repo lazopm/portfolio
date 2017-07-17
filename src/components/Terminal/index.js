@@ -6,7 +6,13 @@ import ss from './styles';
 import Line from './Line';
 import Status from './Status';
 
-const Terminal = ({ lines, mode, cursor }) =>
+const Terminal = ({
+    lines,
+    mode,
+    cursor,
+    fileName,
+    fileType,
+}) =>
     <div className={css(ss.Container)}>
         <div className={css(ss.Lines)}>
             {lines.map((line, i) => (
@@ -22,6 +28,8 @@ const Terminal = ({ lines, mode, cursor }) =>
             line={lines.length}
             mode={mode}
             char={lines[lines.length - 1].length + 1}
+            fileName={fileName}
+            fileType={fileType}
         />
     </div>;
 
@@ -31,6 +39,8 @@ Terminal.defaultProps = {
     cursor: true,
 };
 Terminal.propTypes = {
+    fileName: PropTypes.string,
+    fileType: PropTypes.string,
     cursor: PropTypes.bool.isRequired,
     mode: PropTypes.string.isRequired,
     lines: PropTypes.arrayOf(PropTypes.string).isRequired,
