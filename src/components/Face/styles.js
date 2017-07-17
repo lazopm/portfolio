@@ -1,5 +1,6 @@
 import { StyleSheet } from 'aphrodite';
 import theme from 'constants/termTheme';
+import { cream } from 'constants/colors';
 import { mediumUp, largeUp } from 'style/breakpoints';
 
 export default StyleSheet.create({
@@ -7,7 +8,7 @@ export default StyleSheet.create({
         order: 1,
     },
     Ascii: {
-        background: theme[7],
+        background: cream,
         color: theme[8],
         margin: 0,
         fontFamily: 'monospace',

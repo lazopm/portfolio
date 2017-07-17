@@ -10,6 +10,7 @@ export default StyleSheet.create({
     Container: {
         display: 'flex',
         color: 'white',
+        flexWrap: 'wrap',
     },
     Mode: {
         background: theme[13],
