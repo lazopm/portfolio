@@ -31,6 +31,7 @@ export default StyleSheet.create({
             background: theme[7],
             content: '"|"',
             ...blink,
+            animationDelay: '100ms',
         }
     },
 });

@@ -7,7 +7,7 @@ import Terminal from 'components/Terminal';
 import Face from 'components/Face';
 import Links from 'components/Links';
 
-const spit = async function(lines, newLines, cb) {
+const typeOut = async function(lines, newLines, cb) {
     let addedLines = [];
     for (let line of newLines) {
         let newLine = '';
@@ -36,7 +36,7 @@ class App extends Component {
         }
     }
     componentDidMount() {
-        spit(this.state.lines, [
+        typeOut(this.state.lines, [
             'Hello! I\'m Pablo, I make web stuff.',
             'Thanks for visiting my portfolio!',
             'Check out some of my work below, or drop me a line at <a href="mailto:lazopm@gmail.com">lazopm@gmail.com</a>.',
