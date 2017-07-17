@@ -27,7 +27,6 @@ const Status = ({
     </div>;
 
 Status.defaultProps = {
-    mode: 'INSERT',
     fileName: 'untilted.txt',
     fileType: 'text',
 };
