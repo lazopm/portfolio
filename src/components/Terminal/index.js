@@ -25,20 +25,7 @@ const Terminal = ({ lines }) =>
     </div>;
 
 Terminal.defaultProps = {
-    lines: [
-        '   ___       __   __       __                    ',
-        '  / _ \\___  / /  / /__    / /  ___  ___ ___     ',
-        ' / ___/ _ `/ _ \\/ / _ \\  / /__/ _ `/_ // _ \\  ',
-        '/_/   \\___/____/_/\\___/ /____/\\___//__/\\___/ ',
-        'Front End Developer based in Washington, DC.',
-        '',
-        'Hello! I\'m Pablo, I make web stuff.',
-        'Thanks for visiting my portfolio!',
-        'Check out some of my work below, or drop me a line at lazopm@gmail.com.',
-        'You can check out the <a href="https://github.com/lazopm/portfolio">source code</a> for this page at my <a href="https://github.com/lazopm/portfolio">github</a>.',
-        '',
-        '-Pablo',
-    ]
+    lines: ['']
 };
 Terminal.propTypes = {
     lines: PropTypes.arrayOf(PropTypes.string).isRequired,
