@@ -11,19 +11,17 @@ const Icon = ({ name, color, sprite, ...restProps }) =>
     >
         <use
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            xlinkHref={`/icons/${sprite}.svg#${name}`}
+            xlinkHref={`/icons/sprites.svg#${name}`}
         />
     </svg>;
 
 Icon.defaultProps = {
     color: textDark,
-    sprite: 'regular',
 };
 
 Icon.propTypes = {
     name: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
-    sprite: PropTypes.string.isRequired,
 };
 
 export default Icon;

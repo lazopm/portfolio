@@ -71,7 +71,7 @@ class App extends Component {
             mode: 'NORMAL',
             cursor: false,
             fileType: 'text',
-            fileName: '~/portfolio/welcome.txt',
+            fileName: '~/welcome.txt',
         });
     }
     newLine(line = '') {

@@ -13,7 +13,6 @@ const Links = () =>
         >
             <Icon 
                 name="github"
-                sprite="brands"
                 color={theme[4]}
                 className={css(ss.Icon)} 
             />
@@ -27,7 +26,6 @@ const Links = () =>
         >
             <Icon 
                 name="linkedin"
-                sprite="brands"
                 color={theme[4]}
                 className={css(ss.Icon)} 
             />
@@ -41,7 +39,6 @@ const Links = () =>
         >
             <Icon 
                 name="file-alt"
-                sprite="solid"
                 color={theme[4]}
                 className={css(ss.Icon)} 
             />
@@ -55,7 +52,6 @@ const Links = () =>
         >
             <Icon 
                 name="envelope"
-                sprite="solid"
                 color={theme[4]}
                 className={css(ss.Icon)} 
             />
