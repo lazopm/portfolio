@@ -28,7 +28,7 @@ export default StyleSheet.create({
         }
     },
     Icon: {
-        marginRight: '10px',
+        margin: '3px 10px 3px 0',
         height: '24px',
         width: '24px',
         fill: theme[7],
