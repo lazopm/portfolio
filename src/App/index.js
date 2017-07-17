@@ -13,6 +13,7 @@ class App extends Component {
             mode: 'NORMAL',
             cursor: false,
             fileName: '[No Name]',
+            fileType: null,
             lines: [
                 '    ____        __    __        __',
                 '   / __ \\____ _/ /_  / /___    / /   ____ _____  ____',
@@ -25,7 +26,7 @@ class App extends Component {
         }
     }
     async componentDidMount() {
-        await sleep(2000)
+        await sleep(1000)
         this.setState({
             mode: 'INSERT',
             cursor: true,
@@ -66,6 +67,8 @@ class App extends Component {
         this.setState({
             mode: 'NORMAL',
             cursor: false,
+            fileType: 'text',
+            fileName: '~/portfolio/welcome.txt',
         });
     }
     newLine(line = '') {
@@ -93,6 +96,7 @@ class App extends Component {
                         lines={this.state.lines}
                         cursor={this.state.cursor}
                         fileName={this.state.fileName}
+                        fileType={this.state.fileType}
                     />
                     <Links/>
                 </div>
