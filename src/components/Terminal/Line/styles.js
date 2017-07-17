@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
     Text: {
         wordBreak: 'break-all',
-		whiteSpace: 'pre',
+		whiteSpace: 'pre-wrap',
     },
     Gutter: {
         marginRight: 5,

@@ -9,9 +9,9 @@ import Links from 'components/Links';
 const App = () =>
 	<div className={css(ss.Wrapper)}>
 		<div className={css(ss.Header)}>
-			<Face/>
-			<Terminal/>
-			<Links/>
+            <Face/>
+            <Terminal/>
+            <Links/>
 		</div>
 		<div className={css(ss.Main)}>
 			stuff

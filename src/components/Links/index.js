@@ -12,25 +12,57 @@ const Links = () =>
             className={css(ss.Link)} 
             href="https://www.github.com/lazopm"
         >
-            <Icon color={theme[4]} sprite="brands" name="github"/>
+            <Icon 
+                name="github"
+                sprite="brands"
+                color={theme[4]}
+                className={css(ss.Icon)} 
+            />
+            <span className={css(ss.Text)}>
+                github.com/lazopm
+            </span>
         </a>
         <a 
             className={css(ss.Link)} 
             href="https://www.linkedin.com/in/pablo-lazo-b37701ba/"
         >
-            <Icon color={theme[4]} sprite="brands" name="linkedin"/>
+            <Icon 
+                name="linkedin"
+                sprite="brands"
+                color={theme[4]}
+                className={css(ss.Icon)} 
+            />
+            <span className={css(ss.Text)}>
+                linkedin
+            </span>
         </a>
         <a 
             className={css(ss.Link)} 
             href=""
         >
-            <Icon color={theme[4]} sprite="solid" name="file-pdf"/>
+            <Icon 
+                name="file-pdf"
+                sprite="solid"
+                color={theme[4]}
+                className={css(ss.Icon)} 
+            />
+            <span className={css(ss.Text)}>
+                download resume
+            </span>
         </a>
         <a 
             className={css(ss.Link)} 
             href="mailto:lazopm@gmail.com"
         >
-            <Icon color={theme[4]} sprite="solid" name="envelope"/>
+            <Icon 
+                name="envelope"
+                sprite="solid"
+                color={theme[4]}
+                className={css(ss.Icon)} 
+            />
+            <span className={css(ss.Text)}>
+                lazopm@gmail.com
+            </span>
         </a>
     </div>;
 
