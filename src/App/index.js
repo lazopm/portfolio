@@ -27,6 +27,7 @@ class App extends Component {
             cursor: false,
             fileName: '[No Name]',
             fileType: null,
+            skipped: false,
             lines: initialLines,
         };
     }
@@ -42,16 +43,19 @@ class App extends Component {
             this.state.lines.slice(-1) + str, 
         ]});
     }
+    sleep(delay) {
+        return this.state.skipped ? Promise.resolve : sleep(delay);
+    }
     async typeOut(str) {
         for (let char of str) {
             this.appendToLastLine(char);
-            await sleep(50);
+            await this.sleep(50);
         }
     }
     render() {
         return (
             <div className={css(ss.Wrapper)}>
-                <div className={css(ss.Header)}>
+                <div onClick={() => this.setState({skipped: true})} className={css(ss.Header)}>
                     <Face/>
                     <Terminal
                         mode={this.state.mode}
