@@ -11,15 +11,15 @@ import UsnReact from './UsnReact';
 import WebScrap from './WebScrap';
 
 const Projects = () => [
-    <Ezpz/>,
-    <GardenBlog/>,
-    <GardenApi/>,
-    <HearthstoneGG/>,
-    <LambOnline/>,
-    <OldPortfolio/>,
-    <PoeConverter/>,
-    <UsnReact/>,
-    <WebScrap/>,
+    <Ezpz key="ezpz"/>,
+    <GardenBlog key="gardenBlog"/>,
+    <GardenApi key="garenApi"/>,
+    <HearthstoneGG key="hsgg"/>,
+    <LambOnline key="lambOnline"/>,
+    <OldPortfolio key="oldPortfolio"/>,
+    <PoeConverter key="poeConverter"/>,
+    <UsnReact key="usnReact"/>,
+    <WebScrap key="webScrap"/>,
 ];
 
 export default Projects;
