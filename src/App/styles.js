@@ -36,6 +36,7 @@ export default StyleSheet.create({
                 "lambOnline lambOnline"`,
         },
         '@media (min-width: 900px)': {
+            gridGap: '15px',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gridTemplateRows: 'auto repeat(5, 300px)', 
             gridTemplateAreas: `
