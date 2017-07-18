@@ -37,7 +37,7 @@ const Links = () =>
             icon="file-alt"
         />
         <Link
-            text="hi@lazopm.com"
+            text="email"
             icon="envelope"
             href="mailto:hi@lazopm.com"
         />
