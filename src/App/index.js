@@ -8,14 +8,15 @@ import Terminal from 'components/Terminal';
 import Face from 'components/Face';
 import Links from 'components/Links';
 
+import Projects from 'components/Projects';
+
 //hides text for mobile
 const hide = css(ss.Lazo);
 const initialLines = [
     `    ____        __    __<span class="${hide}">        __</span>`,
     `   / __ \\____ _/ /_  / /___<span class="${hide}">    / /   ____ _____  ____</span>`,
     `  / /_/ / __ \`/ __ \\/ / __ \\<span class="${hide}">  / /   / __ \`/_  / / __ \\</span>`,
-    ` / ____/ /_/ / /_/ / / /_/ /<span class="${hide}"> / /___/ /_/ / / /_/ /_/ /</span>`,
-    `/_/    \\__,_/_.___/_/\\____/<span class="${hide}"> /_____/\\__,_/ /___/\\____/</span>`,
+    ` / ____/ /_/ / /_/ / / /_/ /<span class="${hide}"> / /___/ /_/ / / /_/ /_/ /</span>`, `/_/    \\__,_/_.___/_/\\____/<span class="${hide}"> /_____/\\__,_/ /___/\\____/</span>`,
     `<span class="${hide}"/>    </span>Front End Developer based in Washington, DC.`,
     '',
 ];
@@ -66,9 +67,7 @@ class App extends Component {
                     />
                     <Links/>
                 </div>
-                <div className={css(ss.Main)}>
-                    stuff
-                </div>
+                <Projects/>
             </div>
         )
     }
