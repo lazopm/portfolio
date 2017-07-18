@@ -20,7 +20,8 @@ export default StyleSheet.create({
             "oldPortfolio"
             "webScrap"
             "lambOnline"
-            "lambOnline"`,
+            "lambOnline"
+            "footer"`,
         '@media (min-width: 600px)': {
             gridTemplateColumns: 'repeat(2, 1fr)',
             gridTemplateRows: 'auto repeat(8, auto)', 
@@ -32,7 +33,8 @@ export default StyleSheet.create({
                 "hsgg poeConverter"
                 "oldPortfolio oldPortfolio"
                 "lambOnline lambOnline"
-                "lambOnline lambOnline"`,
+                "lambOnline lambOnline"
+                "footer footer"`,
         },
         '@media (min-width: 900px)': {
             gridGap: '15px',
@@ -44,7 +46,8 @@ export default StyleSheet.create({
                 "hsgg gardenBlog gardenApi"
                 "hsgg oldPortfolio oldPortfolio"
                 "poeConverter lambOnline lambOnline"
-                "webScrap lambOnline lambOnline"`,
+                "webScrap lambOnline lambOnline"
+                "footer footer footer"`,
         },
         '@media (min-width: 1200px)': {
             gridTemplateColumns: 'repeat(4, 1fr)',
@@ -54,7 +57,8 @@ export default StyleSheet.create({
                 "ezpz ezpz usnReact webScrap"
                 "hsgg gardenBlog gardenBlog gardenApi"
                 "hsgg poeConverter lambOnline lambOnline"
-                "oldPortfolio oldPortfolio lambOnline lambOnline"`,
+                "oldPortfolio oldPortfolio lambOnline lambOnline"
+                "footer footer footer footer"`,
         },
         '@media (min-width: 1650px)': {
             gridTemplateColumns: 'auto repeat(4, 400px) auto',
@@ -64,7 +68,8 @@ export default StyleSheet.create({
                 "left ezpz ezpz usnReact webScrap right"
                 "left hsgg gardenBlog gardenBlog gardenApi right"
                 "left hsgg poeConverter lambOnline lambOnline right"
-                "left oldPortfolio oldPortfolio lambOnline lambOnline right"`,
+                "left oldPortfolio oldPortfolio lambOnline lambOnline right"
+                "footer footer footer footer footer footer"`,
         },
     },
     Header: {

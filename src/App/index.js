@@ -7,8 +7,8 @@ import ss from './styles';
 import Terminal from 'components/Terminal';
 import Face from 'components/Face';
 import Links from 'components/Links';
-
 import Projects from 'components/Projects';
+import Footer from 'components/Footer';
 
 //hides text for mobile
 const hide = css(ss.Lazo);
@@ -68,6 +68,7 @@ class App extends Component {
                     <Links/>
                 </div>
                 <Projects/>
+                <Footer/>
             </div>
         )
     }
