@@ -37,7 +37,6 @@ export default StyleSheet.create({
                 "footer footer"`,
         },
         '@media (min-width: 900px)': {
-            gridGap: '15px',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gridTemplateRows: 'auto repeat(5, auto)', 
             gridTemplateAreas: `
@@ -61,6 +60,7 @@ export default StyleSheet.create({
                 "footer footer footer footer"`,
         },
         '@media (min-width: 1650px)': {
+            gridGap: '15px',
             gridTemplateColumns: 'auto repeat(4, 400px) auto',
             gridTemplateRows: 'auto repeat(4, auto)', 
             gridTemplateAreas: `
