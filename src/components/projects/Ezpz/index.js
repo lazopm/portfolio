@@ -5,7 +5,7 @@ import ss from './styles';
 
 const Ezpz = () =>
     <div className={css(ss.Container)}>
-        EZPZ!
+        EZPZ
     </div>;
 
 export default Ezpz;
