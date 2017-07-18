@@ -3,7 +3,7 @@ import theme from 'constants/termTheme';
 
 export default StyleSheet.create({
     Container: {
-        background: theme[11],
+        background: theme[2],
         color: 'white',
         gridArea: 'poeConverter',
     },

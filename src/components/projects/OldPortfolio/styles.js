@@ -3,8 +3,8 @@ import theme from 'constants/termTheme';
 
 export default StyleSheet.create({
     Container: {
-        background: theme[10],
-        color: 'white',
+        background: theme[6],
+        color: 'black',
         gridArea: 'oldPortfolio',
     },
 });

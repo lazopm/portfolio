@@ -3,7 +3,7 @@ import theme from 'constants/termTheme';
 
 export default StyleSheet.create({
     Container: {
-        background: theme[8],
+        background: theme[13],
         color: 'white',
         gridArea: 'hsgg',
     },

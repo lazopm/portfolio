@@ -3,7 +3,7 @@ import theme from 'constants/termTheme';
 
 export default StyleSheet.create({
     Container: {
-        background: theme[14],
+        background: theme[3],
         color: 'white',
         gridArea: 'gardenBlog',
     },

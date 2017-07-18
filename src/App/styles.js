@@ -10,15 +10,15 @@ export default StyleSheet.create({
             "header"
             "ezpz"
             "ezpz"
-            "gardenBlog"
+            "usnReact"
+            "poeConverter"
+            "hsgg"
+            "hsgg"
             "gardenApi"
+            "gardenBlog"
             "oldPortfolio"
             "oldPortfolio"
             "webScrap"
-            "usnReact"
-            "hsgg"
-            "hsgg"
-            "poeConverter"
             "lambOnline"
             "lambOnline"`,
         '@media (min-width: 600px)': {
@@ -27,10 +27,10 @@ export default StyleSheet.create({
             gridTemplateAreas: `
                 "header header"
                 "ezpz ezpz"
-                "usnReact poeConverter"
+                "usnReact webScrap"
                 "gardenBlog gardenBlog"
                 "hsgg gardenApi"
-                "hsgg webScrap"
+                "hsgg poeConverter"
                 "oldPortfolio oldPortfolio"
                 "lambOnline lambOnline"
                 "lambOnline lambOnline"`,
