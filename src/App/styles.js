@@ -5,7 +5,7 @@ export default StyleSheet.create({
     Wrapper: {
         display: 'grid',
         gridTemplateColumns: '1fr',
-        gridTemplateRows: 'auto repeat(13, 200px)', 
+        gridTemplateRows: 'auto repeat(13, auto)', 
         gridTemplateAreas: `
             "header"
             "ezpz"
@@ -23,9 +23,8 @@ export default StyleSheet.create({
             "lambOnline"`,
         '@media (min-width: 600px)': {
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gridTemplateRows: 'auto repeat(8, 300px)', 
-            gridTemplateAreas: `
-                "header header"
+            gridTemplateRows: 'auto repeat(8, auto)', 
+            gridTemplateAreas: ` "header header"
                 "ezpz ezpz"
                 "usnReact webScrap"
                 "gardenBlog gardenBlog"
@@ -38,7 +37,7 @@ export default StyleSheet.create({
         '@media (min-width: 900px)': {
             gridGap: '15px',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gridTemplateRows: 'auto repeat(5, 300px)', 
+            gridTemplateRows: 'auto repeat(5, auto)', 
             gridTemplateAreas: `
                 "header header header"
                 "ezpz ezpz usnReact"
@@ -49,7 +48,7 @@ export default StyleSheet.create({
         },
         '@media (min-width: 1200px)': {
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: 'auto repeat(4, 300px)', 
+            gridTemplateRows: 'auto repeat(4, auto)', 
             gridTemplateAreas: `
                 "header header header header"
                 "ezpz ezpz usnReact webScrap"
@@ -59,7 +58,7 @@ export default StyleSheet.create({
         },
         '@media (min-width: 1650px)': {
             gridTemplateColumns: 'auto repeat(4, 400px) auto',
-            gridTemplateRows: 'auto repeat(4, 400px)', 
+            gridTemplateRows: 'auto repeat(4, auto)', 
             gridTemplateAreas: `
                 "header header header header header header"
                 "left ezpz ezpz usnReact webScrap right"
