@@ -5,7 +5,7 @@ export default StyleSheet.create({
     Wrapper: {
         display: 'grid',
         gridTemplateColumns: '1fr',
-        gridTemplateRows: 'auto repeat(11, 200px)', 
+        gridTemplateRows: 'auto repeat(13, 200px)', 
         gridTemplateAreas: `
             "header"
             "ezpz"
@@ -13,58 +13,58 @@ export default StyleSheet.create({
             "gardenBlog"
             "gardenApi"
             "oldPortfolio"
-            "lambOnline"
+            "oldPortfolio"
             "webScrap"
             "usnReact"
             "hsgg"
+            "hsgg"
             "poeConverter"
-            "poeConverter"`,
+            "lambOnline"
+            "lambOnline"`,
         '@media (min-width: 600px)': {
             gridTemplateColumns: 'repeat(2, 1fr)',
             gridTemplateRows: 'auto repeat(8, 300px)', 
             gridTemplateAreas: `
                 "header header"
                 "ezpz ezpz"
-                "ezpz ezpz"
+                "usnReact poeConverter"
                 "gardenBlog gardenBlog"
-                "gardenApi oldPortfolio"
-                "lambOnline webScrap"
-                "usnReact hsgg"
-                "poeConverter poeConverter"
-                "poeConverter poeConverter"`,
+                "hsgg gardenApi"
+                "hsgg webScrap"
+                "oldPortfolio oldPortfolio"
+                "lambOnline lambOnline"
+                "lambOnline lambOnline"`,
         },
         '@media (min-width: 900px)': {
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gridTemplateRows: 'auto repeat(6, 300px)', 
+            gridTemplateRows: 'auto repeat(5, 300px)', 
             gridTemplateAreas: `
                 "header header header"
-                "ezpz ezpz gardenBlog"
-                "ezpz ezpz gardenBlog"
-                "gardenApi oldPortfolio lambOnline"
-                "webScrap webScrap usnReact"
-                "hsgg poeConverter poeConverter"
-                "hsgg poeConverter poeConverter"`,
+                "ezpz ezpz usnReact"
+                "hsgg gardenBlog gardenApi"
+                "hsgg oldPortfolio oldPortfolio"
+                "poeConverter lambOnline lambOnline"
+                "webScrap lambOnline lambOnline"`,
         },
         '@media (min-width: 1200px)': {
             gridTemplateColumns: 'repeat(4, 1fr)',
             gridTemplateRows: 'auto repeat(4, 300px)', 
             gridTemplateAreas: `
                 "header header header header"
-                "ezpz ezpz gardenBlog gardenApi"
-                "ezpz ezpz oldPortfolio oldPortfolio"
-                "lambOnline webScrap poeConverter poeConverter"
-                "usnReact hsgg poeConverter poeConverter"
-            `,
+                "ezpz ezpz usnReact webScrap"
+                "hsgg gardenBlog gardenBlog gardenApi"
+                "hsgg poeConverter lambOnline lambOnline"
+                "oldPortfolio oldPortfolio lambOnline lambOnline"`,
         },
         '@media (min-width: 1650px)': {
             gridTemplateColumns: 'auto repeat(4, 400px) auto',
             gridTemplateRows: 'auto repeat(4, 400px)', 
             gridTemplateAreas: `
                 "header header header header header header"
-                "left ezpz ezpz gardenBlog gardenApi right"
-                "left ezpz ezpz oldPortfolio oldPortfolio right"
-                "left lambOnline webScrap poeConverter poeConverter right"
-                "left usnReact hsgg poeConverter poeConverter right"`
+                "left ezpz ezpz usnReact webScrap right"
+                "left hsgg gardenBlog gardenBlog gardenApi right"
+                "left hsgg poeConverter lambOnline lambOnline right"
+                "left oldPortfolio oldPortfolio lambOnline lambOnline right"`,
         },
     },
     Header: {
