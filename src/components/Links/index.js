@@ -2,7 +2,6 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import ss from './styles';
-import theme from 'constants/termTheme';
 import Icon from 'components/Icon';
 
 const Link = ({href, icon, text}) =>
