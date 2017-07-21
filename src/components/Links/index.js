@@ -9,6 +9,8 @@ const Link = ({href, icon, text}) =>
         className={css(ss.Link)} 
         href={href}
         title={text}
+        target="_blank"
+        rel="noopener noreferrer"
     >
         <Icon 
             name={icon}
