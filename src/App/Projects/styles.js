@@ -14,7 +14,7 @@ export default StyleSheet.create({
         transition: 'all 100ms ease-in-out', 
         ':hover': {
             zIndex: 1,
-            transform: 'scale(1.025)',
+            transform: 'scale(1.015)',
         },
     },
     Active: {

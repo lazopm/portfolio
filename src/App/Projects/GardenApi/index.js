@@ -38,7 +38,6 @@ const GardenApi = ({
         </div>
         <ProjectLinks 
             repository="hi"
-            demo="hi"
             stack={['react']}
         />
     </div>;

@@ -41,7 +41,6 @@ const Ezpz = ({
         </div>
         <ProjectLinks 
             repository="hi"
-            demo="hi"
             stack={['react']}
         />
     </div>;
