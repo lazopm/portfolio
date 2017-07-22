@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import Icon from 'components/Icon';
+import ProjectLinks from 'components/ProjectLinks';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -30,9 +31,16 @@ const LambOnline = ({
                 />
             }
         </h2>
-        <p className={css(projectSS.Description)}>
-            Data entry web application for a bilingual school in Washington, DC. Both the UI and generated reports are displayed in English or Spanish depending on the teacher or parent's primary language.
-        </p>
+        <div className={css(projectSS.Content)}>
+            <p className={css(projectSS.Description)}>
+                Data entry web application for a bilingual school in Washington, DC. Both the UI and generated reports are displayed in English or Spanish depending on the teacher or parent's primary language.
+            </p>
+        </div>
+        <ProjectLinks 
+            repository="hi"
+            demo="hi"
+            stack={['react']}
+        />
     </div>;
 
 export default LambOnline;

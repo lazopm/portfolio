@@ -1,32 +1,64 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'aphrodite';
 
-const Project = ({
-    title,
-    description,
-    children,
-    repositoryLink,
+import ss from './styles';
+import Icon from 'components/Icon';
+
+const ProjectLinks = ({
+    repository,
+    demo,
     stack,
-    className,
-    active,
+    iconClassName,
 }) =>
-    <div className={className}>
-        {children}
-        <div>
-        links here
-        </div>
+    <div className={css(ss.Container)}>
+        {repository &&
+            <a
+                href={repository}
+                className={css(ss.Link)}
+                onClick={e => e.preventPropagation()}
+            >
+                <Icon
+                    name="code"
+                    className={iconClassName}
+                />
+            </a>
+        }
+        {stack &&
+            <a
+                href={repository}
+                className={css(ss.Link)}
+                onClick={e => e.preventPropagation()}
+            >
+                <Icon
+                    name="bars"
+                    className={iconClassName}
+                />
+            </a>
+        }
+        {demo &&
+            <a
+                href={demo}
+                className={css(ss.Link)}
+                onClick={e => e.preventPropagation()}
+            >
+                <Icon
+                    name="external-link"
+                    className={iconClassName}
+                />
+            </a>
+        }
     </div>;
 
-Project.defaultProps = {
-    active: false,
+ProjectLinks.defaultProps = {
+    iconClassName: css(ss.Icon),
 };
 
-Project.propTypes = {
-    className: PropTypes.string.isRequired,
-    children: PropTypes.array,
-    repositoryLink: PropTypes.string,
+ProjectLinks.propTypes = {
+    iconClassName: PropTypes.string,
+    repository: PropTypes.string,
+    demo: PropTypes.string,
     stack: PropTypes.arrayOf(PropTypes.string),
-    active: PropTypes.bool.isRequired,
 };
 
-export default Project;
+export default ProjectLinks;

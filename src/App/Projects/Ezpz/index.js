@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import Icon from 'components/Icon';
+import ProjectLinks from 'components/ProjectLinks';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -33,9 +34,16 @@ const Ezpz = ({
                 />
             }
         </h2>
-        <p className={css(projectSS.Description)}>
-            ezpz is an open source css in js library that makes inline styles easy to use and keeps them consistent.
-        </p>
+        <div className={css(projectSS.Content)}>
+            <p className={css(projectSS.Description)}>
+                ezpz is an open source css in js library that makes inline styles easy to use and keeps them consistent.
+            </p>
+        </div>
+        <ProjectLinks 
+            repository="hi"
+            demo="hi"
+            stack={['react']}
+        />
     </div>;
 
 export default Ezpz;

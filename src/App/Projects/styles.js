@@ -4,6 +4,11 @@ import theme from 'constants/termTheme';
 export default StyleSheet.create({
     Container: {
         minHeight: '300px',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    Content: {
+        flexGrow: 1,
     },
     Inactive: {
         cursor: 'pointer',

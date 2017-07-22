@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import Icon from 'components/Icon';
+import ProjectLinks from 'components/ProjectLinks';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -30,9 +31,16 @@ const PoeConverter = ({
                 />
             }
         </h2>
-        <p className={css(projectSS.Description)}>
-            Currency converter for a game economy that uses item trading instead of a regular currency. It included a python web scrapping script to automatically fetch the contents in the user's in-game storage.
-        </p>
+        <div className={css(projectSS.Content)}>
+            <p className={css(projectSS.Description)}>
+                Currency converter for a game economy that uses item trading instead of a regular currency. It included a python web scrapping script to automatically fetch the contents in the user's in-game storage.
+            </p>
+        </div>
+        <ProjectLinks 
+            repository="hi"
+            demo="hi"
+            stack={['react']}
+        />
     </div>;
 
 export default PoeConverter;

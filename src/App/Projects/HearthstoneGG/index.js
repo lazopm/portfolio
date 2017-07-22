@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import Icon from 'components/Icon';
+import ProjectLinks from 'components/ProjectLinks';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -30,9 +31,16 @@ const HearthstoneGG = ({
                 />
             }
         </h2>
-        <p className={css(projectSS.Description)}>
-            Several tools for the Hearthstone card game. This was my first big personal project, and was pretty successful with a couple hundred users at it's peak. Now days I have not had time to update it, but people still use the secrets helper tool.
-        </p>
+        <div className={css(projectSS.Content)}>
+            <p className={css(projectSS.Description)}>
+                Several tools for the Hearthstone card game. This was my first big personal project, and was pretty successful with a couple hundred users at it's peak. Now days I have not had time to update it, but people still use the secrets helper tool.
+            </p>
+        </div>
+        <ProjectLinks 
+            repository="hi"
+            demo="hi"
+            stack={['react']}
+        />
     </div>;
 
 export default HearthstoneGG;

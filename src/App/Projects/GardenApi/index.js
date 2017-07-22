@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import Icon from 'components/Icon';
+import ProjectLinks from 'components/ProjectLinks';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -30,9 +31,16 @@ const GardenApi = ({
                 />
             }
         </h2>
-        <p className={css(projectSS.Description)}>
-            A Serverless AWS Lambda service to manage an automated garden.
-        </p>
+        <div className={css(projectSS.Content)}>
+            <p className={css(projectSS.Description)}>
+                A Serverless AWS Lambda service to manage an automated garden.
+            </p>
+        </div>
+        <ProjectLinks 
+            repository="hi"
+            demo="hi"
+            stack={['react']}
+        />
     </div>;
 
 export default GardenApi;

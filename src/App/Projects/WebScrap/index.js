@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite';
 
 import Icon from 'components/Icon';
+import ProjectLinks from 'components/ProjectLinks';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -30,9 +31,16 @@ const WebScrap = ({
                 />
             }
         </h2>
-        <p className={css(projectSS.Description)}>
-            Script and tools to extract a whole country's population data from a web service and put them in a database. Threaded to make the ~19 million records faster to download. Separate script to verify downloaded records and a small Flask app to view the data.
-        </p>
+        <div className={css(projectSS.Content)}>
+            <p className={css(projectSS.Description)}>
+                Script and tools to extract a whole country's population data from a web service and put them in a database. Threaded to make the ~19 million records faster to download. Separate script to verify downloaded records and a small Flask app to view the data.
+            </p>
+        </div>
+        <ProjectLinks 
+            repository="hi"
+            demo="hi"
+            stack={['react']}
+        />
     </div>;
 
 export default WebScrap;
