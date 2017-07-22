@@ -1,7 +1,7 @@
 import { StyleSheet } from 'aphrodite';
 
 export default StyleSheet.create({
-    Project: {
+    Container: {
         padding: 10,
         minHeight: 250,
     },
