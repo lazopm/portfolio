@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Ezpz from './Ezpz';
 import GardenBlog from './GardenBlog';
@@ -10,16 +10,40 @@ import PoeConverter from './PoeConverter';
 import UsnReact from './UsnReact';
 import WebScrap from './WebScrap';
 
-const Projects = () => [
-    <Ezpz key="ezpz"/>,
-    <GardenBlog key="gardenBlog"/>,
-    <GardenApi key="garenApi"/>,
-    <HearthstoneGG key="hsgg"/>,
-    <LambOnline key="lambOnline"/>,
-    <OldPortfolio key="oldPortfolio"/>,
-    <PoeConverter key="poeConverter"/>,
-    <UsnReact key="usnReact"/>,
-    <WebScrap key="webScrap"/>,
+const projectComponents = [
+    Ezpz,
+    GardenBlog,
+    GardenApi,
+    HearthstoneGG,
+    LambOnline,
+    OldPortfolio,
+    PoeConverter,
+    UsnReact,
+    WebScrap,
 ];
+
+class Projects extends Component {
+    constructor() {
+        super();
+        this.state = { active: 1 };
+    }
+    activate(i) {
+        this.setState(() => ({ active: i}));
+    }
+    deactivate() {
+        this.setState(() => ({ active: null}));
+    }
+    render() {
+        const active = this.state.active;
+        return projectComponents.map((Project, i) =>
+            <Project
+                key={i}
+                active={active === i}
+                activate={() => this.activate(i)}
+                deactivate={this.deactivate.bind(this)}
+            />
+        );
+    }
+}
 
 export default Projects;

@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'aphrodite';
-
-import ss from './styles';
 
 const Project = ({
     title,
@@ -11,27 +8,25 @@ const Project = ({
     repositoryLink,
     stack,
     className,
+    active,
 }) =>
     <div className={className}>
-        <h1 className={css(ss.Heading)}>
-            {title}
-        </h1>
-        <p>{description}</p>
         {children}
+        <div>
         links here
+        </div>
     </div>;
 
 Project.defaultProps = {
-    className: css(ss.Container),
+    active: false,
 };
 
 Project.propTypes = {
     className: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
     children: PropTypes.array,
     repositoryLink: PropTypes.string,
     stack: PropTypes.arrayOf(PropTypes.string),
+    active: PropTypes.bool.isRequired,
 };
 
 export default Project;
