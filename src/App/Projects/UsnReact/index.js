@@ -1,15 +1,23 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
-import ss from './styles'; 
-import Project from 'components/Project';
+import ss from './styles';
+import projectSS from '../styles';
 
-const UsnReact = () =>
-    <Project
-        className={css(ss.Container)}
-        title="USN React Presentation"
-        description="A little React word game app I coded for a live demo at work."
+const UsnReact = ({
+    active,
+    activate,
+    deactivate,
+}) =>
+    <div
+        onClick={activate}
+        className={css(
+            ss.Container,
+            active && projectSS.Active,
+        )}
     >
-    </Project>;
+        <h2>USN React Presentation</h2>
+        <p>A little React word game app I coded for a live demo at work.</p>
+    </div>;
 
 export default UsnReact;

@@ -1,21 +1,22 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
-import ss from './styles'; 
-import projectSS from 'components/Project/styles'; 
-import Project from 'components/Project';
+import ss from './styles';
+import projectSS from '../styles';
 
 const Ezpz = ({
     active,
     activate,
     deactivate,
 }) =>
-    <Project className={css(
+    <div
+        onClick={activate}
+        className={css(
         ss.Container,
         active && projectSS.Active,
     )}>
-        <h3 onClick={activate}>ezpz</h3>
-        <p onClick={deactivate}>ezpz is an open source css in js library that makes inline styles easy to use and keeps them consistent.</p>
-    </Project>;
+        <h3>ezpz</h3>
+        <p>ezpz is an open source css in js library that makes inline styles easy to use and keeps them consistent.</p>
+    </div>;
 
 export default Ezpz;

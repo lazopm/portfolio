@@ -25,7 +25,7 @@ const projectComponents = [
 class Projects extends Component {
     constructor() {
         super();
-        this.state = { active: 1 };
+        this.state = { active: null };
     }
     activate(i) {
         this.setState(() => ({ active: i}));
