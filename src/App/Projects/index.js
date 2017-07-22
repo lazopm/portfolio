@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Ezpz from './Ezpz';
 import GardenBlog from './GardenBlog';
@@ -22,28 +22,17 @@ const projectComponents = [
     WebScrap,
 ];
 
-class Projects extends Component {
-    constructor() {
-        super();
-        this.state = { active: null };
-    }
-    activate(i) {
-        this.setState(() => ({ active: i}));
-    }
-    deactivate() {
-        this.setState(() => ({ active: null}));
-    }
-    render() {
-        const active = this.state.active;
-        return projectComponents.map((Project, i) =>
-            <Project
-                key={i}
-                active={active === i}
-                activate={() => this.activate(i)}
-                deactivate={this.deactivate.bind(this)}
-            />
-        );
-    }
-}
+const Projects = ({
+    active,
+    activate,
+    deactivate,
+}) => projectComponents.map((Project, i) =>
+    <Project
+        key={i}
+        active={active === i}
+        activate={() => activate(i)}
+        deactivate={deactivate}
+    />
+);
 
 export default Projects;

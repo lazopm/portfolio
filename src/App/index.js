@@ -24,6 +24,7 @@ const initialLines = [
 class App extends Component { 
     constructor() { super();
         this.state = {
+            activeProject: null,
             mode: 'NORMAL',
             cursor: false,
             fileName: '[No Name]',
@@ -47,6 +48,18 @@ class App extends Component {
     sleep(delay) {
         return this.state.skipped ? Promise.resolve : sleep(delay);
     }
+    activateProject(i) {
+        this.setState(prevState => ({
+            ...prevState,
+            activeProject: i,
+        }));
+    }
+    deactivateProject() {
+        this.setState(prevState => ({
+            ...prevState,
+            activeProject: null,
+        }));
+    }
     async typeOut(str) {
         for (let char of str) {
             this.appendToLastLine(char);
@@ -67,7 +80,11 @@ class App extends Component {
                     />
                     <Links/>
                 </div>
-                <Projects/>
+                <Projects
+                    active={this.state.activeProject}
+                    activate={this.activateProject.bind(this)}
+                    deactivate={this.deactivateProject.bind(this)}
+                />
                 <Footer/>
             </div>
         )
