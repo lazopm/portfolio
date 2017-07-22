@@ -3,7 +3,6 @@ import theme from 'constants/termTheme';
 
 export default StyleSheet.create({
     Container: {
-        minHeight: '300px',
         display: 'flex',
         flexDirection: 'column',
     },
@@ -12,6 +11,7 @@ export default StyleSheet.create({
     },
     Inactive: {
         cursor: 'pointer',
+        transition: 'all 100ms ease-in-out', 
         ':hover': {
             zIndex: 1,
             transform: 'scale(1.025)',
