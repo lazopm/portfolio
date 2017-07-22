@@ -10,7 +10,7 @@ const Footer = () =>
         <div className={css(
             ss.Text,
         )}>
-            This is a footer.
+            © 2017 Pablo Lazo 
         </div>
     </div>;
 

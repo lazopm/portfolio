@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
+import Icon from 'components/Icon';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -13,11 +14,25 @@ const LambOnline = ({
         onClick={activate}
         className={css(
             ss.Container,
-            active && projectSS.Active,
+            projectSS.Container,
+            active ? projectSS.Active : projectSS.Inactive,
         )}
     >
-        <h2>Lamb Online</h2>
-        <p>Data entry web application for a bilingual school in Washington, DC. Both the UI and generated reports are displayed in English or Spanish depending on the teacher or parent's primary language.</p>
+        <h2 className={css(
+            projectSS.Heading,
+        )}>
+            Lamb Online
+            {active &&
+                <Icon
+                    name="times-square"
+                    className={css(projectSS.CloseIcon)}
+                    onClick={deactivate}
+                />
+            }
+        </h2>
+        <p className={css(projectSS.Description)}>
+            Data entry web application for a bilingual school in Washington, DC. Both the UI and generated reports are displayed in English or Spanish depending on the teacher or parent's primary language.
+        </p>
     </div>;
 
 export default LambOnline;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
+import Icon from 'components/Icon';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -13,11 +14,25 @@ const PoeConverter = ({
         onClick={activate}
         className={css(
             ss.Container,
-            active && projectSS.Active,
+            projectSS.Container,
+            active ? projectSS.Active : projectSS.Inactive,
         )}
     >
-        <h2>Poe Converter</h2>
-        <p>Currency converter for a game economy that uses item trading instead of a regular currency. It included a python web scrapping script to automatically fetch the contents in the user's in-game storage.</p>
+        <h2 className={css(
+            projectSS.Heading,
+        )}>
+            Poe Converter
+            {active &&
+                <Icon
+                    name="times-square"
+                    className={css(projectSS.CloseIcon)}
+                    onClick={deactivate}
+                />
+            }
+        </h2>
+        <p className={css(projectSS.Description)}>
+            Currency converter for a game economy that uses item trading instead of a regular currency. It included a python web scrapping script to automatically fetch the contents in the user's in-game storage.
+        </p>
     </div>;
 
 export default PoeConverter;

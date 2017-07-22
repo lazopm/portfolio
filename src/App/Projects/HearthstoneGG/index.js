@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
+import Icon from 'components/Icon';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -13,11 +14,25 @@ const HearthstoneGG = ({
         onClick={activate}
         className={css(
             ss.Container,
-            active && projectSS.Active,
+            projectSS.Container,
+            active ? projectSS.Active : projectSS.Inactive
         )}
     >
-        <h2>HearthstoneGG</h2>
-        <p>Several tools for the Hearthstone card game. This was my first big personal project, and was pretty successful with a couple hundred users at it's peak. Now days I have not had time to update it, but people still use the secrets helper tool.</p>
+        <h2 className={css(
+            projectSS.Heading,
+        )}>
+            HearthstoneGG
+            {active &&
+                <Icon
+                    name="times-square"
+                    className={css(projectSS.CloseIcon)}
+                    onClick={deactivate}
+                />
+            }
+        </h2>
+        <p className={css(projectSS.Description)}>
+            Several tools for the Hearthstone card game. This was my first big personal project, and was pretty successful with a couple hundred users at it's peak. Now days I have not had time to update it, but people still use the secrets helper tool.
+        </p>
     </div>;
 
 export default HearthstoneGG;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'aphrodite';
 
+import Icon from 'components/Icon';
 import ss from './styles';
 import projectSS from '../styles';
 
@@ -13,11 +14,25 @@ const WebScrap = ({
         onClick={activate}
         className={css(
             ss.Container,
-            active && projectSS.Active,
+            projectSS.Container,
+            active ? projectSS.Active : projectSS.Inactive,
         )}
     >
-        <h2>Web Scrap Sample</h2>
-        <p>Script and tools to extract a whole country's population data from a web service and put them in a database. Threaded to make the ~19 million records faster to download. Separate script to verify downloaded records and a small Flask app to view the data.</p>
+        <h2 className={css(
+            projectSS.Heading,
+        )}>
+            Web Scrap Sample
+            {active &&
+                <Icon
+                    name="times-square"
+                    className={css(projectSS.CloseIcon)}
+                    onClick={deactivate}
+                />
+            }
+        </h2>
+        <p className={css(projectSS.Description)}>
+            Script and tools to extract a whole country's population data from a web service and put them in a database. Threaded to make the ~19 million records faster to download. Separate script to verify downloaded records and a small Flask app to view the data.
+        </p>
     </div>;
 
 export default WebScrap;

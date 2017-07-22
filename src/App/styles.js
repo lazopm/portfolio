@@ -4,6 +4,7 @@ import { mediumUp, largeUp } from 'style/breakpoints';
 export default StyleSheet.create({
     Wrapper: {
         display: 'grid',
+        overflowX: 'hidden',
         gridTemplateColumns: '1fr',
         gridTemplateRows: 'auto repeat(13, auto)', 
         gridTemplateAreas: `
@@ -22,7 +23,7 @@ export default StyleSheet.create({
             "lambOnline"
             "lambOnline"
             "footer"`,
-        '@media (min-width: 600px)': {
+        '@media (min-width: 700px)': {
             gridTemplateColumns: 'repeat(2, 1fr)',
             gridTemplateRows: 'auto repeat(8, auto)', 
             gridTemplateAreas: ` "header header"
@@ -36,7 +37,7 @@ export default StyleSheet.create({
                 "lambOnline lambOnline"
                 "footer footer"`,
         },
-        '@media (min-width: 900px)': {
+        '@media (min-width: 1000px)': {
             gridTemplateColumns: 'repeat(3, 1fr)',
             gridTemplateRows: 'auto repeat(5, auto)', 
             gridTemplateAreas: `
@@ -48,28 +49,17 @@ export default StyleSheet.create({
                 "webScrap lambOnline lambOnline"
                 "footer footer footer"`,
         },
-        '@media (min-width: 1200px)': {
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: 'auto repeat(4, auto)', 
+        '@media (min-width: 1500px)': {
+            gridTemplateColumns: 'auto repeat(3, 500px) auto',
+            gridTemplateRows: 'auto repeat(5, auto)', 
             gridTemplateAreas: `
-                "header header header header"
-                "ezpz ezpz usnReact webScrap"
-                "hsgg gardenBlog gardenBlog gardenApi"
-                "hsgg poeConverter lambOnline lambOnline"
-                "oldPortfolio oldPortfolio lambOnline lambOnline"
-                "footer footer footer footer"`,
-        },
-        '@media (min-width: 1650px)': {
-            gridGap: '15px',
-            gridTemplateColumns: 'auto repeat(4, 400px) auto',
-            gridTemplateRows: 'auto repeat(4, auto)', 
-            gridTemplateAreas: `
-                "header header header header header header"
-                "left ezpz ezpz usnReact webScrap right"
-                "left hsgg gardenBlog gardenBlog gardenApi right"
-                "left hsgg poeConverter lambOnline lambOnline right"
-                "left oldPortfolio oldPortfolio lambOnline lambOnline right"
-                "footer footer footer footer footer footer"`,
+                "header header header header header"
+                "left ezpz ezpz usnReact right"
+                "left hsgg gardenBlog gardenApi right"
+                "left hsgg oldPortfolio oldPortfolio right"
+                "left poeConverter lambOnline lambOnline right"
+                "left webScrap lambOnline lambOnline right"
+                "left footer footer footer right"`,
         },
     },
     Header: {

@@ -54,7 +54,8 @@ class App extends Component {
             activeProject: i,
         }));
     }
-    deactivateProject() {
+    deactivateProject(e) {
+        e.stopPropagation();
         this.setState(prevState => ({
             ...prevState,
             activeProject: null,
