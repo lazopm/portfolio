@@ -34,8 +34,11 @@ export default async function() {
     this.newLine();
     await this.sleep(500)
     await this.typeOut('-Pablo');
+    this.newLine();
 
-    await this.sleep(2000)
+    await this.sleep(1000)
+    await this.typeOut('PS: I\'m still building this. Sorry if some stuff doesn\'t work!');
+    await this.sleep(1000)
     this.setState({
         mode: 'NORMAL',
         cursor: false,
