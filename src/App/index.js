@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
-import { css } from 'aphrodite';
+import styled from 'styled-components';
+import media from 'style/media';
 import sleep from 'util/sleep';
 import runSchedule from './schedule';
+import lines from './lines';
 
-import ss from './styles';
-import Terminal from 'components/Terminal';
-import Face from 'components/Face';
-import Links from 'components/Links';
-import Projects from './Projects';
+import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-//hides text for mobile
-const hide = css(ss.Lazo);
-const initialLines = [
-    `    ____        __    __<span class="${hide}">        __</span>`,
-    `   / __ \\____ _/ /_  / /___<span class="${hide}">    / /   ____ _____  ____</span>`,
-    `  / /_/ / __ \`/ __ \\/ / __ \\<span class="${hide}">  / /   / __ \`/_  / / __ \\</span>`,
-    ` / ____/ /_/ / /_/ / / /_/ /<span class="${hide}"> / /___/ /_/ / / /_/ /_/ /</span>`, `/_/    \\__,_/_.___/_/\\____/<span class="${hide}"> /_____/\\__,_/ /___/\\____/</span>`,
-    `<span class="${hide}"/>    </span>Front End Developer based in Washington, DC.`,
-    '',
-];
+const Container = styled.div`
+    display: flex;
+    min-height:  100vh;
+    flex-direction: column;
+    .hide {
+		display: none;
+        ${media.medium`
+            display: initial;
+        `}
+	}
+`;
+
+const Main = styled.div`
+	flex-grow: 1;
+	background: #111a1f;
+`;
 
 class App extends Component { 
     constructor() { super();
@@ -30,7 +34,7 @@ class App extends Component {
             fileName: '[No Name]',
             fileType: null,
             skipped: false,
-            lines: initialLines,
+            lines,
         };
     }
     componentDidMount() {
@@ -69,25 +73,20 @@ class App extends Component {
     }
     render() {
         return (
-            <div className={css(ss.Wrapper)}>
-                <div onClick={() => this.setState({skipped: true})} className={css(ss.Header)}>
-                    <Face/>
-                    <Terminal
-                        mode={this.state.mode}
-                        lines={this.state.lines}
-                        cursor={this.state.cursor}
-                        fileName={this.state.fileName}
-                        fileType={this.state.fileType}
-                    />
-                    <Links/>
-                </div>
-                <Projects
-                    active={this.state.activeProject}
-                    activate={this.activateProject.bind(this)}
-                    deactivate={this.deactivateProject.bind(this)}
+            <Container>
+                <Header
+                    onClick={() => this.setState({skipped: true})}
+                    terminalProps={{
+                        mode: this.state.mode,
+                        lines: this.state.lines,
+                        cursor: this.state.cursor,
+                        fileName: this.state.fileName,
+                        fileType: this.state.fileType,
+                    }}
                 />
+                <Main/>
                 <Footer/>
-            </div>
+            </Container>
         )
     }
 }

@@ -1,23 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'aphrodite';
+import styled, { keyframes } from 'styled-components';
+import theme from 'constants/termTheme';
 
-import ss from './styles';
+const blink = keyframes`
+	50% {
+	  opacity: 0;
+	}
+`;
+
+const Container = styled.div`
+	display: flex;
+`;
+
+const Text = styled.div`
+	word-break: break-all;
+	white-space: pre-wrap;
+	${props => props.cursor && `
+		&:after {
+			width: 10px;
+			background: ${theme[7]};
+			content: "|";
+			animation-name: ${blink};
+			animation-delay: 100ms;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: step-start;
+		}
+	`}
+`;
+
+const Gutter = styled.div`
+	margin-right: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	background: ${theme[2]};
+`;
+
+const Number = styled.span`
+	width: 20px;
+	color: ${theme[4]};
+	text-align: right;
+	display: inline-block;
+`;
 
 const Line = ({ cursor, text, number }) =>
-    <div className={css(ss.LineContainer)}>
-        <div className={css(ss.Gutter)}>
-            <span className={css(ss.Number)}>
-                {number}
-            </span>
-        </div>
-        <div 
+    <Container>
+        <Gutter>
+            <Number>{number}</Number>
+        </Gutter>
+        <Text 
             dangerouslySetInnerHTML={{__html: text}}
-            className={css(
-            ss.Text,
-            cursor && ss.Cursor)
-        }/>
-    </div>;
+            cursor={cursor} 
+        />
+    </Container>;
 
 Line.defaultProps = {
     cursor: false,

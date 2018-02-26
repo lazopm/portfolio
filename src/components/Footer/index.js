@@ -1,17 +1,25 @@
 import React from 'react';
-import { css } from 'aphrodite';
+import styled from 'styled-components';
+import theme from 'constants/termTheme';
 
-import ss from './styles'; 
+const Container = styled.div`
+    background: ${theme[1]};
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    grid-area: footer;
+`;
 
-const Footer = () =>
-    <div className={css(
-        ss.Container,
-    )}>
-        <div className={css(
-            ss.Text,
-        )}>
-            © 2017 Pablo Lazo 
-        </div>
-    </div>;
+const Text = styled.div`
+    flex-grow: 1;
+    text-align: center;
+`;
+
+const Footer = () => (
+    <Container>
+        <Text>© 2017 Pablo Lazo</Text>
+    </Container>
+);
 
 export default Footer;

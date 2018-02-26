@@ -1,34 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'aphrodite';
+import styled from 'styled-components';
+import theme from 'constants/termTheme';
 
-import ss from './styles';
+const Container = styled.div`
+    display: flex;
+    color: white;
+    flex-wrap: wrap;
+`;
+
+const Mode = styled.div`
+    background: ${theme[13]};
+    padding: 0 10px;
+`;
+
+const File = styled.div`
+    background: ${theme[1]};
+    flex-grow: 1;
+    padding: 0 10px;
+`;
+const Type = styled.div`
+    background: ${theme[1]};
+    padding: 0 10px;
+`;
+const OS = styled.div`
+    background: ${theme[3]};
+    padding: 0 10px;
+`;
+const Numbers = styled.div`
+    background: ${theme[13]};
+    padding: 0 10px;
+`;
 
 const Status = ({
     mode, line, char,
     fileName, fileType,
 }) =>
-    <div className={css(ss.Container)}>
-        <div className={css(ss.Mode)}>
-            {mode}
-        </div>
+    <Container>
+        <Mode>{mode}</Mode>
         {fileName && (
-            <div className={css(ss.File)}>
-                {fileName}
-            </div>
+            <File>{fileName}</File>
         )}
         {fileType && (
-            <div className={css(ss.Type)}>
-                {fileType}
-            </div>
+            <Type>{fileType}</Type>
         )}
-        <div className={css(ss.OS)}>
-			utf-8[unix]
-        </div>
-        <div className={css(ss.Numbers)}>
-            {line}/{char}
-        </div>
-    </div>;
+        <OS>utf-8[unix]</OS>
+        <Numbers>{line}/{char}</Numbers>
+    </Container>;
 
 Status.propTypes = {
     mode: PropTypes.string.isRequired,

@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'aphrodite';
-
-import ss from './styles';
+import styled from 'styled-components';
+import theme from 'constants/termTheme';
 import Line from './Line';
 import Status from './Status';
 
+const Container = styled.div`
+	color: ${theme[7]};
+	background: ${theme[0]};
+	font-family: Inconsolata;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+`;
+const Lines = styled.div`
+	flex-grow: 1;
+`;
 const Terminal = ({
     lines,
     mode,
@@ -13,8 +23,8 @@ const Terminal = ({
     fileName,
     fileType,
 }) =>
-    <div className={css(ss.Container)}>
-        <div className={css(ss.Lines)}>
+    <Container>
+        <Lines>
             {lines.map((line, i) => (
                 <Line
                     key={`${line}${i}`}
@@ -23,7 +33,7 @@ const Terminal = ({
                     cursor={cursor && lines.length - i === 1}
                 />
             ))}
-        </div>
+        </Lines>
         <Status
             line={lines.length}
             mode={mode}
@@ -31,7 +41,7 @@ const Terminal = ({
             fileName={fileName}
             fileType={fileType}
         />
-    </div>;
+    </Container>;
 
 Terminal.defaultProps = {
     lines: [''],
