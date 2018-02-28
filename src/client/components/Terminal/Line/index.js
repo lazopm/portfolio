@@ -14,7 +14,6 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-	word-break: break-all;
 	white-space: pre-wrap;
 	${props => props.hasCursor && `
 		&:after {
