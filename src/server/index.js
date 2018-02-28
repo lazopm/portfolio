@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send(render());
 });
 app.use('/assets', express.static('assets'));
-app.use('/js', express.static('dist'));
+app.use(express.static('dist/client'));
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);

@@ -13,7 +13,7 @@ export default (html, css) => `
       </head>
       <body>
         <div id="root">${html}</div>
-        <script src="/js/client.bundle.js"></script>
+        <script src="/client.bundle.js"></script>
       </body>
     </html>
 `;

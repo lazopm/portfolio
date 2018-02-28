@@ -1,6 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1]
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	var installedChunks = {
+/******/ 		"client": 0
+/******/ 	};
+/******/
+/******/
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +61,64 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var head = document.getElementsByTagName('head')[0];
+/******/ 				var script = document.createElement('script');
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120000;
+/******/
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = __webpack_require__.p + "" + ({"app":"app"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				function onScriptComplete(event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -63,6 +156,16 @@
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -4107,162 +4210,6 @@ eval("module.exports = function(originalModule) {\r\n\tif (!originalModule.webpa
 
 /***/ }),
 
-/***/ "./src/client/App/index.js":
-/*!*********************************!*\
-  !*** ./src/client/App/index.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireWildcard(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _styledComponents = _interopRequireWildcard(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _media = _interopRequireDefault(__webpack_require__(/*! style/media */ \"./src/client/style/media.js\"));\n\nvar _schedule = _interopRequireDefault(__webpack_require__(/*! ./schedule */ \"./src/client/App/schedule.js\"));\n\nvar _lines = _interopRequireDefault(__webpack_require__(/*! ./lines */ \"./src/client/App/lines.js\"));\n\nvar _Header = _interopRequireDefault(__webpack_require__(/*! components/Header */ \"./src/client/components/Header/index.js\"));\n\nvar _Footer = _interopRequireDefault(__webpack_require__(/*! components/Footer */ \"./src/client/components/Footer/index.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tbody {\\n\\t\\tmargin: 0;\\n\\t\\tpadding: 0;\\n\\t\\tfont-family: sans-serif;\\n\\t}\\n\\ta {\\n\\t\\tcolor: #6699CC;\\n\\t}\\n\\tp {\\n\\t\\tline-height: 150%;\\n\\t}\\n\"], [\"\\n\\tbody {\\n\\t\\tmargin: 0;\\n\\t\\tpadding: 0;\\n\\t\\tfont-family: sans-serif;\\n\\t}\\n\\ta {\\n\\t\\tcolor: #6699CC;\\n\\t}\\n\\tp {\\n\\t\\tline-height: 150%;\\n\\t}\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    display: flex;\\n    min-height:  100vh;\\n    flex-direction: column;\\n    .hide {\\n\\t\\tdisplay: none;\\n        \", \"\\n\\t}\\n\"], [\"\\n    display: flex;\\n    min-height:  100vh;\\n    flex-direction: column;\\n    .hide {\\n\\t\\tdisplay: none;\\n        \", \"\\n\\t}\\n\"]),\n    _templateObject3 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n            display: initial;\\n        \"], [\"\\n            display: initial;\\n        \"]),\n    _templateObject4 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tflex-grow: 1;\\n\\tbackground: #111a1f;\\n\"], [\"\\n\\tflex-grow: 1;\\n\\tbackground: #111a1f;\\n\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }\n\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step(\"next\", value); } function _throw(err) { step(\"throw\", err); } _next(); }); }; }\n\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\nfunction _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\n//eslint-disable-next-line\n(0, _styledComponents.injectGlobal)(_templateObject);\n\nvar Container = _styledComponents.default.div(_templateObject2, _media.default.medium(_templateObject3));\n\nvar Main = _styledComponents.default.div(_templateObject4);\n\nvar App =\n/*#__PURE__*/\nfunction (_Component) {\n  _inherits(App, _Component);\n\n  function App() {\n    var _this;\n\n    _classCallCheck(this, App);\n\n    _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));\n    _this.state = {\n      activeProject: null,\n      mode: 'NORMAL',\n      cursor: false,\n      fileName: '[No Name]',\n      fileType: null,\n      skipped: false,\n      lines: _lines.default\n    };\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      _schedule.default.bind(this)();\n    }\n  }, {\n    key: \"newLine\",\n    value: function newLine() {\n      var line = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';\n      this.setState({\n        lines: _toConsumableArray(this.state.lines).concat([line])\n      });\n    }\n  }, {\n    key: \"appendToLastLine\",\n    value: function appendToLastLine(str) {\n      this.setState({\n        lines: _toConsumableArray(this.state.lines.slice(0, -1)).concat([this.state.lines.slice(-1) + str])\n      });\n    }\n  }, {\n    key: \"sleep\",\n    value: function sleep(delay) {\n      return this.state.skipped ? Promise.resolve : new Promise(function (resolve) {\n        setTimeout(resolve, delay);\n      });\n    }\n  }, {\n    key: \"activateProject\",\n    value: function activateProject(i) {\n      this.setState(function (prevState) {\n        return _extends({}, prevState, {\n          activeProject: i\n        });\n      });\n    }\n  }, {\n    key: \"deactivateProject\",\n    value: function deactivateProject(e) {\n      e.stopPropagation();\n      this.setState(function (prevState) {\n        return _extends({}, prevState, {\n          activeProject: null\n        });\n      });\n    }\n  }, {\n    key: \"typeOut\",\n    value: function () {\n      var _typeOut = _asyncToGenerator(\n      /*#__PURE__*/\n      regeneratorRuntime.mark(function _callee(str) {\n        var _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, _char;\n\n        return regeneratorRuntime.wrap(function _callee$(_context) {\n          while (1) {\n            switch (_context.prev = _context.next) {\n              case 0:\n                _iteratorNormalCompletion = true;\n                _didIteratorError = false;\n                _iteratorError = undefined;\n                _context.prev = 3;\n                _iterator = str[Symbol.iterator]();\n\n              case 5:\n                if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {\n                  _context.next = 13;\n                  break;\n                }\n\n                _char = _step.value;\n                this.appendToLastLine(_char);\n                _context.next = 10;\n                return this.sleep(50);\n\n              case 10:\n                _iteratorNormalCompletion = true;\n                _context.next = 5;\n                break;\n\n              case 13:\n                _context.next = 19;\n                break;\n\n              case 15:\n                _context.prev = 15;\n                _context.t0 = _context[\"catch\"](3);\n                _didIteratorError = true;\n                _iteratorError = _context.t0;\n\n              case 19:\n                _context.prev = 19;\n                _context.prev = 20;\n\n                if (!_iteratorNormalCompletion && _iterator.return != null) {\n                  _iterator.return();\n                }\n\n              case 22:\n                _context.prev = 22;\n\n                if (!_didIteratorError) {\n                  _context.next = 25;\n                  break;\n                }\n\n                throw _iteratorError;\n\n              case 25:\n                return _context.finish(22);\n\n              case 26:\n                return _context.finish(19);\n\n              case 27:\n              case \"end\":\n                return _context.stop();\n            }\n          }\n        }, _callee, this, [[3, 15, 19, 27], [20,, 22, 26]]);\n      }));\n\n      return function typeOut(_x) {\n        return _typeOut.apply(this, arguments);\n      };\n    }()\n  }, {\n    key: \"render\",\n    value: function render() {\n      var _this2 = this;\n\n      return _react.default.createElement(Container, null, _react.default.createElement(_Header.default, {\n        onClick: function onClick() {\n          return _this2.setState({\n            skipped: true\n          });\n        },\n        terminalProps: {\n          mode: this.state.mode,\n          lines: this.state.lines,\n          cursor: this.state.cursor,\n          fileName: this.state.fileName,\n          fileType: this.state.fileType\n        }\n      }), _react.default.createElement(Main, null), _react.default.createElement(_Footer.default, null));\n    }\n  }]);\n\n  return App;\n}(_react.Component);\n\nvar _default = App;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/App/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/App/lines.js":
-/*!*********************************!*\
-  !*** ./src/client/App/lines.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _default = [\"    ____        __    __<span class=\\\"hide\\\">        __</span>\", \"   / __ \\\\____ _/ /_  / /___<span class=\\\"hide\\\">    / /   ____ _____  ____</span>\", \"  / /_/ / __ `/ __ \\\\/ / __ \\\\<span class=\\\"hide\\\">  / /   / __ `/_  / / __ \\\\</span>\", \" / ____/ /_/ / /_/ / / /_/ /<span class=\\\"hide\\\"> / /___/ /_/ / / /_/ /_/ /</span>\", \"/_/    \\\\__,_/_.___/_/\\\\____/<span class=\\\"hide\\\"> /_____/\\\\__,_/ /___/\\\\____/</span>\", \"     <span class=\\\"hide\\\"/>            </span>Software Developer \", ''];\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/App/lines.js?");
-
-/***/ }),
-
-/***/ "./src/client/App/schedule.js":
-/*!************************************!*\
-  !*** ./src/client/App/schedule.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = _default;\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step(\"next\", value); } function _throw(err) { step(\"throw\", err); } _next(); }); }; }\n\nfunction _default() {\n  return _ref.apply(this, arguments);\n}\n\nfunction _ref() {\n  _ref = _asyncToGenerator(\n  /*#__PURE__*/\n  regeneratorRuntime.mark(function _callee() {\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.next = 2;\n            return this.sleep(1000);\n\n          case 2:\n            this.setState({\n              mode: 'INSERT',\n              cursor: true\n            });\n            this.newLine();\n            _context.next = 6;\n            return this.typeOut('Hi there! I\\'m Pablo.');\n\n          case 6:\n            _context.next = 8;\n            return this.sleep(500);\n\n          case 8:\n            _context.next = 10;\n            return this.typeOut(' Thanks for visiting my portfolio.');\n\n          case 10:\n            this.newLine();\n            _context.next = 13;\n            return this.sleep(500);\n\n          case 13:\n            this.newLine();\n            _context.next = 16;\n            return this.sleep(500);\n\n          case 16:\n            _context.next = 18;\n            return this.typeOut('Check out some of my work below, or drop me a line at ');\n\n          case 18:\n            this.appendToLastLine('<a href=\"mailto:hi@lazopm.com\">');\n            _context.next = 21;\n            return this.typeOut('lazopm@gmail.com');\n\n          case 21:\n            this.appendToLastLine('</a>');\n            _context.next = 24;\n            return this.typeOut('.');\n\n          case 24:\n            this.newLine();\n            _context.next = 27;\n            return this.sleep(500);\n\n          case 27:\n            _context.next = 29;\n            return this.typeOut('You can check out the ');\n\n          case 29:\n            this.appendToLastLine('<a href=\"https://github.com/lazopm/portfolio\">');\n            _context.next = 32;\n            return this.typeOut('source code');\n\n          case 32:\n            this.appendToLastLine('</a>');\n            _context.next = 35;\n            return this.typeOut(' for this page on my ');\n\n          case 35:\n            this.appendToLastLine('<a href=\"https://github.com/lazopm\">');\n            _context.next = 38;\n            return this.typeOut('github');\n\n          case 38:\n            this.appendToLastLine('</a>');\n            _context.next = 41;\n            return this.typeOut('.');\n\n          case 41:\n            this.newLine();\n            this.newLine();\n            _context.next = 45;\n            return this.sleep(500);\n\n          case 45:\n            _context.next = 47;\n            return this.typeOut('-Pablo');\n\n          case 47:\n            this.newLine();\n            _context.next = 50;\n            return this.sleep(1000);\n\n          case 50:\n            this.newLine();\n            _context.next = 53;\n            return this.typeOut('PS: I\\'m still building this. Sorry if some stuff doesn\\'t work!');\n\n          case 53:\n            _context.next = 55;\n            return this.sleep(1000);\n\n          case 55:\n            this.setState({\n              mode: 'NORMAL',\n              cursor: false,\n              fileType: 'text',\n              fileName: '~/welcome.txt'\n            });\n\n          case 56:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n  return _ref.apply(this, arguments);\n}\n\n;\n\n//# sourceURL=webpack:///./src/client/App/schedule.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Face/ascii.js":
-/*!*********************************************!*\
-  !*** ./src/client/components/Face/ascii.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _default = \",::,:.::,,.,.,.#########:,,.##+++;+++++++++####+######+#@#@@#####@@@@#\\n,,,,,.::,,.,.,.###@##@##:,,:'+++++++++++++++++###+#########@#####@@@@+\\n,,,,,.::,,.,.,.##@####@#':'++#++#++++#+++++++++##+#+##+++++@#+##@@@@@#\\n,,,,,.::...,.,.++#######''+++++##+######+#+#####+######+###+@+###@@@@#\\n,,,,,.:,...,...####++''+++++++###################+##########+####@@@##\\n,,,,,,:,..,,...++#++'+++########@@#@######@##########+'+#+####+++#@@##\\n,,,,,.:,,.,,...'+++++'++###########@@@@@@#@@#########+++++@@##++++@@##\\n,,,,,,:,,.,,'+'+++##+++#####@@@@###@@@@@@@@######@###++++##'#@'+++@@@#\\n,:++.,:,,.,,+++#++#++########@@#@@@@@@@@@@@@#########++'+++++#+++++@##\\n,''';,;.:.,,+######+###########@#@@@@@@@@@@@@@###@@##++++''''+'++++#+@\\n,'''',;,:.,;+#######@@###@@@#######@@@@#@@@@@#@@@#@###+++''+###++++##@\\n.'''',;.:.,'+##+####@+##@@@######@#@@@#@##@@@@@@@@@#+#++++##@++++++###\\n;''''';.:.,++#####@@#########@@######@##+#+#@@@@@@@####++++@#+++++++##\\n+''''':.,.;+######@#######@@@@@@@@@@####'#++#@@@@@@#@##++++'#+++++++##\\n''+''+:.,.'+###@####@#@#@@@@@@@#@@@###+++##''#@@@@#@@@###++##+++++++##\\n+'+'++'...++######@@#######@@@@@@#@++''###'''+##@@@@@######+++++++++#+\\n+++'++'..,++#####@##@#@####@#@@@##+'+';'+''';;+#@@@@@@#####+++++++####\\n+'++++';.'+##########@#+#@@@@@###'';;;''''';;;;+@@@@@@#####++++++#+##+\\n''++++'+.'#@#########@#++++#+++'';;;;;;;';;;;;;'#@@@@##@###++++++++#++\\n+++++++'.++@@######@#+''''+++'';;;;;;;;;;;;;;;;;+#@@@@#@@@##+++++++##+\\n+++++#++:+#@@@@@@@#++'';;;''';;;:;:::;:;;;;;;;;;'#@@@@#@@@##++++++###;\\n++++++++;+#@@@@@@#++'';;;;;;:::::::::::::;::;;;;'+@@@@@@@@##+++++++++.\\n+++'++++#+#@@@@@@#+'';;::::::::::::::::::;;;;;;;;'#@@@@@@@##++++++####\\n#+++#'++++###@@@@#'';;:::::::::::;:::;';'''''';;;'+@#@@@@@##+++++#@##`\\n++++++++++###@@@@+';;:::;'';;;;::::;;'++######+;;;+###@@@@@#++++#@###+\\n'++++++++#####@#@+';;;'+++#+++';;;;;+++#########;;'##@@@@@@#++####@##+\\n++++'+++###@@@@#@+''##########+';;;'++++++'';''++;'#@@@@@@@##+###@###+\\n+++''+++###@@@@##+'##+++++++#++';;;'+++++'';;'''+''#@@@@@@@#######@#@'\\n+#'+##++@@@@@@@##+++'';''''++++';;;''++++'''''';'';+@@@@@@@####++#####\\n######++#@@@@@@@@++''''+'''++++';:;'++#++'++'''';';'@@@@@@@@##########\\n#@#@@##+#@@@@@@@@+'''+''+++++#+';:;'+++#+#@#+#+'';;;#@@@@@@#@#########\\n+########@@@@@@@@';''+#+###'#++':::'''#+'###++'';;;;'@@@@@@@##########\\n###@@####@@@@@@@#';'++++###'+#'':::;'''+++''''';;;;;'@@@@@@@@#########\\n######+##@@@@@#@';;;;;''''''+'';:::;;''+++++'';;;;;;;#@@@@@@@@#######+\\n####+###@@@@@@@#;;:::;'''++''';;:,:;;;''''';;;;;:;;;;##@@@@@@####+###+\\n#####+##@@@@@@@+;;::::;;;;;;;;;;:::;;;;;;;;;;:::::;;;##@#@@@@@########\\n+#####+#@@###@@+;::::::::;;;;;;;:,:;;;;::;::::::::;;;###@#@@@@@@@@@@@#\\n#####+##@@#@@@@';:::::::::::;;;:,:::;;;;::::::::;;;;;#@####@@@@@@@@#@#\\n@###@###@@#@##@';::::::::::::;;:::::;;;::::::::::;;;;#############@@#'\\n@#@@####@@####@';;:::::::::;;::::::;;;;;;::::::::;;;'+#''########@###'\\n#@#@####@@####@';;:::;:::;;';:'';;;;';';;;;:::::;;;''##+'++@#####@@##+\\n#####+##@@#+###';;;;;;;;;;'';'++';;++;';;;;;;;;;;;;'''++''#@#####@@##+\\n#+###++#@@#+###';;;;;;;;;''''+#@'''##+';;;;;;;;;;;'''''++;#@#########+\\n++##+++##@@'+++';'';;;;''''''+++''+'+';;;;';;;;;;;''';'';;@##########+\\n+++#++++#@#''+++;''''''''';;''++++++'';;;;;;;'''''''+;';;;@##########+\\n+++#++++##@'';'+;''''''''';;'''+++++''';;';';;'''';;+';;;'@@@#########\\n++++++++#+#;;''+;'''''''''';;;''++'''';;''''';;;;'';+;';;#############\\n++++++++#;##;''+;;''''''+'';;;;;;;;;;;;;;'+'''';;;;'#;;;;##########+##\\n++++++++#:##';;';'''''''++++++++++++++++##'';'';';;'#';;##############\\n++++#+++#:+##''''''''';''+#+';''++'';''''''''';';;;'@#+#####+++#######\\n+++++++++,+##@#@+''''''''''''';';;'''';;;;''''';;';#@@@#####+++#######\\n+++++++++,+##@@@#';''''''''';'''''';;;;;;;''''';';'@@@@####;#++#######\\n+++++++++,+#@@@@@'''''''''''''++++'''';;;;''''''''+@@@@####'++#+######\\n+++++'+++,++@@@@@+''+'''''''''+++++'''';''''''''''#@@@@####@+++#######\\n'+'+#++++,++#@@@@@+''''''''''''++++'''''''''''++'+#@@@#####@++########\\n++++#++++,+++@@@@@#++'''+'''''''''';''''''''+++++#@@#########+########\\n'''++++++,++++@@@@@+++++++''''';';;;;''''''''+++++@#######@#++########\\n'''++++++,+++#+#@@##++++++''''''';';;;';''++++++#'@#########++########\\n+++++++++,+++##++##+###+#+''''''';'''''''+++#++#+'###########+#+######\\n+++++++++,+++##+++#'######+++++'''''+'++++#+++##'++##########+########\\n+++++++++,+++##++++'+########+++++++++##+###+##''++#########++########\\n+++++++++,+++++++++;'+############+++#########+';++######@##++########\\n+++++++++,+++##++++;'+######################+''';++#######@#++########\\n+'+++++++,++###++++;'+++#############@#####+''';;+##########++########\\n+'+++++++,++@@+++++;''+++#################+++'';;++#########++#######+\\n+++++++++,++##++++#;'''+++##############++'+';;;;++##########+#######+\\n+++++++++,+++###++#;''''+++++##++++++++'''''';;;;++#########+++#######\\n+++++++++,++++#+#+#;'''''++++++++++++''''''';;;;'++##########+########\\n++++#++++,+++###+';';'''''++++++++'''''''''';;;;'++########++++#######\\n++++#++++:+++##+;:;;;''''''+'++++'''''''''';;;;;'+######+###++########\\n++++#+++#:+++++;::;'''''''''''++'+'''''''';;;;;;;'+#+######;+++#######\\n\";\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Face/ascii.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Face/index.js":
-/*!*********************************************!*\
-  !*** ./src/client/components/Face/index.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _media = _interopRequireDefault(__webpack_require__(/*! style/media */ \"./src/client/style/media.js\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _ascii = _interopRequireDefault(__webpack_require__(/*! ./ascii */ \"./src/client/components/Face/ascii.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    background: white;\\n    color: \", \";\\n    margin: 0;\\n    font-family: monospace;\\n    font-size: 4px;\\n    line-height: 2px;\\n    \", \"\\n    \", \"\\n\"], [\"\\n    background: white;\\n    color: \", \";\\n    margin: 0;\\n    font-family: monospace;\\n    font-size: 4px;\\n    line-height: 2px;\\n    \", \"\\n    \", \"\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n        font-size: 4px;\\n        line-height: 2px;\\n    \"], [\"\\n        font-size: 4px;\\n        line-height: 2px;\\n    \"]),\n    _templateObject3 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n        order: 1;\\n        font-size: 8px;\\n        line-height: 4px;\\n    \"], [\"\\n        order: 1;\\n        font-size: 8px;\\n        line-height: 4px;\\n    \"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Ascii = _styledComponents.default.pre(_templateObject, _termTheme.default[13], _media.default.medium(_templateObject2), _media.default.large(_templateObject3));\n\nvar Face = function Face() {\n  return _react.default.createElement(Ascii, null, _ascii.default);\n};\n\nvar _default = Face;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Face/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Footer/index.js":
-/*!***********************************************!*\
-  !*** ./src/client/components/Footer/index.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    background: \", \";\\n    color: white;\\n    height: 60px;\\n    display: flex;\\n    align-items: center;\\n    grid-area: footer;\\n\"], [\"\\n    background: \", \";\\n    color: white;\\n    height: 60px;\\n    display: flex;\\n    align-items: center;\\n    grid-area: footer;\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    flex-grow: 1;\\n    text-align: center;\\n\"], [\"\\n    flex-grow: 1;\\n    text-align: center;\\n\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Container = _styledComponents.default.div(_templateObject, _termTheme.default[1]);\n\nvar Text = _styledComponents.default.div(_templateObject2);\n\nvar Footer = function Footer() {\n  return _react.default.createElement(Container, null, _react.default.createElement(Text, null, \"\\xA9 2017 Pablo Lazo\"));\n};\n\nvar _default = Footer;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Footer/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Header/index.js":
-/*!***********************************************!*\
-  !*** ./src/client/components/Header/index.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _media = _interopRequireDefault(__webpack_require__(/*! style/media */ \"./src/client/style/media.js\"));\n\nvar _Terminal = _interopRequireDefault(__webpack_require__(/*! components/Terminal */ \"./src/client/components/Terminal/index.js\"));\n\nvar _Face = _interopRequireDefault(__webpack_require__(/*! components/Face */ \"./src/client/components/Face/index.js\"));\n\nvar _Links = _interopRequireDefault(__webpack_require__(/*! components/Links */ \"./src/client/components/Links/index.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    display: flex;\\n\\tflex-direction: column;\\n    \", \"\\n\"], [\"\\n    display: flex;\\n\\tflex-direction: column;\\n    \", \"\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\" \\n        flex-direction: row;\\n    \"], [\" \\n        flex-direction: row;\\n    \"]),\n    _templateObject3 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tdisplay: flex;\\n    \", \"\\n    \", \"\\n\"], [\"\\n\\tdisplay: flex;\\n    \", \"\\n    \", \"\\n\"]),\n    _templateObject4 = /*#__PURE__*/ _taggedTemplateLiteral([\" \\n\\t\\torder: 1;\\n\\t\\tflex-direction: column;\\n\\t\"], [\" \\n\\t\\torder: 1;\\n\\t\\tflex-direction: column;\\n\\t\"]),\n    _templateObject5 = /*#__PURE__*/ _taggedTemplateLiteral([\" \\n\\t\\tflex-direction: row;\\n\\t\"], [\" \\n\\t\\tflex-direction: row;\\n\\t\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Container = _styledComponents.default.div(_templateObject, _media.default.medium(_templateObject2));\n\nvar Side = _styledComponents.default.div(_templateObject3, _media.default.medium(_templateObject4), _media.default.large(_templateObject5));\n\nvar Header = function Header(_ref) {\n  var terminalProps = _ref.terminalProps,\n      restProps = _objectWithoutProperties(_ref, [\"terminalProps\"]);\n\n  return _react.default.createElement(Container, restProps, _react.default.createElement(Side, null, _react.default.createElement(_Face.default, null), _react.default.createElement(_Links.default, null)), _react.default.createElement(_Terminal.default, terminalProps));\n};\n\nvar _default = Header;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Header/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Icon/index.js":
-/*!*********************************************!*\
-  !*** ./src/client/components/Icon/index.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\"], [\"\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Icon = (0, _styledComponents.default)(function (_ref) {\n  var name = _ref.name,\n      restProps = _objectWithoutProperties(_ref, [\"name\"]);\n\n  return _react.default.createElement(\"svg\", restProps, _react.default.createElement(\"use\", {\n    xmlnsXlink: \"http://www.w3.org/1999/xlink\",\n    xlinkHref: \"/assets/icons/sprites.svg#\".concat(name)\n  }));\n})(_templateObject);\nIcon.propTypes = {\n  name: _propTypes.default.string.isRequired\n};\nvar _default = Icon;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Icon/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Links/index.js":
-/*!**********************************************!*\
-  !*** ./src/client/components/Links/index.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _media = _interopRequireDefault(__webpack_require__(/*! style/media */ \"./src/client/style/media.js\"));\n\nvar _Icon = _interopRequireDefault(__webpack_require__(/*! components/Icon */ \"./src/client/components/Icon/index.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    display: flex;\\n    flex-grow: 1;\\n    background: white;\\n    padding: 10px 20px;\\n    justify-content: space-around;\\n    flex-direction: column;\\n\"], [\"\\n    display: flex;\\n    flex-grow: 1;\\n    background: white;\\n    padding: 10px 20px;\\n    justify-content: space-around;\\n    flex-direction: column;\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    margin: 3px 10px 3px 0;\\n    height: 22px;\\n    width: 22px;\\n    fill: \", \";\\n\"], [\"\\n    margin: 3px 10px 3px 0;\\n    height: 22px;\\n    width: 22px;\\n    fill: \", \";\\n\"]),\n    _templateObject3 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    font-size: 1rem;\\n    color: \", \";\\n    \", \"\\n\"], [\"\\n    font-size: 1rem;\\n    color: \", \";\\n    \", \"\\n\"]),\n    _templateObject4 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n        font-size: 1.2rem;\\n    \"], [\"\\n        font-size: 1.2rem;\\n    \"]),\n    _templateObject5 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    text-decoration: none;\\n    display: flex;\\n    align-items: center;\\n    color: \", \";\\n    flex-grow: 1;\\n    &:hover {\\n        * {\\n            color: \", \" !important;\\n            fill: \", \" !important;\\n        }\\n    }\\n\"], [\"\\n    text-decoration: none;\\n    display: flex;\\n    align-items: center;\\n    color: \", \";\\n    flex-grow: 1;\\n    &:hover {\\n        * {\\n            color: \", \" !important;\\n            fill: \", \" !important;\\n        }\\n    }\\n\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Container = _styledComponents.default.div(_templateObject);\n\nvar LinkIcon = _Icon.default.extend(_templateObject2, _termTheme.default[13]);\n\nvar Text = _styledComponents.default.span(_templateObject3, _termTheme.default[13], _media.default.medium(_templateObject4));\n\nvar Link = (0, _styledComponents.default)(function (_ref) {\n  var href = _ref.href,\n      icon = _ref.icon,\n      text = _ref.text,\n      className = _ref.className;\n  return _react.default.createElement(\"a\", {\n    className: className,\n    href: href,\n    title: text,\n    target: \"_blank\",\n    rel: \"noopener noreferrer\"\n  }, _react.default.createElement(LinkIcon, {\n    name: icon\n  }), _react.default.createElement(Text, null, text));\n})(_templateObject5, _termTheme.default[2], _termTheme.default[8], _termTheme.default[8]);\n\nvar Links = function Links() {\n  return _react.default.createElement(Container, null, _react.default.createElement(Link, {\n    text: \"github\",\n    href: \"https://www.github.com/lazopm\",\n    icon: \"github\"\n  }), _react.default.createElement(Link, {\n    text: \"linkedin\",\n    href: \"https://www.linkedin.com/in/pablo-lazo-b37701ba/\",\n    icon: \"linkedin\"\n  }), _react.default.createElement(Link, {\n    text: \"resume\",\n    href: \"\",\n    icon: \"file-alt\"\n  }), _react.default.createElement(Link, {\n    text: \"email\",\n    icon: \"envelope\",\n    href: \"mailto:hi@lazopm.com\"\n  }));\n};\n\nvar _default = Links;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Links/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Terminal/Line/index.js":
-/*!******************************************************!*\
-  !*** ./src/client/components/Terminal/Line/index.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\"));\n\nvar _styledComponents = _interopRequireWildcard(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\t50% {\\n\\t  opacity: 0;\\n\\t}\\n\"], [\"\\n\\t50% {\\n\\t  opacity: 0;\\n\\t}\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tdisplay: flex;\\n\"], [\"\\n\\tdisplay: flex;\\n\"]),\n    _templateObject3 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tword-break: break-all;\\n\\twhite-space: pre-wrap;\\n\\t\", \"\\n\"], [\"\\n\\tword-break: break-all;\\n\\twhite-space: pre-wrap;\\n\\t\", \"\\n\"]),\n    _templateObject4 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tmargin-right: 5px;\\n\\tpadding-right: 5px;\\n\\tpadding-left: 5px;\\n\\tflex-grow: 0;\\n\\tflex-shrink: 0;\\n\\tbackground: \", \";\\n\"], [\"\\n\\tmargin-right: 5px;\\n\\tpadding-right: 5px;\\n\\tpadding-left: 5px;\\n\\tflex-grow: 0;\\n\\tflex-shrink: 0;\\n\\tbackground: \", \";\\n\"]),\n    _templateObject5 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\twidth: 20px;\\n\\tcolor: \", \";\\n\\ttext-align: right;\\n\\tdisplay: inline-block;\\n\"], [\"\\n\\twidth: 20px;\\n\\tcolor: \", \";\\n\\ttext-align: right;\\n\\tdisplay: inline-block;\\n\"]);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar blink = (0, _styledComponents.keyframes)(_templateObject);\n\nvar Container = _styledComponents.default.div(_templateObject2);\n\nvar Text = _styledComponents.default.div(_templateObject3, function (props) {\n  return props.hasCursor && \"\\n\\t\\t&:after {\\n\\t\\t\\twidth: 10px;\\n\\t\\t\\tbackground: \".concat(_termTheme.default[7], \";\\n\\t\\t\\tcontent: \\\"|\\\";\\n\\t\\t\\tanimation-name: \").concat(blink, \";\\n\\t\\t\\tanimation-delay: 100ms;\\n\\t\\t\\tanimation-duration: 1s;\\n\\t\\t\\tanimation-iteration-count: infinite;\\n\\t\\t\\tanimation-timing-function: step-start;\\n\\t\\t}\\n\\t\");\n});\n\nvar Gutter = _styledComponents.default.div(_templateObject4, _termTheme.default[2]);\n\nvar Number = _styledComponents.default.span(_templateObject5, _termTheme.default[4]);\n\nvar Line = function Line(_ref) {\n  var cursor = _ref.cursor,\n      text = _ref.text,\n      number = _ref.number;\n  return _react.default.createElement(Container, null, _react.default.createElement(Gutter, null, _react.default.createElement(Number, null, number)), _react.default.createElement(Text, {\n    dangerouslySetInnerHTML: {\n      __html: text\n    },\n    hasCursor: cursor\n  }));\n};\n\nLine.defaultProps = {\n  cursor: false\n};\nLine.propTypes = {\n  cursor: _propTypes.default.bool.isRequired,\n  text: _propTypes.default.string.isRequired,\n  number: _propTypes.default.number.isRequired\n};\nvar _default = Line;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Terminal/Line/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Terminal/Status/index.js":
-/*!********************************************************!*\
-  !*** ./src/client/components/Terminal/Status/index.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    display: flex;\\n    color: white;\\n    flex-wrap: wrap;\\n\"], [\"\\n    display: flex;\\n    color: white;\\n    flex-wrap: wrap;\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    background: \", \";\\n    padding: 0 10px;\\n\"], [\"\\n    background: \", \";\\n    padding: 0 10px;\\n\"]),\n    _templateObject3 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n    background: \", \";\\n    flex-grow: 1;\\n    padding: 0 10px;\\n\"], [\"\\n    background: \", \";\\n    flex-grow: 1;\\n    padding: 0 10px;\\n\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Container = _styledComponents.default.div(_templateObject);\n\nvar Mode = _styledComponents.default.div(_templateObject2, _termTheme.default[13]);\n\nvar File = _styledComponents.default.div(_templateObject3, _termTheme.default[1]);\n\nvar Type = _styledComponents.default.div(_templateObject2, _termTheme.default[1]);\n\nvar OS = _styledComponents.default.div(_templateObject2, _termTheme.default[3]);\n\nvar Numbers = _styledComponents.default.div(_templateObject2, _termTheme.default[13]);\n\nvar Status = function Status(_ref) {\n  var mode = _ref.mode,\n      line = _ref.line,\n      char = _ref.char,\n      fileName = _ref.fileName,\n      fileType = _ref.fileType;\n  return _react.default.createElement(Container, null, _react.default.createElement(Mode, null, mode), fileName && _react.default.createElement(File, null, fileName), fileType && _react.default.createElement(Type, null, fileType), _react.default.createElement(OS, null, \"utf-8[unix]\"), _react.default.createElement(Numbers, null, line, \"/\", char));\n};\n\nStatus.propTypes = {\n  mode: _propTypes.default.string.isRequired,\n  line: _propTypes.default.number.isRequired,\n  char: _propTypes.default.number.isRequired,\n  fileName: _propTypes.default.string,\n  fileType: _propTypes.default.string\n};\nvar _default = Status;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Terminal/Status/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/components/Terminal/index.js":
-/*!*************************************************!*\
-  !*** ./src/client/components/Terminal/index.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _Line = _interopRequireDefault(__webpack_require__(/*! ./Line */ \"./src/client/components/Terminal/Line/index.js\"));\n\nvar _Status = _interopRequireDefault(__webpack_require__(/*! ./Status */ \"./src/client/components/Terminal/Status/index.js\"));\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tcolor: \", \";\\n\\tbackground: \", \";\\n\\tfont-family: Inconsolata;\\n\\tflex-grow: 1;\\n\\tdisplay: flex;\\n\\tflex-direction: column;\\n\"], [\"\\n\\tcolor: \", \";\\n\\tbackground: \", \";\\n\\tfont-family: Inconsolata;\\n\\tflex-grow: 1;\\n\\tdisplay: flex;\\n\\tflex-direction: column;\\n\"]),\n    _templateObject2 = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n\\tflex-grow: 1;\\n\"], [\"\\n\\tflex-grow: 1;\\n\"]);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Container = _styledComponents.default.div(_templateObject, _termTheme.default[7], _termTheme.default[0]);\n\nvar Lines = _styledComponents.default.div(_templateObject2);\n\nvar Terminal = function Terminal(_ref) {\n  var lines = _ref.lines,\n      mode = _ref.mode,\n      cursor = _ref.cursor,\n      fileName = _ref.fileName,\n      fileType = _ref.fileType;\n  return _react.default.createElement(Container, null, _react.default.createElement(Lines, null, lines.map(function (line, i) {\n    return _react.default.createElement(_Line.default, {\n      key: \"\".concat(line).concat(i),\n      text: line,\n      number: i + 1,\n      cursor: cursor && lines.length - i === 1\n    });\n  })), _react.default.createElement(_Status.default, {\n    line: lines.length,\n    mode: mode,\n    char: lines[lines.length - 1].length + 1,\n    fileName: fileName,\n    fileType: fileType\n  }));\n};\n\nTerminal.defaultProps = {\n  lines: [''],\n  mode: 'NORMAL',\n  cursor: true\n};\nTerminal.propTypes = {\n  fileName: _propTypes.default.string,\n  fileType: _propTypes.default.string,\n  cursor: _propTypes.default.bool.isRequired,\n  mode: _propTypes.default.string.isRequired,\n  lines: _propTypes.default.arrayOf(_propTypes.default.string).isRequired\n};\nvar _default = Terminal;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Terminal/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/constants/termTheme.js":
-/*!*******************************************!*\
-  !*** ./src/client/constants/termTheme.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar _default = ['#1B2B34', '#343D46', '#4F5B66', '#65737E', '#A7ADBA', '#C0C5CE', '#CDD3DE', '#D8DEE9', '#EC5f67', '#F99157', '#FAC863', '#99C794', '#5FB3B3', '#6699CC', '#C594C5', '#AB7967'];\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/constants/termTheme.js?");
-
-/***/ }),
-
 /***/ "./src/client/index.js":
 /*!*****************************!*\
   !*** ./src/client/index.js ***!
@@ -4271,31 +4218,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _App = _interopRequireDefault(__webpack_require__(/*! ./App */ \"./src/client/App/index.js\"));\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _styledComponents.consolidateStreamedStyles)();\n(0, _reactDom.hydrate)(_react.default.createElement(_App.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack:///./src/client/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/style/breakpoints.js":
-/*!*****************************************!*\
-  !*** ./src/client/style/breakpoints.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.small = exports.mediumUp = exports.largeUp = exports.medium = exports.large = void 0;\nvar large = 1024;\nexports.large = large;\nvar medium = 640; //deprecated\n\nexports.medium = medium;\nvar largeUp = '@media (min-width: 901px)';\nexports.largeUp = largeUp;\nvar mediumUp = '@media (min-width: 601px)';\nexports.mediumUp = mediumUp;\nvar small = '@media (max-width: 600px)';\nexports.small = small;\n\n//# sourceURL=webpack:///./src/client/style/breakpoints.js?");
-
-/***/ }),
-
-/***/ "./src/client/style/media.js":
-/*!***********************************!*\
-  !*** ./src/client/style/media.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _breakpoints = __webpack_require__(/*! ./breakpoints */ \"./src/client/style/breakpoints.js\");\n\nvar _templateObject = /*#__PURE__*/ _taggedTemplateLiteral([\"\\n        @media (min-width: \", \"px) {\\n          \", \"\\n        }\\n    \"], [\"\\n        @media (min-width: \", \"px) {\\n          \", \"\\n        }\\n    \"]);\n\nfunction _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar media = {\n  medium: function medium() {\n    return (0, _styledComponents.css)(_templateObject, _breakpoints.medium, _styledComponents.css.apply(void 0, arguments));\n  },\n  large: function large() {\n    return (0, _styledComponents.css)(_templateObject, _breakpoints.large, _styledComponents.css.apply(void 0, arguments));\n  }\n};\nvar _default = media;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/style/media.js?");
+eval("\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar AppModulePromise = __webpack_require__.e(/*! import() | app */ \"app\").then(function() { var module = __webpack_require__(/*! ./App */ \"./src/client/App/index.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); });\n(0, _styledComponents.consolidateStreamedStyles)();\nAppModulePromise.then(function (module) {\n  var App = module.default;\n  (0, _reactDom.hydrate)(_react.default.createElement(App, null), document.getElementById('root'));\n});\n\n//# sourceURL=webpack:///./src/client/index.js?");
 
 /***/ }),
 
