@@ -265,7 +265,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = _interopRequireDefault(__webpack_require__(/*! express */ \"express\"));\n\nvar _render = _interopRequireDefault(__webpack_require__(/*! ./render */ \"./src/server/render/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Constants\nconst PORT = 8080;\nconst HOST = '0.0.0.0'; // App\n\nconst app = (0, _express.default)();\napp.get('/', (req, res) => {\n  res.send((0, _render.default)());\n});\napp.use('/assets', _express.default.static('assets'));\napp.use(_express.default.static('dist/client'));\napp.listen(PORT, HOST);\nconsole.log(`Running on http://${HOST}:${PORT}`);\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("\n\nvar _express = _interopRequireDefault(__webpack_require__(/*! express */ \"express\"));\n\nvar _render = _interopRequireDefault(__webpack_require__(/*! ./render */ \"./src/server/render/index.js\"));\n\nvar _mongodb = __webpack_require__(/*! mongodb */ \"mongodb\");\n\nvar _expressGraphql = _interopRequireDefault(__webpack_require__(/*! express-graphql */ \"express-graphql\"));\n\nvar _schema = _interopRequireDefault(__webpack_require__(/*! ./schema */ \"./src/server/schema.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Constants\nconst PORT = 3636;\nconst HOST = '0.0.0.0';\nconst DB_URL = 'mongodb://localhost:27017';\nconst DB_NAME = 'portfolio';\n\n(async () => {\n  try {\n    const client = await _mongodb.MongoClient.connect(DB_URL);\n    global.db = client.db(DB_NAME);\n  } catch (err) {\n    console.log(err.message);\n    return;\n  }\n\n  const app = (0, _express.default)();\n  app.get('/', (req, res) => {\n    res.send((0, _render.default)());\n  });\n  app.use('/assets', _express.default.static('assets'));\n  app.use(_express.default.static('dist/client'));\n  app.use('/graphql', (0, _expressGraphql.default)({\n    schema: _schema.default,\n    graphiql: true\n  }));\n  app.listen(PORT, HOST);\n  console.log(`Running on http://${HOST}:${PORT}`);\n})();\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -293,6 +293,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/server/schema.js":
+/*!******************************!*\
+  !*** ./src/server/schema.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nconst {\n  makeExecutableSchema\n} = __webpack_require__(/*! graphql-tools */ \"graphql-tools\");\n\nconst typeDefs = `\n    type Project {\n        name: String\n        date: String\n    }\n    type Query {\n        project(id: ID!): Project\n        projects: [Project]\n    }\n`;\nconst resolvers = {\n  Query: {\n    project: (...args) => {\n      return {\n        id: '123',\n        name: 'split'\n      };\n    },\n    projects: () => {\n      return [{\n        id: '123',\n        name: 'split'\n      }];\n    }\n  },\n  Project: {\n    date: (...args) => {\n      return 'hehexd';\n    }\n  }\n};\nconst schema = makeExecutableSchema({\n  typeDefs,\n  resolvers\n});\nvar _default = schema;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/schema.js?");
+
+/***/ }),
+
 /***/ "express":
 /*!**************************!*\
   !*** external "express" ***!
@@ -301,6 +313,39 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
+
+/***/ }),
+
+/***/ "express-graphql":
+/*!**********************************!*\
+  !*** external "express-graphql" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"express-graphql\");\n\n//# sourceURL=webpack:///external_%22express-graphql%22?");
+
+/***/ }),
+
+/***/ "graphql-tools":
+/*!********************************!*\
+  !*** external "graphql-tools" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"graphql-tools\");\n\n//# sourceURL=webpack:///external_%22graphql-tools%22?");
+
+/***/ }),
+
+/***/ "mongodb":
+/*!**************************!*\
+  !*** external "mongodb" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"mongodb\");\n\n//# sourceURL=webpack:///external_%22mongodb%22?");
 
 /***/ }),
 

@@ -1,34 +1,37 @@
 {
-    "name": "portfolio",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@babel/core": "^7.0.0-beta.40",
-        "@babel/preset-env": "^7.0.0-beta.40",
-        "babel-loader": "^8.0.0-beta.0",
-        "express": "^4.16.2",
-        "prop-types": "^15.5.10",
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0",
-        "styled-components": "^3.1.6"
-    },
-    "scripts": {
-        "build-client": "webpack --config webpack.client.config.js",
-        "build-server": "webpack --config webpack.server.config.js",
-        "build": "npm run build-client && npm run build-server",
-        "start": "node dist/server.bundle.js"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "devDependencies": {
-        "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
-        "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.40",
-        "@babel/polyfill": "^7.0.0-beta.40",
-        "@babel/preset-react": "^7.0.0-beta.40",
-        "babel-preset-react": "^6.24.1",
-        "webpack": "^4.0.1",
-        "webpack-cli": "^2.0.9",
-        "webpack-node-externals": "^1.6.0"
-    }
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^3.0.3",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.1",
+    "graphql-tools": "^2.21.0",
+    "prop-types": "^15.5.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^3.1.6"
+  },
+  "scripts": {
+    "build-client": "webpack --config webpack.client.config.js",
+    "build-server": "webpack --config webpack.server.config.js",
+    "build": "npm run build-client && npm run build-server",
+    "start": "npm run build && node dist/server.bundle.js",
+    "debug": "npm run build && node --inspect-brk=0.0.0.0:3737 dist/server.bundle.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.40",
+    "@babel/polyfill": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "babel-loader": "^8.0.0-beta.0",
+    "webpack": "^4.0.1",
+    "webpack-node-externals": "^1.6.0"
+  }
 }
