@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import media from 'style/media';
-import sleep from 'util/sleep';
 import runSchedule from './schedule';
 import lines from './lines';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import { injectGlobal } from 'styled-components';
+
+//eslint-disable-next-line
+injectGlobal`
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif;
+	}
+	a {
+		color: #6699CC;
+	}
+	p {
+		line-height: 150%;
+	}
+`;
+
 
 const Container = styled.div`
     display: flex;
@@ -50,7 +66,11 @@ class App extends Component {
         ]});
     }
     sleep(delay) {
-        return this.state.skipped ? Promise.resolve : sleep(delay);
+        return this.state.skipped
+            ? Promise.resolve
+            : new Promise(resolve => {
+                setTimeout(resolve, delay);
+            });
     }
     activateProject(i) {
         this.setState(prevState => ({

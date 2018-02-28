@@ -6,7 +6,7 @@ const Icon = styled(({ name, ...restProps }) =>
     <svg {...restProps}>
         <use
             xmlnsXlink="http://www.w3.org/1999/xlink"
-            xlinkHref={`/icons/sprites.svg#${name}`}
+            xlinkHref={`/assets/icons/sprites.svg#${name}`}
         />
     </svg>
 )``;

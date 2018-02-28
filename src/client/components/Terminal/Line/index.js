@@ -16,7 +16,7 @@ const Container = styled.div`
 const Text = styled.div`
 	word-break: break-all;
 	white-space: pre-wrap;
-	${props => props.cursor && `
+	${props => props.hasCursor && `
 		&:after {
 			width: 10px;
 			background: ${theme[7]};
@@ -53,7 +53,7 @@ const Line = ({ cursor, text, number }) =>
         </Gutter>
         <Text 
             dangerouslySetInnerHTML={{__html: text}}
-            cursor={cursor} 
+            hasCursor={cursor} 
         />
     </Container>;
 
