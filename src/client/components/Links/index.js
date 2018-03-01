@@ -6,7 +6,7 @@ import Icon from 'components/Icon';
 const Container = styled.div`
     display: flex;
     flex-grow: 1;
-    background: white;
+    background: ${theme[2]};
     padding: 10px 20px;
     justify-content: space-around;
     flex-direction: column;
@@ -16,13 +16,13 @@ const LinkIcon = Icon.extend`
     margin: 3px 10px 3px 0;
     height: 22px;
     width: 22px;
-    fill: ${theme[13]};
+    fill: ${theme[7]};
 `;
 
 const Text = styled.span`
 	font-family: 'Inconsolata', monospace;
     font-size: 1rem;
-    color: ${theme[13]};
+    color: ${theme[7]};
 `;
 
 const Link = styled(({href, icon, text, className}) =>
