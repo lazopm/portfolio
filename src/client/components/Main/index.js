@@ -47,7 +47,7 @@ const Main = () => (
                     <Light>{prefix} cat ./ABOUT_ME.md</Light><br/>
                     <br/>
                     I am a passionate developer that enjoys learning and new challenges.<br/>
-                    Currently I am based in Washington, DC working at U.S. News & World Report.
+                    Currently I work as a Software Developer at U.S. News & World Report in Washington, DC.
                 </p>
                 <p>
                     <Light>{prefix}</Light><br/>
