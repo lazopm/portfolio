@@ -16,7 +16,6 @@ const DB_NAME = 'portfolio';
 		global.db = client.db(DB_NAME);
 	} catch(err) {
 		console.log(err.message);
-		return;
 	}
     const app = express();
     app.get('/', (req, res) => {
