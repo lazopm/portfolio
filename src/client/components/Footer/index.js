@@ -18,7 +18,7 @@ const Text = styled.div`
 
 const Footer = () => (
     <Container>
-        <Text>© 2017 Pablo Lazo</Text>
+        <Text>built with ☕by Pablo Lazo</Text>
     </Container>
 );
 
