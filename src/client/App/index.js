@@ -6,6 +6,7 @@ import lines from './lines';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import Main from 'components/Main';
 import { injectGlobal } from 'styled-components';
 
 //eslint-disable-next-line
@@ -34,11 +35,6 @@ const Container = styled.div`
             display: initial;
         `}
 	}
-`;
-
-const Main = styled.div`
-	flex-grow: 1;
-	background: #111a1f;
 `;
 
 class App extends Component { 

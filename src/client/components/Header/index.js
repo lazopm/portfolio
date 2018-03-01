@@ -19,9 +19,6 @@ const Side = styled.div`
 		order: 1;
 		flex-direction: column;
 	`}
-    ${media.large` 
-		flex-direction: row;
-	`}
 `;
 
 const Header = ({ terminalProps, ...restProps }) => (

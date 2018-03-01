@@ -16,7 +16,7 @@ export default async function() {
     await this.sleep(500);
     await this.typeOut('Check out some of my work below, or drop me a line at ');
     this.appendToLastLine('<a href="mailto:hi@lazopm.com">');
-    await this.typeOut('lazopm@gmail.com'); this.appendToLastLine('</a>');
+    await this.typeOut('hi@lazopm.com'); this.appendToLastLine('</a>');
     await this.typeOut('.');
 
     this.newLine();

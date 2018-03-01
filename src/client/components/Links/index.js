@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from 'constants/termTheme';
-import media from 'style/media';
 import Icon from 'components/Icon';
 
 const Container = styled.div`
@@ -23,9 +22,6 @@ const LinkIcon = Icon.extend`
 const Text = styled.span`
     font-size: 1rem;
     color: ${theme[13]};
-    ${media.medium`
-        font-size: 1.2rem;
-    `}
 `;
 
 const Link = styled(({href, icon, text, className}) =>
@@ -55,6 +51,11 @@ const Link = styled(({href, icon, text, className}) =>
 const Links = () =>
     <Container>
         <Link
+            text="hi@lazopm"
+            icon="envelope"
+            href="mailto:hi@lazopm.com"
+        />
+        <Link
             text="github"
             href="https://www.github.com/lazopm"
             icon="github"
@@ -68,11 +69,6 @@ const Links = () =>
             text="resume"
             href=""
             icon="file-alt"
-        />
-        <Link
-            text="email"
-            icon="envelope"
-            href="mailto:hi@lazopm.com"
         />
     </Container>;
 

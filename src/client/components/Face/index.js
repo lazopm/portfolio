@@ -16,9 +16,8 @@ const Ascii = styled.pre`
         line-height: 2px;
     `}
     ${media.large`
-        order: 1;
-        font-size: 8px;
-        line-height: 4px;
+        font-size: 6px;
+        line-height: 3px;
     `}
 `;
 
