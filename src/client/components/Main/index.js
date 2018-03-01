@@ -15,7 +15,7 @@ const Inner = styled.div`
 `;
 
 const About = styled.div`
-    font-family: Inconsolata;
+	font-family: 'Inconsolata', monospace;
 	color: ${theme[7]};
     padding: 10px;
     font-size: 1rem;
@@ -31,7 +31,7 @@ const About = styled.div`
 const Light = styled.span`
 	color: ${theme[3]};
 `;
-const prefix = 'portfolio:~ lazopm$';
+const prefix = 'lazopm:~$';
 
 const Main = () => (
     <Container>

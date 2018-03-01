@@ -20,6 +20,7 @@ const LinkIcon = Icon.extend`
 `;
 
 const Text = styled.span`
+	font-family: 'Inconsolata', monospace;
     font-size: 1rem;
     color: ${theme[13]};
 `;
