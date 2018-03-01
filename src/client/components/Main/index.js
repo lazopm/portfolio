@@ -4,7 +4,6 @@ import theme from 'constants/termTheme';
 
 const Container = styled.div`
 	flex-grow: 1;
-	background: #0e1113;
     display: flex;
     justify-content: center;
 `;

@@ -3,22 +3,15 @@ import styled from 'styled-components';
 import theme from 'constants/termTheme';
 
 const Container = styled.div`
-    background: ${theme[1]};
-    color: white;
-    height: 60px;
+    color: ${theme[3]};
     display: flex;
-    align-items: center;
-    grid-area: footer;
+	justify-content: center;
 `;
 
-const Text = styled.div`
-    flex-grow: 1;
-    text-align: center;
-`;
 
 const Footer = () => (
     <Container>
-        <Text>built with ☕by Pablo Lazo</Text>
+        built with &#9749; by Pablo Lazo
     </Container>
 );
 
