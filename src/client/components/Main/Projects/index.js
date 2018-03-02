@@ -2,14 +2,13 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Line from '../Line';
+import Project from 'components/Project';
 
-const Projects = ({ projects }) => (
+const Projects = ({ projectIds }) => (
     <React.Fragment>
         <a name="projects"/>
         <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
-		{projects.map(project => (
-			<div key={project.id}>{project.title}</div>
-		))}
+		{projectIds.map(id => <Project key={id} id={id} />)}
     </React.Fragment>
 );
 
@@ -21,13 +20,10 @@ export default graphql(gql`
 	query {
 		projects {
 			id
-			title
-			description
-			tags
 		}
 	}
 `, {
     props: ({ data }) => ({
-        projects: data.projects,
+        projectIds: data.projects.map(project => project.id),
     }),
 })(Projects);
