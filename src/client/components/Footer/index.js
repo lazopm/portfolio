@@ -6,7 +6,7 @@ const Container = styled.div`
 	font-family: 'Inconsolata', monospace;
     color: ${theme[3]};
     display: flex;
-	justify-content: flex-end;
+	justify-content: center;
     margin-right: 5px;
 `;
 
