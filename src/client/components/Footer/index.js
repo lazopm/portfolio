@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import theme from 'constants/termTheme';
 
 const Container = styled.div`
+	font-family: 'Inconsolata', monospace;
     color: ${theme[3]};
     display: flex;
 	justify-content: flex-end;
     margin-right: 5px;
-    opacity: 0.75;
 `;
 
 
