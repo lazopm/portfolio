@@ -23,6 +23,14 @@ const typeDefs = `
             tags: [String!],
             repositoryUrl: String,
         ): Project
+        editProject(
+            id: ID!,
+            title: String,
+            demoUrl: String,
+            description: String,
+            tags: [String!],
+            repositoryUrl: String,
+        ): Project
 	}
 `;
 
@@ -62,6 +70,23 @@ const resolvers = {
 			});
 			if (result.insertedCount === 1) {
 				return toProject(result.ops[0]);
+			}
+		},
+		editProject: async (_, { id, ...args }) => {
+			let _id
+			try {
+				_id = ObjectId(id);
+			} catch(err) {
+				throw new Error('Invalid id');
+			}
+			const collection = db.collection('projects');
+			const result = await collection.findOneAndUpdate(
+                { _id },
+                { $set: args },
+                { returnNewDocument: true },
+			);
+			if (result.ok) {
+				return toProject(result.value);
 			}
 		}
 	},

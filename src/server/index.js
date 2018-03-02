@@ -15,6 +15,7 @@ const DB_NAME = 'portfolio';
 		const client = await MongoClient.connect(DB_URL);
 		global.db = client.db(DB_NAME);
 	} catch(err) {
+        return;
 		console.log(err.message);
 	}
     const app = express();
