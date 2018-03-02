@@ -19,6 +19,7 @@ injectGlobal`
 	}
 	a {
 		color: #6699CC;
+        text-decoration: none;
 	}
 	p {
 		line-height: 150%;

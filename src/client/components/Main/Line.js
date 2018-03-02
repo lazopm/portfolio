@@ -8,7 +8,7 @@ const Light = styled.span`
 
 const Line = ({ prefix, children }) => (
     <React.Fragment>
-        {prefix ? <Light>lazopm:~$ {children}</Light> : children}
+        {prefix ? <Light>$ {children}</Light> : children}
         <br/>
     </React.Fragment>
 );

@@ -12,6 +12,11 @@ const media = {
           ${css(...args)}
         }
     `,
+    toLarge: (...args) => css`
+        @media (max-width: ${large}px) {
+          ${css(...args)}
+        }
+    `,
 };
 
 export default media;

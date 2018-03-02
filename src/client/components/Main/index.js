@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from 'constants/termTheme';
+import Links from './Links';
 import About from './About';
 import Skills from './Skills';
 import Projects from './Projects';
@@ -24,6 +25,7 @@ const Inner = styled.div`
 const Main = () => (
     <Container>
         <Inner>
+            <Links />
             <About />
             <Skills />
             <Projects />

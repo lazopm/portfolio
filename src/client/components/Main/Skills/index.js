@@ -4,29 +4,20 @@ import Line from '../Line';
 
 const Skills = () => (
     <React.Fragment>
-        <Line prefix/>
-        <Line prefix/>
-        <Line prefix/>
+        <a name="skills"/>
         <Line prefix>cat ./skills/LANGUAGES.md</Line>
         <Line>javascript</Line>
         <Line>python</Line>
         <br/>
         <Line prefix>cat ./skills/FRONT_END.md</Line>
         <Line>frameworks</Line>
-        <Line>- react</Line>
-        <Line>- backbone</Line>
+        <Line>react, vue, backbone</Line>
         <br/>
         <Line>libraries</Line>
-        <Line>- redux</Line>
-        <Line>- d3.js</Line>
-        <Line>- leaflet</Line>
-        <Line>- jest</Line>
-        <Line>- apollo</Line>
+        <Line>redux, apollo, d3.js, leaflet</Line>
         <br/>
         <Line>tools</Line>
-        <Line>- webpack</Line>
-        <Line>- jest</Line>
-        <Line>- enzyme</Line>
+        <Line>webpack, jest, enzyme</Line>
         <br/>
         <Line prefix>cat ./skills/BACK_END.md</Line>
         <Line>node.js</Line>

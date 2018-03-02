@@ -5,6 +5,7 @@ import Line from '../Line';
 
 const Projects = ({ projects }) => (
     <React.Fragment>
+        <a name="projects"/>
         <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
 		{projects.map(project => (
 			<div key={project.id}>{project.title}</div>
