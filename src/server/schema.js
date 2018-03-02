@@ -22,7 +22,7 @@ const typeDefs = `
             description: String,
             tags: [String!],
             repositoryUrl: String,
-        ): Project
+        ): Project!
         editProject(
             id: ID!,
             title: String,
@@ -30,7 +30,8 @@ const typeDefs = `
             description: String,
             tags: [String!],
             repositoryUrl: String,
-        ): Project
+        ): Project!
+        deleteProject(id: ID!): ID!
 	}
 `;
 
@@ -88,7 +89,22 @@ const resolvers = {
 			if (result.ok) {
 				return toProject(result.value);
 			}
-		}
+		},
+		deleteProject: async (_, { id }) => {
+			let _id
+			try {
+				_id = ObjectId(id);
+			} catch(err) {
+				throw new Error('Invalid id');
+            }
+			const collection = db.collection('projects');
+			const result = await collection.deleteOne(
+                { _id },
+			);
+			if (result.deletedCount === 1) {
+				return id; 
+			}
+        }
 	},
 };
 
