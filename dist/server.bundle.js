@@ -109,7 +109,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = _default;\n\nasync function _default() {\n  await this.sleep(1000);\n  this.setState({\n    mode: 'INSERT',\n    cursor: true\n  });\n  this.newLine();\n  await this.typeOut('Hi there! I\\'m Pablo.');\n  await this.sleep(500);\n  await this.typeOut(' Thanks for visiting my portfolio.');\n  this.newLine();\n  await this.sleep(500);\n  this.newLine();\n  await this.sleep(500);\n  await this.typeOut('Check out some of my work below, or drop me a line at ');\n  this.appendToLastLine('<a href=\"mailto:hi@lazopm.com\">');\n  await this.typeOut('hi@lazopm.com');\n  this.appendToLastLine('</a>');\n  await this.typeOut('.');\n  this.newLine();\n  await this.sleep(500);\n  await this.typeOut('You can check out the ');\n  this.appendToLastLine('<a href=\"https://github.com/lazopm/portfolio\">');\n  await this.typeOut('source code');\n  this.appendToLastLine('</a>');\n  await this.typeOut(' for this page on my ');\n  this.appendToLastLine('<a href=\"https://github.com/lazopm\">');\n  await this.typeOut('github');\n  this.appendToLastLine('</a>');\n  await this.typeOut('.');\n  this.newLine();\n  this.newLine();\n  await this.sleep(500);\n  await this.typeOut('-Pablo');\n  this.newLine();\n  await this.sleep(1000);\n  this.newLine();\n  await this.typeOut('PS: I\\'m still building this. Sorry if some stuff doesn\\'t work!');\n  await this.sleep(1000);\n  this.setState({\n    mode: 'NORMAL',\n    cursor: false,\n    fileType: 'text',\n    fileName: '~/welcome.txt'\n  });\n}\n\n;\n\n//# sourceURL=webpack:///./src/client/App/schedule.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = _default;\n\nasync function _default() {\n  await this.sleep(1000);\n  this.setState({\n    mode: 'INSERT',\n    cursor: true\n  });\n  this.newLine();\n  await this.typeOut('Hi there! I\\'m Pablo.');\n  await this.sleep(500);\n  await this.typeOut(' Thanks for visiting my portfolio.');\n  this.newLine();\n  await this.sleep(500);\n  this.newLine();\n  await this.sleep(500);\n  await this.typeOut('Check out some of my work below, or drop me a line at ');\n  this.appendToLastLine('<a href=\"mailto:hi@lazopm.com\">');\n  await this.typeOut('hi@lazopm.com');\n  this.appendToLastLine('</a>');\n  await this.typeOut('.');\n  this.newLine();\n  await this.sleep(500);\n  await this.typeOut('You can check out the ');\n  this.appendToLastLine('<a href=\"https://github.com/lazopm/portfolio\">');\n  await this.typeOut('source code');\n  this.appendToLastLine('</a>');\n  await this.typeOut(' for this page on my ');\n  this.appendToLastLine('<a href=\"https://github.com/lazopm\">');\n  await this.typeOut('github');\n  this.appendToLastLine('</a>');\n  await this.typeOut('.');\n  this.newLine();\n  this.newLine();\n  await this.sleep(500);\n  await this.typeOut('-Pablo');\n  this.newLine();\n  await this.sleep(500);\n  this.setState({\n    mode: 'NORMAL',\n    cursor: false,\n    fileType: 'text',\n    fileName: '~/hi.txt'\n  });\n}\n\n;\n\n//# sourceURL=webpack:///./src/client/App/schedule.js?");
 
 /***/ }),
 
@@ -145,7 +145,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"styled-components\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Container = _styledComponents.default.div`\n    color: ${_termTheme.default[3]};\n    display: flex;\n\tjustify-content: center;\n`;\n\nconst Footer = () => _react.default.createElement(Container, null, \"built with \\u2615 by Pablo Lazo\");\n\nvar _default = Footer;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Footer/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"styled-components\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Container = _styledComponents.default.div`\n    color: ${_termTheme.default[3]};\n    display: flex;\n\tjustify-content: flex-end;\n    margin-right: 5px;\n    opacity: 0.75;\n`;\n\nconst Footer = () => _react.default.createElement(Container, null, _react.default.createElement(\"span\", null, \"built with \\u2615 by \", _react.default.createElement(\"strong\", null, \"Pablo Lazo\")));\n\nvar _default = Footer;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Footer/index.js?");
 
 /***/ }),
 
@@ -185,6 +185,54 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/client/components/Main/About/index.js":
+/*!***************************************************!*\
+  !*** ./src/client/components/Main/About/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"styled-components\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _Line = _interopRequireDefault(__webpack_require__(/*! ../Line */ \"./src/client/components/Main/Line.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Link = _styledComponents.default.a`\n    margin-right: 10px;\n`;\n\nconst About = () => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Line.default, {\n  prefix: true\n}, \"ls\"), _react.default.createElement(_Line.default, null, _react.default.createElement(Link, {\n  href: \"#about\"\n}, \"ABOUT_ME.md\"), _react.default.createElement(Link, {\n  href: \"#skills\"\n}, \"skills\"), _react.default.createElement(Link, {\n  href: \"#projects\"\n}, \"projects\")), _react.default.createElement(\"br\", null), _react.default.createElement(_Line.default, {\n  prefix: true\n}, \"cat ./ABOUT_ME.md\"), _react.default.createElement(_Line.default, null, \"I am a passionate developer that enjoys learning and new challenges.\"), _react.default.createElement(_Line.default, null, \"Currently I work as a Software Developer at U.S. News & World Report in Washington, DC.\"), _react.default.createElement(\"br\", null));\n\nvar _default = About;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Main/About/index.js?");
+
+/***/ }),
+
+/***/ "./src/client/components/Main/Line.js":
+/*!********************************************!*\
+  !*** ./src/client/components/Main/Line.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"styled-components\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Light = _styledComponents.default.span`\n\tcolor: ${_termTheme.default[3]};\n`;\n\nconst Line = ({\n  prefix,\n  children\n}) => _react.default.createElement(_react.default.Fragment, null, prefix ? _react.default.createElement(Light, null, \"lazopm:~$ \", children) : children, _react.default.createElement(\"br\", null));\n\nvar _default = Line;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Main/Line.js?");
+
+/***/ }),
+
+/***/ "./src/client/components/Main/Projects/index.js":
+/*!******************************************************!*\
+  !*** ./src/client/components/Main/Projects/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _reactApollo = __webpack_require__(/*! react-apollo */ \"react-apollo\");\n\nvar _graphqlTag = _interopRequireDefault(__webpack_require__(/*! graphql-tag */ \"graphql-tag\"));\n\nvar _Line = _interopRequireDefault(__webpack_require__(/*! ../Line */ \"./src/client/components/Main/Line.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Projects = ({\n  projects\n}) => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Line.default, {\n  prefix: true\n}, 'find ./projects -type f -exec open {} \\\\;'), projects.map(project => _react.default.createElement(\"div\", {\n  key: project.id\n}, project.title)));\n\nProjects.defaultProps = {\n  projects: []\n};\n\nvar _default = (0, _reactApollo.graphql)(_graphqlTag.default`\n\tquery {\n\t\tprojects {\n\t\t\tid\n\t\t\ttitle\n\t\t\tdescription\n\t\t\ttags\n\t\t}\n\t}\n`, {\n  props: ({\n    data\n  }) => ({\n    projects: data.projects\n  })\n})(Projects);\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Main/Projects/index.js?");
+
+/***/ }),
+
+/***/ "./src/client/components/Main/Skills/index.js":
+/*!****************************************************!*\
+  !*** ./src/client/components/Main/Skills/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _Line = _interopRequireDefault(__webpack_require__(/*! ../Line */ \"./src/client/components/Main/Line.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Skills = () => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Line.default, {\n  prefix: true\n}), _react.default.createElement(_Line.default, {\n  prefix: true\n}), _react.default.createElement(_Line.default, {\n  prefix: true\n}), _react.default.createElement(_Line.default, {\n  prefix: true\n}, \"cat ./skills/LANGUAGES.md\"), _react.default.createElement(_Line.default, null, \"javascript\"), _react.default.createElement(_Line.default, null, \"python\"), _react.default.createElement(\"br\", null), _react.default.createElement(_Line.default, {\n  prefix: true\n}, \"cat ./skills/FRONT_END.md\"), _react.default.createElement(_Line.default, null, \"frameworks\"), _react.default.createElement(_Line.default, null, \"- react\"), _react.default.createElement(_Line.default, null, \"- backbone\"), _react.default.createElement(\"br\", null), _react.default.createElement(_Line.default, null, \"libraries\"), _react.default.createElement(_Line.default, null, \"- redux\"), _react.default.createElement(_Line.default, null, \"- d3.js\"), _react.default.createElement(_Line.default, null, \"- leaflet\"), _react.default.createElement(_Line.default, null, \"- jest\"), _react.default.createElement(_Line.default, null, \"- apollo\"), _react.default.createElement(\"br\", null), _react.default.createElement(_Line.default, null, \"tools\"), _react.default.createElement(_Line.default, null, \"- webpack\"), _react.default.createElement(_Line.default, null, \"- jest\"), _react.default.createElement(_Line.default, null, \"- enzyme\"), _react.default.createElement(\"br\", null), _react.default.createElement(_Line.default, {\n  prefix: true\n}, \"cat ./skills/BACK_END.md\"), _react.default.createElement(_Line.default, null, \"node.js\"), _react.default.createElement(_Line.default, null, \"express\"), _react.default.createElement(_Line.default, null, \"mongodb\"), _react.default.createElement(_Line.default, null, \"graphql\"), _react.default.createElement(_Line.default, null, \"serverless\"), _react.default.createElement(_Line.default, null, \"pyramid\"), _react.default.createElement(\"br\", null));\n\nvar _default = Skills;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Main/Skills/index.js?");
+
+/***/ }),
+
 /***/ "./src/client/components/Main/index.js":
 /*!*********************************************!*\
   !*** ./src/client/components/Main/index.js ***!
@@ -193,7 +241,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"styled-components\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Container = _styledComponents.default.div`\n\tflex-grow: 1;\n    display: flex;\n    justify-content: center;\n`;\nconst Inner = _styledComponents.default.div`\n    flex-basis: 1200px;\n    flex-grow: 0;\n`;\nconst About = _styledComponents.default.div`\n\tfont-family: 'Inconsolata', monospace;\n\tcolor: ${_termTheme.default[7]};\n    padding: 10px;\n    font-size: 1rem;\n    p {\n        margin-top: 0;\n        line-height: 1.25;\n    }\n    a {\n        margin-right: 10px;\n    }\n`;\nconst Light = _styledComponents.default.span`\n\tcolor: ${_termTheme.default[3]};\n`;\nconst prefix = 'lazopm:~$';\n\nconst Main = () => _react.default.createElement(Container, null, _react.default.createElement(Inner, null, _react.default.createElement(About, null, _react.default.createElement(\"p\", null, _react.default.createElement(Light, null, prefix, \" ls\"), _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null), _react.default.createElement(\"a\", {\n  href: \"#about\"\n}, \"ABOUT.md\"), _react.default.createElement(\"a\", {\n  href: \"#skills\"\n}, \"SKILLS.md\"), _react.default.createElement(\"a\", {\n  href: \"#projects\"\n}, \"projects\"), _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null), _react.default.createElement(Light, null, prefix, \" cat ./ABOUT_ME.md\"), _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null), \"I am a passionate developer that enjoys learning and new challenges.\", _react.default.createElement(\"br\", null), \"Currently I work as a Software Developer at U.S. News & World Report in Washington, DC.\"), _react.default.createElement(\"p\", null, _react.default.createElement(Light, null, prefix), _react.default.createElement(\"br\", null), _react.default.createElement(Light, null, prefix), _react.default.createElement(\"br\", null), _react.default.createElement(Light, null, prefix), _react.default.createElement(\"br\", null), _react.default.createElement(Light, null, prefix, \" cat ./SKILLS.md\"), _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null), \"## LANGUAGES\", _react.default.createElement(\"br\", null), \"Javascript(latest ECMAScript), Python\", _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null), \"## FRONT END\", _react.default.createElement(\"br\", null), \"React, redux, webpack, d3.js, leaflet, jest, Backbone\", _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null), \"## BACK END\", _react.default.createElement(\"br\", null), \"Node.js, Express, GraphQL, Serverless, Pyramid\", _react.default.createElement(\"br\", null), _react.default.createElement(\"br\", null)))));\n\nvar _default = Main;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Main/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _styledComponents = _interopRequireDefault(__webpack_require__(/*! styled-components */ \"styled-components\"));\n\nvar _termTheme = _interopRequireDefault(__webpack_require__(/*! constants/termTheme */ \"./src/client/constants/termTheme.js\"));\n\nvar _About = _interopRequireDefault(__webpack_require__(/*! ./About */ \"./src/client/components/Main/About/index.js\"));\n\nvar _Skills = _interopRequireDefault(__webpack_require__(/*! ./Skills */ \"./src/client/components/Main/Skills/index.js\"));\n\nvar _Projects = _interopRequireDefault(__webpack_require__(/*! ./Projects */ \"./src/client/components/Main/Projects/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Container = _styledComponents.default.div`\n\tflex-grow: 1;\n    display: flex;\n    justify-content: center;\n`;\nconst Inner = _styledComponents.default.div`\n\tfont-family: 'Inconsolata', monospace;\n    font-size: 1rem;\n    line-height: 1.25;\n    flex-basis: 1200px;\n    flex-grow: 0;\n    padding: 10px;\n\tcolor: ${_termTheme.default[7]};\n`;\n\nconst Main = () => _react.default.createElement(Container, null, _react.default.createElement(Inner, null, _react.default.createElement(_About.default, null), _react.default.createElement(_Skills.default, null), _react.default.createElement(_Projects.default, null)));\n\nvar _default = Main;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/components/Main/index.js?");
 
 /***/ }),
 
@@ -277,7 +325,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = _interopRequireDefault(__webpack_require__(/*! express */ \"express\"));\n\nvar _render = _interopRequireDefault(__webpack_require__(/*! ./render */ \"./src/server/render/index.js\"));\n\nvar _mongodb = __webpack_require__(/*! mongodb */ \"mongodb\");\n\nvar _expressGraphql = _interopRequireDefault(__webpack_require__(/*! express-graphql */ \"express-graphql\"));\n\nvar _schema = _interopRequireDefault(__webpack_require__(/*! ./schema */ \"./src/server/schema.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Constants\nconst PORT = 3636;\nconst HOST = '0.0.0.0';\nconst DB_URL = 'mongodb://localhost:27017';\nconst DB_NAME = 'portfolio';\n\n(async () => {\n  try {\n    const client = await _mongodb.MongoClient.connect(DB_URL);\n    global.db = client.db(DB_NAME);\n  } catch (err) {\n    console.log(err.message);\n  }\n\n  const app = (0, _express.default)();\n  app.get('/', (req, res) => {\n    res.send((0, _render.default)());\n  });\n  app.use('/assets', _express.default.static('assets'));\n  app.use(_express.default.static('dist/client'));\n  app.use('/graphql', (0, _expressGraphql.default)({\n    schema: _schema.default,\n    graphiql: true\n  }));\n  app.listen(PORT, HOST);\n  console.log(`Running on http://${HOST}:${PORT}`);\n})();\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("\n\nvar _express = _interopRequireDefault(__webpack_require__(/*! express */ \"express\"));\n\nvar _render = _interopRequireDefault(__webpack_require__(/*! ./render */ \"./src/server/render/index.js\"));\n\nvar _mongodb = __webpack_require__(/*! mongodb */ \"mongodb\");\n\nvar _expressGraphql = _interopRequireDefault(__webpack_require__(/*! express-graphql */ \"express-graphql\"));\n\nvar _schema = _interopRequireDefault(__webpack_require__(/*! ./schema */ \"./src/server/schema.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Constants\nconst PORT = 3636;\nconst HOST = '0.0.0.0';\nconst DB_URL = 'mongodb://localhost:27017';\nconst DB_NAME = 'portfolio';\n\n(async () => {\n  try {\n    const client = await _mongodb.MongoClient.connect(DB_URL);\n    global.db = client.db(DB_NAME);\n  } catch (err) {\n    console.log(err.message);\n  }\n\n  const app = (0, _express.default)();\n  app.get('/', (0, _render.default)());\n  app.use('/assets', _express.default.static('assets'));\n  app.use(_express.default.static('dist/client'));\n  app.use('/graphql', (0, _expressGraphql.default)({\n    schema: _schema.default,\n    graphiql: true\n  }));\n  app.listen(PORT, HOST);\n  console.log(`Running on http://${HOST}:${PORT}`);\n})();\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -289,7 +337,7 @@ eval("\n\nvar _express = _interopRequireDefault(__webpack_require__(/*! express 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _App = _interopRequireDefault(__webpack_require__(/*! App */ \"./src/client/App/index.js\"));\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"styled-components\");\n\nvar _template = _interopRequireDefault(__webpack_require__(/*! ./template */ \"./src/server/render/template.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst render = () => {\n  const sheet = new _styledComponents.ServerStyleSheet();\n  const html = (0, _server.renderToString)(sheet.collectStyles(_react.default.createElement(_App.default, null)));\n  const styleTags = sheet.getStyleTags();\n  return (0, _template.default)(html, styleTags);\n};\n\nvar _default = render;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/render/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _App = _interopRequireDefault(__webpack_require__(/*! App */ \"./src/client/App/index.js\"));\n\nvar _reactApollo = __webpack_require__(/*! react-apollo */ \"react-apollo\");\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"styled-components\");\n\nvar _template = _interopRequireDefault(__webpack_require__(/*! ./template */ \"./src/server/render/template.js\"));\n\nvar _apolloClient = __webpack_require__(/*! apollo-client */ \"apollo-client\");\n\nvar _apolloLinkSchema = __webpack_require__(/*! apollo-link-schema */ \"apollo-link-schema\");\n\nvar _apolloCacheInmemory = __webpack_require__(/*! apollo-cache-inmemory */ \"apollo-cache-inmemory\");\n\nvar _schema = _interopRequireDefault(__webpack_require__(/*! ../schema */ \"./src/server/schema.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar _default = () => (req, res) => {\n  const client = new _apolloClient.ApolloClient({\n    ssrMode: true,\n    link: new _apolloLinkSchema.SchemaLink({\n      schema: _schema.default\n    }),\n    cache: new _apolloCacheInmemory.InMemoryCache()\n  });\n\n  const app = _react.default.createElement(_reactApollo.ApolloProvider, {\n    client: client\n  }, _react.default.createElement(_App.default, null));\n\n  (0, _reactApollo.getDataFromTree)(app).then(() => {\n    const sheet = new _styledComponents.ServerStyleSheet();\n    const html = (0, _server.renderToString)(sheet.collectStyles(app));\n    const styleTags = sheet.getStyleTags();\n    const apolloState = JSON.stringify(client.cache.extract()).replace(/</g, '\\\\u003c');\n    res.status(200);\n    res.send((0, _template.default)(html, styleTags, apolloState));\n    res.end();\n  });\n};\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/render/index.js?");
 
 /***/ }),
 
@@ -301,7 +349,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _default = (html, css) => `\n    <!doctype html>\n    <html lang=\"en\">\n      <head>\n        <meta charset=\"utf-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n        <meta name=\"theme-color\" content=\"#000000\">\n        <link rel=\"manifest\" href=\"/assets/manifest.json\">\n        <link rel=\"shortcut icon\" href=\"/assets/favicon.ico\">\n        <link href=\"https://fonts.googleapis.com/css?family=Inconsolata\" rel=\"stylesheet\">\n        <title>Pablo Lazo - Portfolio</title>\n        ${css}\n      </head>\n      <body>\n        <div id=\"root\">${html}</div>\n        <script src=\"/client.bundle.js\"></script>\n      </body>\n    </html>\n`;\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/render/template.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _default = (html, css, apolloState) => `\n    <!doctype html>\n    <html lang=\"en\">\n      <head>\n        <meta charset=\"utf-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n        <meta name=\"theme-color\" content=\"#000000\">\n        <link rel=\"manifest\" href=\"/assets/manifest.json\">\n        <link rel=\"shortcut icon\" href=\"/assets/favicon.ico\">\n        <link href=\"https://fonts.googleapis.com/css?family=Inconsolata\" rel=\"stylesheet\">\n        <title>Pablo Lazo - Portfolio</title>\n        ${css}\n      </head>\n      <body>\n        <div id=\"root\">${html}</div>\n        <script>\n            window.__APOLLO_STATE__=${apolloState};\n        </script>\n        <script src=\"/client.bundle.js\"></script>\n      </body>\n    </html>\n`;\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/render/template.js?");
 
 /***/ }),
 
@@ -313,7 +361,40 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _graphqlTools = __webpack_require__(/*! graphql-tools */ \"graphql-tools\");\n\nvar _mongodb = __webpack_require__(/*! mongodb */ \"mongodb\");\n\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\nfunction _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n\nconst typeDefs = `\n\ttype Project {\n\t\tid: ID!\n\t\tname: String!\n\t\tcreated: String!\n\t}\n\ttype Query {\n\t\tproject(id: ID!): Project\n\t\tprojects: [Project!]\n\t}\n\ttype Mutation {\n\t\taddProject(name: String!): Project\n\t}\n`;\n\nconst toProject = (_ref) => {\n  let {\n    _id,\n    created\n  } = _ref,\n      fields = _objectWithoutProperties(_ref, [\"_id\", \"created\"]);\n\n  return _extends({}, fields, {\n    id: _id.toString(),\n    created: String(created)\n  });\n};\n\nconst resolvers = {\n  Query: {\n    project: async (_, {\n      id\n    }) => {\n      const collection = db.collection('projects');\n\n      let _id;\n\n      try {\n        _id = (0, _mongodb.ObjectId)(id);\n      } catch (err) {\n        throw new Error('Invalid id');\n      }\n\n      const project = await collection.findOne({\n        _id\n      });\n\n      if (project) {\n        return toProject(project);\n      }\n    },\n    projects: async () => {\n      const collection = db.collection('projects');\n      const projects = await collection.find({}).toArray();\n      return projects.map(toProject);\n    }\n  },\n  Mutation: {\n    addProject: async (_, args) => {\n      const collection = db.collection('projects');\n      const result = await collection.insertOne(_extends({}, args, {\n        created: Date.now()\n      }));\n\n      if (result.insertedCount === 1) {\n        return toProject(result.ops[0]);\n      }\n    }\n  }\n};\nconst schema = (0, _graphqlTools.makeExecutableSchema)({\n  typeDefs,\n  resolvers\n});\nvar _default = schema;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/schema.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _graphqlTools = __webpack_require__(/*! graphql-tools */ \"graphql-tools\");\n\nvar _mongodb = __webpack_require__(/*! mongodb */ \"mongodb\");\n\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\nfunction _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n\nconst typeDefs = `\n\ttype Project {\n\t\tid: ID!\n\t\ttitle: String!\n\t\tcreated: String!\n        demoUrl: String,\n        description: String\n        tags: [String!]\n        repositoryUrl: String\n\t}\n\ttype Query {\n\t\tproject(id: ID!): Project\n\t\tprojects: [Project!]\n\t}\n\ttype Mutation {\n        addProject(\n            title: String!,\n            demoUrl: String,\n            description: String,\n            tags: [String!],\n            repositoryUrl: String,\n        ): Project\n\t}\n`;\n\nconst toProject = (_ref) => {\n  let {\n    _id,\n    created\n  } = _ref,\n      fields = _objectWithoutProperties(_ref, [\"_id\", \"created\"]);\n\n  return _extends({}, fields, {\n    id: _id.toString(),\n    created: String(created)\n  });\n};\n\nconst resolvers = {\n  Query: {\n    project: async (_, {\n      id\n    }) => {\n      const collection = db.collection('projects');\n\n      let _id;\n\n      try {\n        _id = (0, _mongodb.ObjectId)(id);\n      } catch (err) {\n        throw new Error('Invalid id');\n      }\n\n      const project = await collection.findOne({\n        _id\n      });\n\n      if (project) {\n        return toProject(project);\n      }\n    },\n    projects: async () => {\n      const collection = db.collection('projects');\n      const projects = await collection.find({}).toArray();\n      return projects.map(toProject);\n    }\n  },\n  Mutation: {\n    addProject: async (_, args) => {\n      const collection = db.collection('projects');\n      const result = await collection.insertOne(_extends({}, args, {\n        created: Date.now()\n      }));\n\n      if (result.insertedCount === 1) {\n        return toProject(result.ops[0]);\n      }\n    }\n  }\n};\nconst schema = (0, _graphqlTools.makeExecutableSchema)({\n  typeDefs,\n  resolvers\n});\nvar _default = schema;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/server/schema.js?");
+
+/***/ }),
+
+/***/ "apollo-cache-inmemory":
+/*!****************************************!*\
+  !*** external "apollo-cache-inmemory" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"apollo-cache-inmemory\");\n\n//# sourceURL=webpack:///external_%22apollo-cache-inmemory%22?");
+
+/***/ }),
+
+/***/ "apollo-client":
+/*!********************************!*\
+  !*** external "apollo-client" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"apollo-client\");\n\n//# sourceURL=webpack:///external_%22apollo-client%22?");
+
+/***/ }),
+
+/***/ "apollo-link-schema":
+/*!*************************************!*\
+  !*** external "apollo-link-schema" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"apollo-link-schema\");\n\n//# sourceURL=webpack:///external_%22apollo-link-schema%22?");
 
 /***/ }),
 
@@ -336,6 +417,17 @@ eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///externa
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"express-graphql\");\n\n//# sourceURL=webpack:///external_%22express-graphql%22?");
+
+/***/ }),
+
+/***/ "graphql-tag":
+/*!******************************!*\
+  !*** external "graphql-tag" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"graphql-tag\");\n\n//# sourceURL=webpack:///external_%22graphql-tag%22?");
 
 /***/ }),
 
@@ -380,6 +472,17 @@ eval("module.exports = require(\"prop-types\");\n\n//# sourceURL=webpack:///exte
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-apollo":
+/*!*******************************!*\
+  !*** external "react-apollo" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-apollo\");\n\n//# sourceURL=webpack:///external_%22react-apollo%22?");
 
 /***/ }),
 

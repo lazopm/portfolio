@@ -36,15 +36,11 @@ export default async function() {
     await this.sleep(500)
     await this.typeOut('-Pablo');
     this.newLine();
-
-    await this.sleep(1000)
-    this.newLine();
-    await this.typeOut('PS: I\'m still building this. Sorry if some stuff doesn\'t work!');
-    await this.sleep(1000)
+    await this.sleep(500)
     this.setState({
         mode: 'NORMAL',
         cursor: false,
         fileType: 'text',
-        fileName: '~/welcome.txt',
+        fileName: '~/hi.txt',
     });
 };

@@ -18,9 +18,7 @@ const DB_NAME = 'portfolio';
 		console.log(err.message);
 	}
     const app = express();
-    app.get('/', (req, res) => {
-      res.send(render());
-    });
+    app.get('/', render());
     app.use('/assets', express.static('assets'));
     app.use(express.static('dist/client'));
 

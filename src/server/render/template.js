@@ -1,4 +1,4 @@
-export default (html, css) => `
+export default (html, css, apolloState) => `
     <!doctype html>
     <html lang="en">
       <head>
@@ -13,6 +13,9 @@ export default (html, css) => `
       </head>
       <body>
         <div id="root">${html}</div>
+        <script>
+            window.__APOLLO_STATE__=${apolloState};
+        </script>
         <script src="/client.bundle.js"></script>
       </body>
     </html>

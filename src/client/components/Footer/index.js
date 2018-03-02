@@ -5,13 +5,17 @@ import theme from 'constants/termTheme';
 const Container = styled.div`
     color: ${theme[3]};
     display: flex;
-	justify-content: center;
+	justify-content: flex-end;
+    margin-right: 5px;
+    opacity: 0.75;
 `;
 
 
 const Footer = () => (
     <Container>
-        built with &#9749; by Pablo Lazo
+        <span>
+            built with &#9749; by <strong>Pablo Lazo</strong>
+        </span>
     </Container>
 );
 

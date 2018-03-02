@@ -4,15 +4,25 @@ import { ObjectId } from 'mongodb';
 const typeDefs = `
 	type Project {
 		id: ID!
-		name: String!
+		title: String!
 		created: String!
+        demoUrl: String,
+        description: String
+        tags: [String!]
+        repositoryUrl: String
 	}
 	type Query {
 		project(id: ID!): Project
 		projects: [Project!]
 	}
 	type Mutation {
-		addProject(name: String!): Project
+        addProject(
+            title: String!,
+            demoUrl: String,
+            description: String,
+            tags: [String!],
+            repositoryUrl: String,
+        ): Project
 	}
 `;
 
