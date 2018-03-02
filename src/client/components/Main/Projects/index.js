@@ -8,8 +8,12 @@ const Projects = ({ projectIds }) => (
     <React.Fragment>
         <a name="projects"/>
         <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
-        <hr/>
-		{projectIds.map(id => <Project key={id} id={id} />)}
+        {projectIds.map((id, i) => 
+            <React.Fragment key={id}>
+                <Project id={id} />
+                {i < projectIds.length - 1 && <hr/>}
+            </React.Fragment>
+        )}
     </React.Fragment>
 );
 

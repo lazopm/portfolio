@@ -28,7 +28,6 @@ const Project = ({
                 <a href={repositoryUrl}>CODE</a>
             </p>
         )}
-        <hr/>
     </div>
 );
 
