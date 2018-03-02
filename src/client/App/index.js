@@ -53,6 +53,20 @@ class App extends Component {
     }
     componentDidMount() {
         runSchedule.bind(this)();
+        window.addEventListener(
+            'scroll',
+            this.skipAnimation.bind(this),
+            { once: true },
+        );
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.skipAnimation);
+    }
+    skipAnimation(e) {
+        e.presist && e.persist();
+        console.log(e);
+        console.log(e.type);
+        this.setState(state => ({ ...state, skipped: true }));
     }
     newLine(line = '') {
         this.setState({lines: [...this.state.lines, line]})
@@ -93,7 +107,7 @@ class App extends Component {
         return (
             <Container>
                 <Header
-                    onClick={() => this.setState({skipped: true})}
+                    onClick={this.skipAnimation.bind(this)}
                     terminalProps={{
                         mode: this.state.mode,
                         lines: this.state.lines,
