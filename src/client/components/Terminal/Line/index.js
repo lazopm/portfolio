@@ -15,6 +15,11 @@ const Container = styled.div`
 
 const Text = styled.div`
 	white-space: pre-wrap;
+    h1 {
+        display: inline;
+        font-size: inherit;
+        font-weight: inherit;
+    }
 	${props => props.hasCursor && `
 		&:after {
 			width: 10px;

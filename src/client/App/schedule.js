@@ -5,9 +5,13 @@ export default async function() {
         cursor: true,
     });
     this.newLine();
-    await this.typeOut('Hi there! I\'m Pablo.');
+    await this.typeOut('Hi there! I\'m ')
+    this.appendToLastLine('<h1>');
+    await this.typeOut('Pablo Lazo');
+    this.appendToLastLine('</h1>');
+    await this.typeOut('.');
     await this.sleep(500);
-    await this.typeOut(' Thanks for visiting my portfolio.');
+    await this.typeOut(' Thank you for visiting my portfolio.');
     this.newLine();
 
     await this.sleep(500);

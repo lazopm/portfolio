@@ -68,7 +68,7 @@ const Links = () =>
         />
         <Link 
             text="resume"
-            href=""
+            href="https://drive.google.com/file/d/1jIop2CJOyjiryNWNs92DaofSV9fHceke/view?usp=sharing"
             icon="file-alt"
         />
     </Container>;
