@@ -5,10 +5,11 @@ export default (html, css, apolloState) => `
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#000000">
+        <meta name="description" content="Pablo Lazo, Software Developer Portfolio"/>
         <link rel="manifest" href="/assets/manifest.json">
         <link rel="shortcut icon" href="/assets/favicon.ico">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-        <title>Pablo Lazo - Portfolio</title>
+        <title>Pablo Lazo - Software Developer</title>
         ${css}
       </head>
       <body>
