@@ -20,9 +20,8 @@
     "styled-components": "^3.1.6"
   },
   "scripts": {
-    "build-client": "webpack --config webpack.client.config.js",
-    "build-server": "webpack --config webpack.server.config.js",
-    "build": "npm run build-client && npm run build-server",
+    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
+    "build-prod": "webpack --config webpack.client-prod.config.js && webpack --config webpack.server-prod.config.js",
     "start": "npm run build && node dist/server.bundle.js",
     "debug": "npm run build && node --inspect-brk=0.0.0.0:3737 dist/server.bundle.js"
   },
@@ -38,6 +37,7 @@
     "@babel/preset-react": "^7.0.0-beta.40",
     "babel-loader": "^8.0.0-beta.0",
     "webpack": "^4.0.1",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.9",
     "webpack-node-externals": "^1.6.0"
   }

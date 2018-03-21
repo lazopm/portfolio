@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+    plugins: [
+        new BundleAnalyzerPlugin(),
+    ],
     entry: {
         client: ['@babel/polyfill', './src/client/index.js'],
     },
