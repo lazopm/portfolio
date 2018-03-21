@@ -12,6 +12,7 @@ const Container = styled.div`
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+    min-height: 284px;
 `;
 const Lines = styled.div`
 	flex-grow: 1;

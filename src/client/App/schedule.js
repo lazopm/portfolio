@@ -39,7 +39,6 @@ export default async function() {
     this.newLine();
     await this.sleep(500)
     await this.typeOut('-Pablo');
-    this.newLine();
     await this.sleep(500)
     this.setState({
         mode: 'NORMAL',
