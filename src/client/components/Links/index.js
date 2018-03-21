@@ -14,19 +14,19 @@ const Container = styled.div`
 
 const LinkIcon = Icon.extend`
     margin: 3px 10px 3px 0;
-    height: 22px;
-    width: 22px;
-    fill: #7ea1cd;
+    height: 1rem;
+    width: 1rem;
+    fill: #A7ADBA;
 `;
 
 const Text = styled.span`
-	font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', monospace;
     font-size: 0.875rem;
-    color: #7ea1cd;
+    color: #A7ADBA;
 `;
 
 const Link = styled(({href, icon, text, className}) =>
-    <a className={className} 
+    <a className={className}
         href={href}
         title={text}
         target="_blank"
@@ -43,34 +43,34 @@ const Link = styled(({href, icon, text, className}) =>
     flex-grow: 1;
     &:hover {
         * {
-            color: ${theme[8]} !important;
-            fill: ${theme[8]} !important;
+            color: #6699cc !important;
+            fill: #6699cc !important;
         }
     }
 `;
 
-const Links = () =>
-    <Container>
-        <Link
-            text="hi@lazopm.com"
-            icon="envelope"
-            href="mailto:hi@lazopm.com"
-        />
-        <Link
-            text="github"
-            href="https://www.github.com/lazopm"
-            icon="github"
-        />
-        <Link
-            text="linkedin"
-            href="https://www.linkedin.com/in/pablo-lazo-b37701ba/"
-            icon="linkedin"
-        />
-        <Link 
-            text="resume"
-            href="https://drive.google.com/file/d/1jIop2CJOyjiryNWNs92DaofSV9fHceke/view?usp=sharing"
-            icon="file-alt"
-        />
-    </Container>;
+        const Links = () =>
+            <Container>
+                <Link
+                    text="hi@lazopm.com"
+                    icon="envelope"
+                    href="mailto:hi@lazopm.com"
+                />
+                <Link
+                    text="github"
+                    href="https://www.github.com/lazopm"
+                    icon="github"
+                />
+                <Link
+                    text="linkedin"
+                    href="https://www.linkedin.com/in/pablo-lazo-b37701ba/"
+                    icon="linkedin"
+                />
+                <Link
+                    text="resume"
+                    href="https://drive.google.com/file/d/1jIop2CJOyjiryNWNs92DaofSV9fHceke/view?usp=sharing"
+                    icon="file-alt"
+                />
+            </Container>;
 
-export default Links;
+        export default Links;

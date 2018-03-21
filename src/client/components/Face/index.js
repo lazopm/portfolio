@@ -5,7 +5,7 @@ import theme from 'constants/termTheme';
 import ascii from './ascii';
 
 const Ascii = styled.pre`
-    background: #616d77;
+    background: #64727d;
     color: black;
     margin: 0;
     font-family: monospace;
