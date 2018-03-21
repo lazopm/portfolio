@@ -7,7 +7,7 @@ import Status from './Status';
 
 const Container = styled.div`
 	color: ${theme[7]};
-	background: ${theme[0]};
+	background: #1c2125;
 	font-family: 'Inconsolata', monospace;
 	flex-grow: 1;
 	display: flex;

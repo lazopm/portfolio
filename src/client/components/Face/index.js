@@ -5,8 +5,8 @@ import theme from 'constants/termTheme';
 import ascii from './ascii';
 
 const Ascii = styled.pre`
-    background: white;
-    color: ${theme[13]};
+    background: #616d77;
+    color: black;
     margin: 0;
     font-family: monospace;
     font-size: 4px;

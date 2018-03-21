@@ -6,7 +6,7 @@ import Icon from 'components/Icon';
 const Container = styled.div`
     display: flex;
     flex-grow: 1;
-    background: white;
+    background: #343d45;
     padding: 10px 20px;
     justify-content: space-around;
     flex-direction: column;
@@ -21,7 +21,7 @@ const LinkIcon = Icon.extend`
 
 const Text = styled.span`
 	font-family: 'Inconsolata', monospace;
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #7ea1cd;
 `;
 
@@ -52,7 +52,7 @@ const Link = styled(({href, icon, text, className}) =>
 const Links = () =>
     <Container>
         <Link
-            text="hi@lazopm"
+            text="hi@lazopm.com"
             icon="envelope"
             href="mailto:hi@lazopm.com"
         />
