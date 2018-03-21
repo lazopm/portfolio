@@ -8,7 +8,6 @@ export default (html, css, apolloState) => `
         <meta name="description" content="Pablo Lazo, Software Developer Portfolio"/>
         <link rel="manifest" href="/assets/manifest.json">
         <link rel="shortcut icon" href="/assets/favicon.ico">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
         <title>Pablo Lazo - Software Developer</title>
         ${css}
       </head>
@@ -17,7 +16,8 @@ export default (html, css, apolloState) => `
         <script>
             window.__APOLLO_STATE__=${apolloState};
         </script>
-        <script src="/client.bundle.js"></script>
+        <script async src="/client.bundle.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
       </body>
     </html>
 `;
