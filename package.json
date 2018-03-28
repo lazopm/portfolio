@@ -24,7 +24,8 @@
     "build-prod": "webpack --config webpack.client-prod.config.js && webpack --config webpack.server-prod.config.js",
     "start": "node dist/server.bundle.js",
     "debug": "npm run build && node --inspect-brk=0.0.0.0:3737 dist/server.bundle.js",
-    "bundle-analyzer": "webpack --config webpack.client-analyzer.config.js"
+    "bundle-analyzer": "webpack --config webpack.client-analyzer.config.js",
+    "test": "echo hello"
   },
   "eslintConfig": {
     "extends": "react-app"
