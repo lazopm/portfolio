@@ -13,4 +13,4 @@ services:
   db-seed:
     build: ./seed
     depends_on:
-      - db
+     - db

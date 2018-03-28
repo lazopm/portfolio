@@ -12,7 +12,7 @@ const Project = ({
     <div>
         <h2>{title}</h2>
         {description && <p>{description}</p>}
-        {tags.length && (
+        {tags && tags.length && (
             <p>
                 tags:<br/>
                 {tags.join(', ')}
