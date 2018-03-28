@@ -25,7 +25,7 @@
     "start": "node dist/server.bundle.js",
     "debug": "npm run build && node --inspect-brk=0.0.0.0:3737 dist/server.bundle.js",
     "bundle-analyzer": "webpack --config webpack.client-analyzer.config.js",
-    "test": "echo hello"
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,6 +38,7 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
     "babel-loader": "^8.0.0-beta.0",
+    "jest": "^22.4.3",
     "webpack": "^4.0.1",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.9",
