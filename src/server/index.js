@@ -5,29 +5,27 @@ import graphqlHTTP from 'express-graphql';
 import schema from './schema';
 
 // Constants
-const PORT = 3636;
+const PORT = 8080;
 const HOST = '0.0.0.0';
-const DB_URL = 'mongodb://localhost:27017';
+const DB_URL = 'mongodb://db:27017';
 const DB_NAME = 'portfolio';
 
 (async () => {
+    const app = express();
 	try {
 		const client = await MongoClient.connect(DB_URL);
 		global.db = client.db(DB_NAME);
 	} catch(err) {
-        return;
 		console.log(err.message);
+        throw err;
 	}
-    const app = express();
     app.get('/', render());
     app.use('/assets', express.static('assets'));
     app.use(express.static('dist/client'));
-
-	app.use('/graphql', graphqlHTTP({
-		schema,
-		graphiql: true,
-	}));
-
+    app.use('/graphql', graphqlHTTP({
+        schema,
+        graphiql: true,
+    }));
     app.listen(PORT, HOST);
     console.log(`Running on http://${HOST}:${PORT}`);
 })();
