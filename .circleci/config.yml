@@ -2,6 +2,7 @@ version: 2
 jobs:
     build:
         working_directory: ~/portfolio
+        parallelism: 4
         docker:
             - image: circleci/node:carbon
         steps:
