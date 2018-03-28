@@ -25,7 +25,7 @@
     "start": "node dist/server.bundle.js",
     "debug": "npm run build && node --inspect-brk=0.0.0.0:3737 dist/server.bundle.js",
     "bundle-analyzer": "webpack --config webpack.client-analyzer.config.js",
-    "test": "jest"
+    "test": "jest --maxWorkers=4"
   },
   "eslintConfig": {
     "extends": "react-app"
