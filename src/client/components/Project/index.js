@@ -1,47 +1,54 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import styled from 'styled-components';
+import theme from 'constants/termTheme';
+import Markdown from 'react-markdown';
+import Icon from '../Icon';
+
+const Container = styled.div`
+    border-bottom: solid 1px ${theme[1]};
+    padding-bottom: 1rem;
+`;
+const Name = styled.h2`
+    font-size: 1.2rem;
+`;
+
+const Description = styled.span`
+    font-size: 1rem;
+    color: ${theme[3]};
+`;
+
+const Readme = styled.div`
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+    pre {
+        background: ${theme[1]};
+        padding: 1rem;
+    }
+`;
 
 const Project = ({
-    title,
+    name,
     description,
-    tags,
-    demoUrl,
-    repositoryUrl,
+    topics,
+    readme,
 }) => (
-    <div>
-        <h2>{title}</h2>
-        {description && <p>{description}</p>}
-        {tags && tags.length && (
-            <p>
-                tags:<br/>
-                {tags.join(', ')}
-            </p>
-        )}
-        {demoUrl && (
-            <p>
-                <a href={demoUrl}>DEMO</a>
-            </p>
-        )}
-        {repositoryUrl && (
-            <p>
-                <a href={repositoryUrl}>CODE</a>
-            </p>
-        )}
-    </div>
+    <Container>
+        {readme
+            ? (
+                <Readme>
+                    <Markdown source={readme.text} />
+                </Readme>
+            )
+            : (
+                <React.Fragment>
+                    <Name>{name}</Name>
+                    {description && <Description> {description}</Description>}
+                    <Icon icon="github"/>
+                </React.Fragment>
+            )
+        }
+    </Container>
 );
 
-export default graphql(gql`
-	query Project($id: ID!) {
-		project(id: $id) {
-			title
-            description
-            tags
-            demoUrl
-            repositoryUrl
-		}
-	}
-`, {
-    props: ({ data }) => ({ ...data.project }),
-    options: ({ id }) => ({ variables: { id } }),
-})(Project);
+export default Project; 

@@ -1,27 +1,34 @@
 import React from 'react';
 import App from 'App';
-import { getDataFromTree } from 'react-apollo';
+import template from './template';
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components'
-import template from './template';
+import fetch from 'node-fetch';
+import { getDataFromTree } from 'react-apollo';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
-import { SchemaLink } from 'apollo-link-schema';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import schema from '../schema';
 
 export default () => (req, res) => { 
 	const client = new ApolloClient({
 		ssrMode: true,
-		link: new SchemaLink({ schema }),
-		cache: new InMemoryCache(),
-	});
+        link: createHttpLink({
+            fetch,
+            uri: 'https://api.github.com/graphql',
+            headers: {
+                authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            },
+        }),
+        cache: new InMemoryCache(),
+    });
 
     const app = (
         <ApolloProvider client={client}>
 			<App />
 		</ApolloProvider>
     );
+
     getDataFromTree(app).then(() => {
         const sheet = new ServerStyleSheet();
         const html = renderToString(sheet.collectStyles(app));

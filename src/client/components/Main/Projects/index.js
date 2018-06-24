@@ -4,16 +4,11 @@ import gql from 'graphql-tag';
 import Line from '../Line';
 import Project from 'components/Project';
 
-const Projects = ({ projectIds }) => (
+const Projects = ({ projects }) => (
     <React.Fragment>
         <a name="projects"/>
         <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
-        {projectIds.map((id, i) => 
-            <React.Fragment key={id}>
-                <Project id={id} />
-                {i < projectIds.length - 1 && <hr/>}
-            </React.Fragment>
-        )}
+        {projects.map(project => <Project key={project.id} {...project} />)}
     </React.Fragment>
 );
 
@@ -22,13 +17,38 @@ Projects.defaultProps = {
 };
 
 export default graphql(gql`
-	query {
-		projects {
-			id
-		}
-	}
+    query { 
+      user(login: "lazopm") {
+        repositories(
+            privacy: PUBLIC
+            isFork: false
+            first: 30
+            affiliations: [OWNER]
+            orderBy: { field: CREATED_AT, direction: DESC },
+        ){
+          nodes {
+            id
+            name
+            description
+            demoUrl: homepageUrl
+            readme: object(expression: "master:README.md") {
+                ... on Blob {
+                 text
+                }
+            }
+            topics: repositoryTopics(first: 20) {
+              nodes {
+                topic {
+                    name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 `, {
     props: ({ data }) => ({
-        projectIds: data.projects.map(project => project.id),
+        projects: data.user.repositories.nodes,
     }),
 })(Projects);

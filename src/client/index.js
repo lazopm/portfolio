@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const asyncImports = [
@@ -10,7 +10,7 @@ const asyncImports = [
 ];
 
 const client = new ApolloClient({
-    link: new HttpLink(),
+    link: createHttpLink(),
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 });
 
