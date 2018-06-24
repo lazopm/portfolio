@@ -8,6 +8,7 @@ const Container = styled.div`
     border-bottom: solid 1px ${theme[1]};
     padding-bottom: 1rem;
 `;
+
 const Name = styled.h2`
     font-size: 1.2rem;
 `;
@@ -15,6 +16,14 @@ const Name = styled.h2`
 const Description = styled.span`
     font-size: 1rem;
     color: ${theme[3]};
+`;
+
+const Links = styled.div`
+    margin: 0 -5px;
+`;
+
+const Link = styled.a`
+    padding: 0 5px;
 `;
 
 const Readme = styled.div`
@@ -32,6 +41,8 @@ const Project = ({
     description,
     topics,
     readme,
+    sourceUrl,
+    demoUrl,
 }) => (
     <Container>
         {readme
@@ -44,10 +55,13 @@ const Project = ({
                 <React.Fragment>
                     <Name>{name}</Name>
                     {description && <Description> {description}</Description>}
-                    <Icon icon="github"/>
                 </React.Fragment>
             )
         }
+        <Links>
+            {sourceUrl && <Link href={sourceUrl} target="__blank" rel="noopener noreferrer">SOURCE</Link>}
+            {demoUrl && <Link href={demoUrl} target="__blank" rel="noopener noreferrer">DEMO</Link>}
+        </Links>
     </Container>
 );
 

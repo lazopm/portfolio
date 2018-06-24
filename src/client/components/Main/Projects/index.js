@@ -31,6 +31,7 @@ export default graphql(gql`
             name
             description
             demoUrl: homepageUrl
+            sourceUrl: url
             readme: object(expression: "master:README.md") {
                 ... on Blob {
                  text
