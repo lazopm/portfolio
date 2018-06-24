@@ -40,7 +40,8 @@ const Container = styled.div`
 `;
 
 class App extends Component { 
-    constructor() { super();
+    constructor() {
+        super();
         this.state = {
             activeProject: null,
             mode: 'NORMAL',
@@ -63,9 +64,6 @@ class App extends Component {
         window.removeEventListener('scroll', this.skipAnimation);
     }
     skipAnimation(e) {
-        e.presist && e.persist();
-        console.log(e);
-        console.log(e.type);
         this.setState(state => ({ ...state, skipped: true }));
     }
     newLine(line = '') {
