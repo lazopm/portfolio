@@ -54,14 +54,6 @@ class App extends Component {
     }
     componentDidMount() {
         runSchedule.bind(this)();
-        window.addEventListener(
-            'scroll',
-            this.skipAnimation.bind(this),
-            { once: true },
-        );
-    }
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.skipAnimation);
     }
     skipAnimation(e) {
         this.setState(state => ({ ...state, skipped: true }));
@@ -105,7 +97,7 @@ class App extends Component {
         return (
             <Container>
                 <Header
-                    onClick={this.skipAnimation.bind(this)}
+                    onClick={this.state.skipped ? null : this.skipAnimation.bind(this)}
                     terminalProps={{
                         mode: this.state.mode,
                         lines: this.state.lines,
