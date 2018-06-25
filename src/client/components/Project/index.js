@@ -5,8 +5,9 @@ import Markdown from 'react-markdown';
 import Icon from '../Icon';
 
 const Container = styled.div`
-    border-bottom: solid 1px ${theme[1]};
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+	background: #1c2125;
 `;
 
 const Name = styled.h2`
@@ -34,7 +35,6 @@ const Topic = styled.div`
 
 const Links = styled.div`
     margin: 0 -5px;
-    margin-bottom: 1rem;
 `;
 
 const Link = styled.a`

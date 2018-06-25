@@ -1,14 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import Line from '../Line';
 import Project from 'components/Project';
 import yaml from 'js-yaml';
 
+const LineContainer = styled.div`
+    margin-bottom: 2rem;
+`;
+
 const Projects = ({ projects }) => (
     <React.Fragment>
-        <a name="projects"/>
-        <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
+        <LineContainer>
+            <a name="projects"/>
+            <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
+        </LineContainer>
         {projects.map(project => <Project key={project.id} {...project} />)}
     </React.Fragment>
 );

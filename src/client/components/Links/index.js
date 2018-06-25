@@ -63,12 +63,12 @@ const Link = styled(({href, icon, text, className}) =>
                 />
                 <Link
                     text="linkedin"
-                    href="https://www.linkedin.com/in/pablo-lazo-b37701ba/"
+                    href="https://www.linkedin.com/in/lazopm/"
                     icon="linkedin"
                 />
                 <Link
                     text="resume"
-                    href="https://drive.google.com/file/d/1jIop2CJOyjiryNWNs92DaofSV9fHceke/view?usp=sharing"
+                    href="https://drive.google.com/open?id=1FK5Lj5bKWvh-9wIAGzj5MnzVCddDGUMP"
                     icon="file-alt"
                 />
             </Container>;
