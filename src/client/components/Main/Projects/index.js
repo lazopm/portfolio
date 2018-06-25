@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import Line from '../Line';
 import Project from 'components/Project';
 import yaml from 'js-yaml';
+import remove from 'lodash/remove';
 
 const LineContainer = styled.div`
     margin-bottom: 2rem;
@@ -27,6 +28,11 @@ Projects.defaultProps = {
 export default graphql(gql`
     query { 
         user(login: "lazopm") {
+            pinnedRepositories(first: 6) {
+                nodes {
+                    id
+                }
+            }
             repositories(
                 privacy: PUBLIC
                 isFork: false
@@ -40,7 +46,12 @@ export default graphql(gql`
                     description
                     demoUrl: homepageUrl
                     sourceUrl: url
-                    readme: object(expression: "master:README.md") {
+                    readmeMarkdown: object(expression: "master:README.md") {
+                        ... on Blob {
+                            text
+                        }
+                    }
+                    portfolioMarkdown: object(expression: "master:PORTFOLIO.md") {
                         ... on Blob {
                             text
                         }
@@ -57,10 +68,16 @@ export default graphql(gql`
         }
     }
 `, {
-    props: ({ data }) => ({
-        projects: data.user.repositories.nodes.map(project => ({
+    props: ({ data }) => {
+        const projects = data.user.repositories.nodes.map(project => ({
             ...project,
             topics: project.topics.nodes.map(node => node.topic.name),
-        })),
-    }),
+        }));
+        const pinnedIds = data.user.pinnedRepositories.nodes.map(node => node.id);
+        const pinned = remove(projects, project => pinnedIds.includes(project.id))
+            .sort((a,b) => pinnedIds.indexOf(a.id) > pinnedIds.indexOf(b.id));
+        return {
+            projects: [...pinned, ...projects ],
+        };
+    },
 })(Projects);

@@ -55,7 +55,8 @@ const Project = ({
     name,
     description,
     topics,
-    readme,
+    portfolioMarkdown,
+    readmeMarkdown,
     sourceUrl,
     demoUrl,
 }) => ( 
@@ -70,10 +71,10 @@ const Project = ({
             )
             : null
         }
-        {readme
+        {portfolioMarkdown || readmeMarkdown
             ? (
                 <Readme>
-                    <Markdown source={readme.text} />
+                    <Markdown source={portfolioMarkdown ? portfolioMarkdown.text : readmeMarkdown.text} />
                 </Readme>
             )
             : (
