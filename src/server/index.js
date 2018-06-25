@@ -11,6 +11,5 @@ const HOST = '0.0.0.0';
     app.use('/assets', express.static('assets'));
     app.use(express.static('dist/client'));
     app.listen(PORT, HOST);
-    console.log(`Running on http://${HOST}:${PORT}`);
 })();
 

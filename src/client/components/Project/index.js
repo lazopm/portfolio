@@ -6,7 +6,7 @@ import Icon from '../Icon';
 
 const Container = styled.div`
     border-bottom: solid 1px ${theme[1]};
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 `;
 
 const Name = styled.h2`
@@ -18,8 +18,23 @@ const Description = styled.span`
     color: ${theme[3]};
 `;
 
+const Topics = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+`;
+
+const Topic = styled.div`
+    font-size: 0.85rem;
+    margin: 0 5px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: ${theme[1]};
+`;
+
 const Links = styled.div`
     margin: 0 -5px;
+    margin-bottom: 1rem;
 `;
 
 const Link = styled.a`
@@ -45,6 +60,16 @@ const Project = ({
     demoUrl,
 }) => ( 
     <Container>
+        {topics.length
+            ? (
+                <Topics>
+                    {topics.map(topic => (
+                        <Topic key={topic}>{topic}</Topic>
+                    ))}
+                </Topics>
+            )
+            : null
+        }
         {readme
             ? (
                 <Readme>

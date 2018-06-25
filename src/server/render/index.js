@@ -13,7 +13,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 const client = new ApolloClient({
     ssrMode: true,
     link: createHttpLink({
-        fetch: (...args) => { console.log(...args); return fetch(...args)},
+        fetch,
         uri: 'https://api.github.com/graphql',
         headers: {
             authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
