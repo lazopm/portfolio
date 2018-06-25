@@ -16,7 +16,7 @@ const Inner = styled.div`
 	font-family: 'Inconsolata', monospace;
     font-size: 1rem;
     line-height: 1.25;
-    flex-basis: 1200px;
+    flex-basis: 1100px;
     flex-grow: 0;
     padding: 10px;
 	color: ${theme[7]};
