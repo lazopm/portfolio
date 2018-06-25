@@ -43,7 +43,7 @@ const Project = ({
     readme,
     sourceUrl,
     demoUrl,
-}) => (
+}) => ( 
     <Container>
         {readme
             ? (
