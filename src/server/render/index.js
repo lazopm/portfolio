@@ -10,23 +10,23 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-export default () => (req, res) => { 
-	const client = new ApolloClient({
-		ssrMode: true,
-        link: createHttpLink({
-            fetch,
-            uri: 'https://api.github.com/graphql',
-            headers: {
-                authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-            },
-        }),
-        cache: new InMemoryCache(),
-    });
+const client = new ApolloClient({
+    ssrMode: true,
+    link: createHttpLink({
+        fetch: (...args) => { console.log(...args); return fetch(...args)},
+        uri: 'https://api.github.com/graphql',
+        headers: {
+            authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+    }),
+    cache: new InMemoryCache(),
+});
 
+export default () => (req, res) => {
     const app = (
         <ApolloProvider client={client}>
-			<App />
-		</ApolloProvider>
+            <App />
+        </ApolloProvider>
     );
 
     getDataFromTree(app).then(() => {
