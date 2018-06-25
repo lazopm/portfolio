@@ -52,8 +52,18 @@ class App extends Component {
             lines,
         };
     }
-    componentDidMount() {
-        runSchedule.bind(this)();
+    async componentDidMount() {
+        this.setState({
+            mode: 'INSERT',
+            cursor: true,
+        });
+        await runSchedule.bind(this)();
+        this.setState({
+            mode: 'NORMAL',
+            cursor: false,
+            fileType: 'text',
+            fileName: '~/hi.txt',
+        });
     }
     skipAnimation(e) {
         this.setState(state => ({ ...state, skipped: true }));
@@ -74,23 +84,10 @@ class App extends Component {
                 setTimeout(resolve, delay);
             });
     }
-    activateProject(i) {
-        this.setState(prevState => ({
-            ...prevState,
-            activeProject: i,
-        }));
-    }
-    deactivateProject(e) {
-        e.stopPropagation();
-        this.setState(prevState => ({
-            ...prevState,
-            activeProject: null,
-        }));
-    }
     async typeOut(str) {
         for (let char of str) {
             this.appendToLastLine(char);
-            await this.sleep(50);
+            await this.sleep(30);
         }
     }
     render() {
