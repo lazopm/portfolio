@@ -26,7 +26,6 @@ const Main = () => (
     <Container>
         <Inner>
             <Links />
-            <About />
             <Skills />
             <Projects />
         </Inner>
