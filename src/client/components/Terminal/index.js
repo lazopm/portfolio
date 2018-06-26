@@ -13,18 +13,21 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
     min-height: 284px;
+    ${props => props.mode === 'INSERT' && `
+        cursor: alias;
+    `}
 `;
 const Lines = styled.div`
 	flex-grow: 1;
 `;
 const Terminal = ({
     lines,
-    mode,
     cursor,
     fileName,
     fileType,
+    ...props,
 }) =>
-    <Container>
+    <Container {...props}>
         <Lines>
             {lines.map((line, i) => (
                 <Line
@@ -37,7 +40,7 @@ const Terminal = ({
         </Lines>
         <Status
             line={lines.length}
-            mode={mode}
+            mode={props.mode}
             char={lines[lines.length - 1].length + 1}
             fileName={fileName}
             fileType={fileType}

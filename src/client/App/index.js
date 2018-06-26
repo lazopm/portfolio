@@ -117,8 +117,8 @@ class App extends Component {
         return (
             <Container>
                 <Header
-                    onClick={this.state.skipped ? null : this.skipAnimation.bind(this)}
                     terminalProps={{
+                        onClick: this.state.skipped ? null : this.skipAnimation.bind(this),
                         mode: this.state.mode,
                         lines: this.state.lines,
                         cursor: this.state.cursor,
