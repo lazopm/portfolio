@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import media from 'style/media';
-import runSchedule from './schedule';
-import lines from './lines';
+import schedule from './schedule';
+import initialLines from './lines';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -49,7 +49,7 @@ class App extends Component {
             fileName: '[No Name]',
             fileType: null,
             skipped: false,
-            lines,
+            lines: initialLines,
         };
     }
     async componentDidMount() {
@@ -57,21 +57,43 @@ class App extends Component {
             mode: 'INSERT',
             cursor: true,
         });
-        await runSchedule.bind(this)();
-        this.setState({
+        for (let [fn, arg] of schedule) {
+            if (this.state.skipped) break;
+            await this[fn](arg);
+        }
+        this.setState(state => ({
+            ...state,
+            lines: state.skipped ? this.computeFinalLines(schedule) : state.lines,
             mode: 'NORMAL',
             cursor: false,
             fileType: 'text',
             fileName: '~/hi.txt',
-        });
+        }));
+    }
+    computeFinalLines(schedule) {
+        const lines = [];
+        for (let [fn, arg] of schedule) {
+            switch(fn) {
+                case('newline'):
+                    lines.push('');
+                    break;
+                case('append'):
+                case('typeout'):
+                    lines.splice(-1, 1, lines[lines.length - 1] + arg);
+                    break;
+                default:
+                    break;
+            }
+        }
+        return [...initialLines, ...lines];
     }
     skipAnimation(e) {
         this.setState(state => ({ ...state, skipped: true }));
     }
-    newLine(line = '') {
-        this.setState({lines: [...this.state.lines, line]})
+    newline() {
+        this.setState({lines: [...this.state.lines, '']})
     }
-    appendToLastLine(str) {
+    append(str) {
         this.setState({lines: [
             ...this.state.lines.slice(0, -1),
             this.state.lines.slice(-1) + str, 
@@ -84,9 +106,10 @@ class App extends Component {
                 setTimeout(resolve, delay);
             });
     }
-    async typeOut(str) {
+    async typeout(str) {
         for (let char of str) {
-            this.appendToLastLine(char);
+            if (this.state.skipped) break;
+            this.append(char);
             await this.sleep(30);
         }
     }
