@@ -28,10 +28,11 @@ const MainContent = () => (
             <br/>
             <Line prefix>cat ./skills/frontend.txt</Line>
             <Line>react, vue, backbone</Line>
-            <Line>git, webpack, jest</Line>
+            <Line>webpack, jest</Line>
             <br/>
             <Line prefix>cat ./skills/backend.txt</Line>
             <Line>node.js, express, graphql, mongodb, flask</Line>
+            <Line>docker, aws-lambda</Line>
             <br/>
             <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
             <br/>
