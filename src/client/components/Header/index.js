@@ -94,7 +94,7 @@ class Header extends Component {
         for (let char of str) {
             if (this.state.skipped) break;
             this.append(char);
-            await this.sleep(30);
+            await this.sleep(40);
         }
     }
     render() {
