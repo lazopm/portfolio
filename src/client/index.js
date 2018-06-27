@@ -4,7 +4,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const asyncImports = [
-    import(/* webpackChunkName: "app" */ './App'),
+    import(/* webpackChunkName: "app" */ 'components/App'),
     import(/* webpackChunkName: "app" */'react-dom'),
     import(/* webpackChunkName: "app" */'react-apollo'),
 ];

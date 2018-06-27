@@ -14,6 +14,7 @@
     "apollo-link": "^1.2.2",
     "apollo-link-http": "^1.5.4",
     "babel-loader": "^8.0.0-beta.4",
+    "babel-preset-minify": "^0.4.3",
     "express": "^4.16.2",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
@@ -31,11 +32,16 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "jest": "^22.4.4"
+    "jest": "^22.4.4",
+    "webpack-bundle-analyzer": "^2.13.1"
   },
   "scripts": {
-    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
-    "build-prod": "webpack --config webpack.client-prod.config.js && webpack --config webpack.server-prod.config.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "webpack --config webpack.client.config.js",
+    "build:server": "webpack --config webpack.server.config.js",
+    "prod": "npm run prod:client && npm run prod:server",
+    "prod:client": "webpack --config webpack.client.config.js --mode=\"production\"",
+    "prod:server": "webpack --config webpack.server.config.js --mode=\"production\"",
     "start": "node dist/server.bundle.js",
     "test": "jest"
   }

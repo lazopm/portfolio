@@ -1,10 +1,11 @@
 const path = require('path');
 
 module.exports = {
+    mode: 'development',
+    //plugins: [ new require('webpack-bundle-analyzer').BundleAnalyzerPlugin() ],
     entry: {
         client: ['@babel/polyfill', './src/client/index.js'],
     },
-    mode: 'development',
     resolve: {
         modules: [path.resolve(__dirname, './src/client'), 'node_modules'],
     },
@@ -21,10 +22,10 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/react', '@babel/env'],
+                        presets: ['@babel/react', '@babel/env', 'minify'],
                         plugins: [
                             '@babel/plugin-proposal-object-rest-spread',
-                            '@babel/plugin-syntax-dynamic-import'
+                            '@babel/plugin-syntax-dynamic-import',
                         ]
                     }
                 }

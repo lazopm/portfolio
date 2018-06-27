@@ -1,0 +1,43 @@
+import React from 'react';
+import styled from 'styled-components';
+import theme from 'constants/termTheme';
+import Projects from 'components/Projects';
+import Line from './Line';
+
+const Container = styled.div`
+	flex-grow: 1;
+    display: flex;
+    justify-content: center;
+`;
+
+const Inner = styled.div`
+	font-family: 'Inconsolata', monospace;
+    font-size: 1rem;
+    line-height: 1.25;
+    flex-basis: 1100px;
+    flex-grow: 0;
+    padding: 10px;
+	color: ${theme[7]};
+`;
+
+const MainContent = () => (
+    <Container>
+        <Inner>
+            <Line prefix>cat ./skills/languages.txt</Line>
+            <Line>javascript, python</Line>
+            <br/>
+            <Line prefix>cat ./skills/frontend.txt</Line>
+            <Line>react, vue, backbone</Line>
+            <Line>git, webpack, jest</Line>
+            <br/>
+            <Line prefix>cat ./skills/backend.txt</Line>
+            <Line>node.js, express, graphql, mongodb, flask</Line>
+            <br/>
+            <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
+            <br/>
+            <Projects />
+        </Inner>
+    </Container>
+);
+
+export default MainContent;

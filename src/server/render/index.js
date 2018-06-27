@@ -1,5 +1,5 @@
 import React from 'react';
-import App from 'App';
+import App from 'components/App';
 import template from './template';
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components'

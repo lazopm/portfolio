@@ -2,21 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import Line from '../Line';
-import Project from 'components/Project';
-import yaml from 'js-yaml';
-import remove from 'lodash/remove';
-
-const LineContainer = styled.div`
-    margin-bottom: 2rem;
-`;
+import Project from './Project';
 
 const Projects = ({ projects }) => (
     <React.Fragment>
-        <LineContainer>
-            <a name="projects"/>
-            <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
-        </LineContainer>
         {projects.map(project => <Project key={project.id} {...project} />)}
     </React.Fragment>
 );
@@ -69,15 +58,12 @@ export default graphql(gql`
     }
 `, {
     props: ({ data }) => {
-        const projects = data.user.repositories.nodes.map(project => ({
+        const allProjects = data.user.repositories.nodes.map(project => ({
             ...project,
             topics: project.topics.nodes.map(node => node.topic.name),
         }));
         const pinnedIds = data.user.pinnedRepositories.nodes.map(node => node.id);
-        const pinned = remove(projects, project => pinnedIds.includes(project.id))
-            .sort((a,b) => pinnedIds.indexOf(a.id) > pinnedIds.indexOf(b.id));
-        return {
-            projects: [...pinned, ...projects ],
-        };
+        const projects = allProjects.sort((a,b) => pinnedIds.indexOf(a.id) > pinnedIds.indexOf(b.id));
+        return { projects };
     },
 })(Projects);
