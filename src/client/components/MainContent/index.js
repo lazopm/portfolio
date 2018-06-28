@@ -28,7 +28,7 @@ const MainContent = () => (
             <br/>
             <Line prefix>cat ./skills/frontend.txt</Line>
             <Line>react, vue, backbone</Line>
-            <Line>webpack, jest</Line>
+            <Line>webpack, jest, eslint plugins</Line>
             <br/>
             <Line prefix>cat ./skills/backend.txt</Line>
             <Line>node.js, express, graphql, mongodb, flask</Line>
