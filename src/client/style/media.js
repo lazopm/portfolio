@@ -1,22 +1,9 @@
-import { css } from 'styled-components';
-import { medium, large } from './breakpoints';
+import { MEDIUM, LARGE } from 'constants/breakpoints';
 
 const media = {
-    medium: (...args) => css`
-        @media (min-width: ${medium}px) {
-            ${css(...args)};
-        }
-    `,
-    large: (...args) => css`
-        @media (min-width: ${large}px) {
-            ${css(...args)};
-        }
-    `,
-    toLarge: (...args) => css`
-        @media (max-width: ${large}px) {
-            ${css(...args)};
-        }
-    `,
+    medium: `@media (min-width: ${MEDIUM}px)`,
+    large: `@media (min-width: ${LARGE}px)`,
+    toLarge: `@media (max-width: ${LARGE}px)`,
 };
 
 export default media;

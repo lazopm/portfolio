@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'constants/termTheme';
+import { theme } from 'constants/colors';
 import Projects from 'components/Projects';
 import Line from './Line';
 

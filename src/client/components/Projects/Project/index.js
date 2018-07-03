@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'constants/termTheme';
+import { theme } from 'constants/colors';
 import Markdown from 'react-markdown';
 import Icon from 'components/Icon';
 

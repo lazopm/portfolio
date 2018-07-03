@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
-import theme from 'constants/termTheme';
+import { theme } from 'constants/colors';
 
 const blink = keyframes`
 	50% {
@@ -13,6 +13,7 @@ const Container = styled.div`
     display: flex;
 `;
 
+//prettier-ignore
 const Text = styled.div`
     white-space: pre-wrap;
     h1 {
@@ -20,9 +21,7 @@ const Text = styled.div`
         font-size: inherit;
         font-weight: inherit;
     }
-    ${props =>
-        props.hasCursor &&
-        `
+    ${props => props.hasCursor && `
 		&:after {
 			width: 10px;
 			background: ${theme[7]};
@@ -33,7 +32,7 @@ const Text = styled.div`
 			animation-iteration-count: infinite;
 			animation-timing-function: step-start;
 		}
-	`};
+	`}
 `;
 
 const Gutter = styled.div`

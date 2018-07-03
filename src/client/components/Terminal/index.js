@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import theme from 'constants/termTheme';
+import { theme } from 'constants/colors';
 import Line from './Line';
 import Status from './Status';
 
@@ -13,15 +13,13 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 284px;
-    ${props =>
-        props.mode === 'INSERT' &&
-        `
-        cursor: alias;
-    `};
+    cursor: ${props => (props.mode === 'INSERT' ? 'alias' : 'initial')};
 `;
+
 const Lines = styled.div`
     flex-grow: 1;
 `;
+
 const Terminal = ({ lines, cursor, fileName, fileType, ...props }) => (
     <Container {...props}>
         <Lines>

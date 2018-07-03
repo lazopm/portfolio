@@ -10,17 +10,17 @@ import initialLines from './initialLines';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    ${media.medium` 
+    ${media.medium} {
         flex-direction: row;
-    `};
+    }
 `;
 
 const Side = styled.div`
     display: flex;
-    ${media.medium` 
+    ${media.medium} {
         order: 1;
         flex-direction: column;
-    `};
+    }
 `;
 
 class Header extends Component {

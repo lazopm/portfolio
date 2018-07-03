@@ -29,9 +29,9 @@ const Container = styled.div`
     flex-direction: column;
     .hide {
         display: none;
-        ${media.medium`
+        ${media.medium} {
             display: initial;
-        `};
+        }
     }
 `;
 
