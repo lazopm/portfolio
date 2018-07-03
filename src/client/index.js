@@ -5,8 +5,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const asyncImports = [
     import(/* webpackChunkName: "app" */ 'components/App'),
-    import(/* webpackChunkName: "app" */'react-dom'),
-    import(/* webpackChunkName: "app" */'react-apollo'),
+    import(/* webpackChunkName: "app" */ 'react-dom'),
+    import(/* webpackChunkName: "app" */ 'react-apollo'),
 ];
 
 const client = new ApolloClient({
@@ -14,15 +14,12 @@ const client = new ApolloClient({
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 });
 
-Promise.all(asyncImports).then(([
-    {default: App},
-    { hydrate },
-    { ApolloProvider },
-]) =>
-    hydrate(
-        <ApolloProvider client={client}>
-            <App />
-        </ApolloProvider>,
-        document.getElementById('root')
-    )
+Promise.all(asyncImports).then(
+    ([{ default: App }, { hydrate }, { ApolloProvider }]) =>
+        hydrate(
+            <ApolloProvider client={client}>
+                <App />
+            </ApolloProvider>,
+            document.getElementById('root'),
+        ),
 );

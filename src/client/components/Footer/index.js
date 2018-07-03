@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import theme from 'constants/termTheme';
 
 const Container = styled.div`
-	font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', monospace;
     color: ${theme[3]};
     display: flex;
-	justify-content: center;
+    justify-content: center;
     margin-right: 5px;
 `;
-
 
 const Footer = () => (
     <Container>

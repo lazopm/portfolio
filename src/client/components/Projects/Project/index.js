@@ -7,7 +7,7 @@ import Icon from 'components/Icon';
 const Container = styled.div`
     padding: 1rem;
     margin-bottom: 2rem;
-	background: #1c2125;
+    background: #1c2125;
 `;
 
 const Name = styled.h2`
@@ -42,7 +42,8 @@ const Link = styled.a`
 `;
 
 const Readme = styled.div`
-    h1, h2 {
+    h1,
+    h2 {
         font-size: 1.5rem;
     }
     pre {
@@ -59,36 +60,46 @@ const Project = ({
     readmeMarkdown,
     sourceUrl,
     demoUrl,
-}) => ( 
+}) => (
     <Container>
-        {topics.length
-            ? (
-                <Topics>
-                    {topics.map(topic => (
-                        <Topic key={topic}>{topic}</Topic>
-                    ))}
-                </Topics>
-            )
-            : null
-        }
-        {portfolioMarkdown || readmeMarkdown
-            ? (
-                <Readme>
-                    <Markdown source={portfolioMarkdown ? portfolioMarkdown.text : readmeMarkdown.text} />
-                </Readme>
-            )
-            : (
-                <React.Fragment>
-                    <Name>{name}</Name>
-                    {description && <Description> {description}</Description>}
-                </React.Fragment>
-            )
-        }
+        {topics.length ? (
+            <Topics>
+                {topics.map(topic => <Topic key={topic}>{topic}</Topic>)}
+            </Topics>
+        ) : null}
+        {portfolioMarkdown || readmeMarkdown ? (
+            <Readme>
+                <Markdown
+                    source={
+                        portfolioMarkdown
+                            ? portfolioMarkdown.text
+                            : readmeMarkdown.text
+                    }
+                />
+            </Readme>
+        ) : (
+            <React.Fragment>
+                <Name>{name}</Name>
+                {description && <Description> {description}</Description>}
+            </React.Fragment>
+        )}
         <Links>
-            {sourceUrl && <Link href={sourceUrl} target="__blank" rel="noopener noreferrer">SOURCE</Link>}
-            {demoUrl && <Link href={demoUrl} target="__blank" rel="noopener noreferrer">DEMO</Link>}
+            {sourceUrl && (
+                <Link
+                    href={sourceUrl}
+                    target="__blank"
+                    rel="noopener noreferrer"
+                >
+                    SOURCE
+                </Link>
+            )}
+            {demoUrl && (
+                <Link href={demoUrl} target="__blank" rel="noopener noreferrer">
+                    DEMO
+                </Link>
+            )}
         </Links>
     </Container>
 );
 
-export default Project; 
+export default Project;

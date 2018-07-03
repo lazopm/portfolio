@@ -10,17 +10,19 @@ const blink = keyframes`
 `;
 
 const Container = styled.div`
-	display: flex;
+    display: flex;
 `;
 
 const Text = styled.div`
-	white-space: pre-wrap;
+    white-space: pre-wrap;
     h1 {
         display: inline;
         font-size: inherit;
         font-weight: inherit;
     }
-	${props => props.hasCursor && `
+    ${props =>
+        props.hasCursor &&
+        `
 		&:after {
 			width: 10px;
 			background: ${theme[7]};
@@ -31,35 +33,33 @@ const Text = styled.div`
 			animation-iteration-count: infinite;
 			animation-timing-function: step-start;
 		}
-	`}
+	`};
 `;
 
 const Gutter = styled.div`
-	margin-right: 5px;
-	padding-right: 5px;
-	padding-left: 5px;
-	flex-grow: 0;
-	flex-shrink: 0;
-	background: ${theme[2]};
+    margin-right: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background: ${theme[2]};
 `;
 
 const Number = styled.span`
-	width: 20px;
-	color: ${theme[4]};
-	text-align: right;
-	display: inline-block;
+    width: 20px;
+    color: ${theme[4]};
+    text-align: right;
+    display: inline-block;
 `;
 
-const Line = ({ cursor, text, number }) =>
+const Line = ({ cursor, text, number }) => (
     <Container>
         <Gutter>
             <Number>{number}</Number>
         </Gutter>
-        <Text 
-            dangerouslySetInnerHTML={{__html: text}}
-            hasCursor={cursor} 
-        />
-    </Container>;
+        <Text dangerouslySetInnerHTML={{ __html: text }} hasCursor={cursor} />
+    </Container>
+);
 
 Line.defaultProps = {
     cursor: false,

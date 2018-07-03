@@ -12,7 +12,7 @@ const Container = styled.div`
     flex-direction: column;
     ${media.medium` 
         flex-direction: row;
-    `}
+    `};
 `;
 
 const Side = styled.div`
@@ -20,10 +20,10 @@ const Side = styled.div`
     ${media.medium` 
         order: 1;
         flex-direction: column;
-    `}
+    `};
 `;
 
-class Header extends Component { 
+class Header extends Component {
     constructor() {
         super();
         this.state = {
@@ -47,7 +47,9 @@ class Header extends Component {
         }
         this.setState(state => ({
             ...state,
-            lines: state.skipped ? this.computeFinalLines(schedule) : state.lines,
+            lines: state.skipped
+                ? this.computeFinalLines(schedule)
+                : state.lines,
             mode: 'NORMAL',
             cursor: false,
             fileType: 'text',
@@ -57,12 +59,12 @@ class Header extends Component {
     computeFinalLines(schedule) {
         const lines = [];
         for (let [fn, arg] of schedule) {
-            switch(fn) {
-                case('newline'):
+            switch (fn) {
+                case 'newline':
                     lines.push('');
                     break;
-                case('append'):
-                case('typeout'):
+                case 'append':
+                case 'typeout':
                     lines.splice(-1, 1, lines[lines.length - 1] + arg);
                     break;
                 default:
@@ -75,20 +77,22 @@ class Header extends Component {
         this.setState(state => ({ ...state, skipped: true }));
     }
     newline() {
-        this.setState({lines: [...this.state.lines, '']})
+        this.setState({ lines: [...this.state.lines, ''] });
     }
     append(str) {
-        this.setState({lines: [
-            ...this.state.lines.slice(0, -1),
-            this.state.lines.slice(-1) + str, 
-        ]});
+        this.setState({
+            lines: [
+                ...this.state.lines.slice(0, -1),
+                this.state.lines.slice(-1) + str,
+            ],
+        });
     }
     sleep(delay) {
         return this.state.skipped
             ? Promise.resolve
             : new Promise(resolve => {
-                setTimeout(resolve, delay);
-            });
+                  setTimeout(resolve, delay);
+              });
     }
     async typeout(str) {
         for (let char of str) {
@@ -101,11 +105,15 @@ class Header extends Component {
         return (
             <Container>
                 <Side>
-                    <Face/>
-                    <Links/>
+                    <Face />
+                    <Links />
                 </Side>
                 <Terminal
-                    onClick={this.state.skipped ? null : this.skipAnimation.bind(this)}
+                    onClick={
+                        this.state.skipped
+                            ? null
+                            : this.skipAnimation.bind(this)
+                    }
                     mode={this.state.mode}
                     lines={this.state.lines}
                     cursor={this.state.cursor}
@@ -115,6 +123,6 @@ class Header extends Component {
             </Container>
         );
     }
-};
+}
 
 export default Header;

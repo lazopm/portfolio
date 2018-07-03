@@ -1,4 +1,4 @@
-export const large = 1024; 
+export const large = 1024;
 export const medium = 640;
 
 //deprecated

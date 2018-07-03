@@ -5,19 +5,19 @@ import Projects from 'components/Projects';
 import Line from './Line';
 
 const Container = styled.div`
-	flex-grow: 1;
+    flex-grow: 1;
     display: flex;
     justify-content: center;
 `;
 
 const Inner = styled.div`
-	font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', monospace;
     font-size: 1rem;
     line-height: 1.25;
     flex-basis: 1100px;
     flex-grow: 0;
     padding: 10px;
-	color: ${theme[7]};
+    color: ${theme[7]};
 `;
 
 const MainContent = () => (
@@ -25,17 +25,17 @@ const MainContent = () => (
         <Inner>
             <Line prefix>cat ./skills/languages.txt</Line>
             <Line>javascript, python</Line>
-            <br/>
+            <br />
             <Line prefix>cat ./skills/frontend.txt</Line>
             <Line>react, vue, backbone</Line>
             <Line>webpack, jest, eslint plugins</Line>
-            <br/>
+            <br />
             <Line prefix>cat ./skills/backend.txt</Line>
             <Line>node.js, express, graphql, mongodb, flask</Line>
             <Line>docker, aws-lambda</Line>
-            <br/>
+            <br />
             <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
-            <br/>
+            <br />
             <Projects />
         </Inner>
     </Container>

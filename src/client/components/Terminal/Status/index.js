@@ -32,21 +32,17 @@ const Numbers = styled.div`
     padding: 0 10px;
 `;
 
-const Status = ({
-    mode, line, char,
-    fileName, fileType,
-}) =>
+const Status = ({ mode, line, char, fileName, fileType }) => (
     <Container>
         <Mode>{mode}</Mode>
-        {fileName && (
-            <File>{fileName}</File>
-        )}
-        {fileType && (
-            <Type>{fileType}</Type>
-        )}
+        {fileName && <File>{fileName}</File>}
+        {fileType && <Type>{fileType}</Type>}
         <OS>utf-8[unix]</OS>
-        <Numbers>{line}/{char}</Numbers>
-    </Container>;
+        <Numbers>
+            {line}/{char}
+        </Numbers>
+    </Container>
+);
 
 Status.propTypes = {
     mode: PropTypes.string.isRequired,

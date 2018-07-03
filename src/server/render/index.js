@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'components/App';
 import template from './template';
 import { renderToString } from 'react-dom/server';
-import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheet } from 'styled-components';
 import fetch from 'node-fetch';
 import { getDataFromTree } from 'react-apollo';
 import { ApolloProvider } from 'react-apollo';
@@ -33,7 +33,10 @@ export default () => (req, res) => {
         const sheet = new ServerStyleSheet();
         const html = renderToString(sheet.collectStyles(app));
         const styleTags = sheet.getStyleTags();
-        const apolloState = JSON.stringify(client.cache.extract()).replace(/</g, '\\u003c');
+        const apolloState = JSON.stringify(client.cache.extract()).replace(
+            /</g,
+            '\\u003c',
+        );
         res.status(200);
         res.send(template(html, styleTags, apolloState));
         res.end();

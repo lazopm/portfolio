@@ -6,27 +6,23 @@ import Line from './Line';
 import Status from './Status';
 
 const Container = styled.div`
-	color: ${theme[7]};
-	background: #1c2125;
-	font-family: 'Inconsolata', monospace;
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
+    color: ${theme[7]};
+    background: #1c2125;
+    font-family: 'Inconsolata', monospace;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     min-height: 284px;
-    ${props => props.mode === 'INSERT' && `
+    ${props =>
+        props.mode === 'INSERT' &&
+        `
         cursor: alias;
-    `}
+    `};
 `;
 const Lines = styled.div`
-	flex-grow: 1;
+    flex-grow: 1;
 `;
-const Terminal = ({
-    lines,
-    cursor,
-    fileName,
-    fileType,
-    ...props,
-}) =>
+const Terminal = ({ lines, cursor, fileName, fileType, ...props }) => (
     <Container {...props}>
         <Lines>
             {lines.map((line, i) => (
@@ -45,7 +41,8 @@ const Terminal = ({
             fileName={fileName}
             fileType={fileType}
         />
-    </Container>;
+    </Container>
+);
 
 Terminal.defaultProps = {
     lines: [''],
