@@ -62,8 +62,11 @@ export default graphql(gql`
             ...project,
             topics: project.topics.nodes.map(node => node.topic.name),
         }));
-        const pinnedIds = data.user.pinnedRepositories.nodes.map(node => node.id);
-        const projects = allProjects.sort((a,b) => pinnedIds.indexOf(a.id) > pinnedIds.indexOf(b.id));
+        const pinnedIds = data.user.pinnedRepositories.nodes
+            .map(node => node.id)
+            .reverse();
+        const projects = allProjects
+            .sort((a,b) => pinnedIds.indexOf(a.id) < pinnedIds.indexOf(b.id));
         return { projects };
     },
 })(Projects);
