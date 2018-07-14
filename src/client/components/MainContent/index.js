@@ -8,7 +8,6 @@ const Container = styled.div`
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    padding-top: 10px;
 `;
 
 const Inner = styled.div`
@@ -18,6 +17,8 @@ const Inner = styled.div`
     max-width: 100%;
     flex-basis: 1100px;
     flex-grow: 0;
+    box-sizing: border-box;
+    padding: 10px;
     color: ${theme[7]};
 `;
 
