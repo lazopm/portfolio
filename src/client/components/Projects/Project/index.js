@@ -27,7 +27,7 @@ const Topics = styled.div`
 
 const Topic = styled.div`
     font-size: 0.85rem;
-    margin: 0 5px;
+    margin: 0 5px 5px 5px;
     padding: 3px 6px;
     border-radius: 5px;
     background: ${theme[1]};
