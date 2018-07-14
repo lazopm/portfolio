@@ -16,6 +16,7 @@ const Container = styled.div`
 `;
 
 const Side = styled.div`
+    background: #64727d;
     display: flex;
     flex-wrap: wrap;
     ${media.medium} {
