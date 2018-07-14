@@ -17,6 +17,7 @@ const Container = styled.div`
 
 const Side = styled.div`
     display: flex;
+    flex-wrap: wrap;
     ${media.medium} {
         order: 1;
         flex-direction: column;
