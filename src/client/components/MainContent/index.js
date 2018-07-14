@@ -8,15 +8,16 @@ const Container = styled.div`
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 `;
 
 const Inner = styled.div`
     font-family: 'Inconsolata', monospace;
     font-size: 1rem;
     line-height: 1.25;
+    max-width: 100%;
     flex-basis: 1100px;
     flex-grow: 0;
-    padding: 10px;
     color: ${theme[7]};
 `;
 

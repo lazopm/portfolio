@@ -47,6 +47,7 @@ const Readme = styled.div`
         font-size: 1.5rem;
     }
     pre {
+        overflow-x: auto;
         background: ${theme[1]};
         padding: 1rem;
     }
