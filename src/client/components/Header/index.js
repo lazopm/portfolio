@@ -7,17 +7,16 @@ import Links from './Links';
 import schedule from './schedule';
 import initialLines from './initialLines';
 
-const mediaBreak = '@media (min-width: 540px)';
+const mediaBreak = '@media (min-width: 700px)';
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    @media (min-width: 700px) {
+    ${mediaBreak} {
         flex-direction: row;
     }
     .hide {
-        display: none;
-        ${mediaBreak} {
+        @media (min-width: 540px) {
             display: initial;
         }
     }
