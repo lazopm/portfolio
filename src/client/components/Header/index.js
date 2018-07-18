@@ -10,8 +10,14 @@ import initialLines from './initialLines';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    ${media.medium} {
+    @media (min-width: 700px) {
         flex-direction: row;
+    }
+    .hide {
+        display: none;
+        @media (min-width: 540px) {
+            display: initial;
+        }
     }
 `;
 

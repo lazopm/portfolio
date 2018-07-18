@@ -10,11 +10,7 @@ const Ascii = styled.pre`
     font-family: monospace;
     font-size: 4px;
     line-height: 2px;
-    ${media.medium} {
-        font-size: 4px;
-        line-height: 2px;
-    }
-    ${media.large} {
+    @media (min-width: 780px) {
         font-size: 6px;
         line-height: 3px;
     }

@@ -8,6 +8,9 @@ import MainContent from 'components/MainContent';
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
+    html {
+        font-size: 18px;
+    }
     body {
         margin: 0;
         padding: 0;
@@ -27,12 +30,6 @@ const Container = styled.div`
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    .hide {
-        display: none;
-        ${media.medium} {
-            display: initial;
-        }
-    }
 `;
 
 const App = () => (
