@@ -15,11 +15,6 @@ const Container = styled.div`
     ${mediaBreak} {
         flex-direction: row;
     }
-    .hide {
-        @media (min-width: 540px) {
-            display: initial;
-        }
-    }
 `;
 
 const Side = styled.div`

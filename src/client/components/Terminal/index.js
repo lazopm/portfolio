@@ -18,6 +18,12 @@ const Container = styled.div`
 
 const Lines = styled.div`
     flex-grow: 1;
+    .hide {
+        display: none;
+        @media (min-width: 540px) {
+            display: initial;
+        }
+    }
 `;
 
 const Terminal = ({ lines, cursor, fileName, fileType, ...props }) => (
