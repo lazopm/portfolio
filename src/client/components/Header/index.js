@@ -7,6 +7,8 @@ import Links from './Links';
 import schedule from './schedule';
 import initialLines from './initialLines';
 
+const mediaBreak = '@media (min-width: 540px)';
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -15,7 +17,7 @@ const Container = styled.div`
     }
     .hide {
         display: none;
-        @media (min-width: 540px) {
+        ${mediaBreak} {
             display: initial;
         }
     }
@@ -25,7 +27,7 @@ const Side = styled.div`
     background: #64727d;
     display: flex;
     flex-wrap: wrap;
-    ${media.medium} {
+    ${mediaBreak} {
         order: 1;
         flex-direction: column;
     }
