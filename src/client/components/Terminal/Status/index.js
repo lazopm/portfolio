@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { theme } from 'constants/colors';
 
 const Container = styled.div`
+    height: 1rem;
+    overflow-y: hidden;
+    margin-top: 1rem;
     display: flex;
     color: white;
     flex-wrap: wrap;
@@ -19,14 +22,17 @@ const File = styled.div`
     flex-grow: 1;
     padding: 0 10px;
 `;
+
 const Type = styled.div`
     background: ${theme[1]};
     padding: 0 10px;
 `;
+
 const OS = styled.div`
     background: ${theme[3]};
     padding: 0 10px;
 `;
+
 const Numbers = styled.div`
     background: ${theme[13]};
     padding: 0 10px;
