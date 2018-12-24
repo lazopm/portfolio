@@ -13,7 +13,6 @@ const query = gql`
                 }
             }
             repositories(
-                privacy: PUBLIC
                 isFork: false
                 first: 30
                 affiliations: [OWNER]
@@ -21,15 +20,11 @@ const query = gql`
             ) {
                 nodes {
                     id
+                    isPrivate
                     name
                     description
                     demoUrl: homepageUrl
                     sourceUrl: url
-                    readmeMarkdown: object(expression: "master:README.md") {
-                        ... on Blob {
-                            text
-                        }
-                    }
                     portfolioMarkdown: object(
                         expression: "master:PORTFOLIO.md"
                     ) {
@@ -53,10 +48,12 @@ const query = gql`
 const Projects = () => (
     <Query query={query}>
         {({ data }) => {
-            const allProjects = data.user.repositories.nodes.map(project => ({
-                ...project,
-                topics: project.topics.nodes.map(node => node.topic.name),
-            }));
+            const allProjects = data.user.repositories.nodes
+                .filter(project => project.portfolioMarkdown)
+                .map(project => ({
+                    ...project,
+                    topics: project.topics.nodes.map(node => node.topic.name),
+                }));
             const pinnedIds = data.user.pinnedRepositories.nodes
                 .map(node => node.id);
             const projects = allProjects.sort(
