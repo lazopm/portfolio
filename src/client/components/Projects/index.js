@@ -22,7 +22,6 @@ const query = gql`
                     id
                     isPrivate
                     name
-                    description
                     demoUrl: homepageUrl
                     sourceUrl: url
                     portfolioMarkdown: object(

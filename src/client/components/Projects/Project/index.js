@@ -14,11 +14,6 @@ const Name = styled.h2`
     font-size: 1.2rem;
 `;
 
-const Description = styled.span`
-    font-size: 1rem;
-    color: ${theme[3]};
-`;
-
 const Topics = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -55,11 +50,11 @@ const Readme = styled.div`
 
 const Project = ({
     name,
-    description,
     topics,
     portfolioMarkdown,
     sourceUrl,
     demoUrl,
+    isPrivate,
 }) => (
     <Container>
         {topics.length ? (
@@ -71,7 +66,7 @@ const Project = ({
             <Markdown source={portfolioMarkdown.text} />
         </Readme>
         <Links>
-            {sourceUrl && (
+            {!isPrivate && sourceUrl && (
                 <Link
                     href={sourceUrl}
                     target="__blank"
