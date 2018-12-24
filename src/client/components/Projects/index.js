@@ -47,22 +47,23 @@ const query = gql`
 const Projects = () => (
     <Query query={query}>
         {({ data }) => {
-            const allProjects = data.user.repositories.nodes
+            const projects = data.user.repositories.nodes
                 .filter(project => project.portfolioMarkdown)
                 .map(project => ({
                     ...project,
                     topics: project.topics.nodes.map(node => node.topic.name),
                 }));
-            const pinnedIds = data.user.pinnedRepositories.nodes
-                .map(node => node.id);
-            const projects = allProjects.sort(
-                (a, b) => {
-                    const ai = pinnedIds.indexOf(a.id);
-                    const bi = pinnedIds.indexOf(b.id);
-                    if (ai === -1 || bi === -1) return 0;
-                    return ai - bi;
-                }
-            );
+
+            data.user.pinnedRepositories.nodes
+                .map(node => node.id)
+                .reverse()
+                .forEach(pinnedId => {
+                    const index = projects.findIndex(project => project.id === pinnedId);
+                    if (index !== -1) { 
+                        const [project] = projects.splice(index, 1);
+                        projects.unshift(project);
+                    }
+                });
             return (
                 <React.Fragment>
                     {projects.map(project => <Project key={project.id} {...project} />)}
