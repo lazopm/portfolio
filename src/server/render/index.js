@@ -22,6 +22,8 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
+setInterval(() => client.resetStore(), 10000);
+
 export default () => (req, res) => {
     const app = (
         <ApolloProvider client={client}>
