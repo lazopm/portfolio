@@ -68,7 +68,7 @@ const Project = ({
             </Topics>
         ) : null}
         <Readme>
-            <Markdown source={portfolioMarkdown} />
+            <Markdown source={portfolioMarkdown.text} />
         </Readme>
         <Links>
             {sourceUrl && (
