@@ -1,9 +1,9 @@
 # This Portfolio
 
-My goal with this project was to revamp my porfolio and to put in practice what I have learned in the past few years.  
+This portfolio uses my GitHub as its data storage. It pulls my repos using the graphql API, and filters them so that only repositories with a PORTFOLIO.md in the master branch are shown.
 
-It is a server rendered React application that is completely usable on the initial html render. It also works with scripts disabled.
+While more work upfront, making this a reflection of my github repositories allows me to forget about it and it will stay up to date with my latest projects, all I have to do is create a markdown file and it will show up on the site.  
 
-The applicatio pulls all my public repos from GitHub's graphql API. It looks for PORTFOLIO.md in the master branch, and fallbacks to README.md or the name and description fields. 
+Front end is a server-rendered React application that is completely usable on the initial html render. Works fine with scripts disabled.
 
-While more work upfront, making this a reflection of my github repositories allows me to forget about it and it will stay up to date with my latest projects.  
+Back end is a simple node express application.
