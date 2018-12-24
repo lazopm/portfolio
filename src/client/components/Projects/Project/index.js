@@ -58,7 +58,6 @@ const Project = ({
     description,
     topics,
     portfolioMarkdown,
-    readmeMarkdown,
     sourceUrl,
     demoUrl,
 }) => (
@@ -68,22 +67,9 @@ const Project = ({
                 {topics.map(topic => <Topic key={topic}>{topic}</Topic>)}
             </Topics>
         ) : null}
-        {portfolioMarkdown || readmeMarkdown ? (
-            <Readme>
-                <Markdown
-                    source={
-                        portfolioMarkdown
-                            ? portfolioMarkdown.text
-                            : readmeMarkdown.text
-                    }
-                />
-            </Readme>
-        ) : (
-            <React.Fragment>
-                <Name>{name}</Name>
-                {description && <Description> {description}</Description>}
-            </React.Fragment>
-        )}
+        <Readme>
+            <Markdown source={portfolioMarkdown} />
+        </Readme>
         <Links>
             {sourceUrl && (
                 <Link
