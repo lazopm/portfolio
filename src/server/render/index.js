@@ -22,7 +22,8 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-setInterval(() => client.resetStore(), 10000);
+//clear client cache every 10m
+setInterval(() => client.resetStore(), 600000);
 
 export default () => (req, res) => {
     const app = (
