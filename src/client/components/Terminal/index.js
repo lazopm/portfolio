@@ -11,8 +11,6 @@ const Container = styled.div`
     color: ${theme[7]};
     background: #1c2125;
     font-family: 'Inconsolata', monospace;
-    flex-grow: 1;
-    display: flex;
     flex-direction: column;
     min-height: 284px;
     cursor: ${props => (props.mode === 'INSERT' ? 'alias' : 'initial')};

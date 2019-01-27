@@ -15,6 +15,11 @@ const Container = styled.div`
     }
 `;
 
+const TerminalContainer = styled.div`
+    flex-grow: 1;
+    display: flex;
+`;
+
 const Side = styled.div`
     background: #64727d;
     display: flex;
@@ -31,9 +36,9 @@ const Header = () => (
             <Face />
             <Links />
         </Side>
-        <div id="terminal">
+        <TerminalContainer id="terminal">
             <Terminal />
-        </div>
+        </TerminalContainer>
     </Container>
 );
 
