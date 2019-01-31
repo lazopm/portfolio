@@ -48,14 +48,11 @@ class Terminal extends Component {
             cursor: true,
         });
         for (let [fn, arg] of schedule) {
-            if (this.state.skipped) break;
+            if (this.state.skipped) return;
             await this[fn](arg);
         }
         this.setState(state => ({
             ...state,
-            lines: state.skipped
-                ? this.computeFinalLines(schedule)
-                : state.lines,
             mode: 'NORMAL',
             cursor: false,
             fileType: 'text',
@@ -80,7 +77,15 @@ class Terminal extends Component {
         return [...initialLines, ...lines];
     }
     skipAnimation() {
-        this.setState(state => ({ ...state, skipped: true }));
+        this.setState(state => ({
+            ...state,
+            skipped: true,
+            lines: this.computeFinalLines(schedule)
+            mode: 'NORMAL',
+            cursor: false,
+            fileType: 'text',
+            fileName: '~/hi.txt',
+        }));
     }
     newline() {
         this.setState({ lines: [...this.state.lines, ''] });
@@ -102,7 +107,7 @@ class Terminal extends Component {
     }
     async typeout(str) {
         for (let char of str) {
-            if (this.state.skipped) break;
+            if (this.state.skipped) return;
             this.append(char);
             await this.sleep(40);
         }
