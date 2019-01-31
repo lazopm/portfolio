@@ -40,6 +40,7 @@ class Terminal extends Component {
             skipped: false,
             lines: initialLines,
         };
+        this.skipAnimation = this.skipAnimation.bind(this);
     }
     async componentDidMount() {
         this.setState({
@@ -78,7 +79,7 @@ class Terminal extends Component {
         }
         return [...initialLines, ...lines];
     }
-    skipAnimation = () => {
+    skipAnimation() {
         this.setState(state => ({ ...state, skipped: true }));
     }
     newline() {
