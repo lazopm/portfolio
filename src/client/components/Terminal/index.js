@@ -6,6 +6,7 @@ import Line from './Line';
 import Status from './Status';
 import schedule from './schedule';
 import initialLines from './initialLines';
+import isBot from './isBot';
 
 const Container = styled.div`
     color: ${theme[7]};
@@ -31,24 +32,23 @@ const Lines = styled.div`
 class Terminal extends Component {
     constructor() {
         super();
+        this.skipped = false;
         this.state = {
-            activeProject: null,
             mode: 'NORMAL',
             cursor: false,
             fileName: '[No Name]',
             fileType: null,
-            skipped: false,
             lines: initialLines,
         };
-        this.skipAnimation = this.skipAnimation.bind(this);
     }
     async componentDidMount() {
+        if (isBot()) return this.skipAnimation();
         this.setState({
             mode: 'INSERT',
             cursor: true,
         });
         for (let [fn, arg] of schedule) {
-            if (this.state.skipped) return;
+            if (this.skipped) return;
             await this[fn](arg);
         }
         this.setState(state => ({
@@ -77,9 +77,9 @@ class Terminal extends Component {
         return [...initialLines, ...lines];
     }
     skipAnimation() {
+        this.skipped = true;
         this.setState(state => ({
             ...state,
-            skipped: true,
             lines: this.computeFinalLines(schedule),
             mode: 'NORMAL',
             cursor: false,
@@ -99,7 +99,7 @@ class Terminal extends Component {
         });
     }
     sleep(delay) {
-        return this.state.skipped
+        return this.skipped
             ? Promise.resolve
             : new Promise(resolve => {
                   setTimeout(resolve, delay);
@@ -107,7 +107,7 @@ class Terminal extends Component {
     }
     async typeout(str) {
         for (let char of str) {
-            if (this.state.skipped) return;
+            if (this.skipped) return;
             this.append(char);
             await this.sleep(40);
         }
@@ -115,7 +115,7 @@ class Terminal extends Component {
     render() {
         const { lines, cursor, fileName, fileType, mode } = this.state;
         return (
-            <Container mode={mode} onClick={this.skipAnimation}>
+            <Container mode={mode} onClick={this.skipAnimation.bind(this)}>
                 <Lines>
                     {lines.map((line, i) => (
                         <Line
