@@ -78,7 +78,7 @@ class Terminal extends Component {
         }
         return [...initialLines, ...lines];
     }
-    skipAnimation(e) {
+    skipAnimation = () => {
         this.setState(state => ({ ...state, skipped: true }));
     }
     newline() {
@@ -109,7 +109,7 @@ class Terminal extends Component {
     render() {
         const { lines, cursor, fileName, fileType, mode } = this.state;
         return (
-            <Container mode={mode}>
+            <Container mode={mode} onClick={this.skipAnimation}>
                 <Lines>
                     {lines.map((line, i) => (
                         <Line
