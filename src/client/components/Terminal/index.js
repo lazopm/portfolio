@@ -80,7 +80,7 @@ class Terminal extends Component {
         this.setState(state => ({
             ...state,
             skipped: true,
-            lines: this.computeFinalLines(schedule)
+            lines: this.computeFinalLines(schedule),
             mode: 'NORMAL',
             cursor: false,
             fileType: 'text',
