@@ -9,20 +9,10 @@
     "@babel/polyfill": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "@babel/preset-react": "^7.0.0-beta.51",
-    "apollo-cache-inmemory": "^1.2.5",
-    "apollo-client": "^2.3.5",
-    "apollo-link": "^1.2.2",
-    "apollo-link-http": "^1.5.4",
     "babel-loader": "^8.0.0-beta.4",
     "babel-preset-minify": "^0.4.3",
-    "express": "^4.16.2",
-    "graphql": "^0.13.2",
-    "graphql-tag": "^2.9.2",
-    "node-fetch": "^2.1.2",
-    "prettier": "^1.13.7",
-    "prop-types": "^15.6.2",
+    "graphql-request": "^1.8.2",
     "react": "^16.7.0",
-    "react-apollo": "^2.1.6",
     "react-dom": "^16.7.0",
     "react-markdown": "^3.3.4",
     "styled-components": "^3.3.3",
@@ -36,11 +26,9 @@
     "webpack-bundle-analyzer": "^2.13.1"
   },
   "scripts": {
-    "dev": "node -r dotenv/config dist/server.bundle.js",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:client && npm run build:ssr",
     "build:client": "webpack --config webpack.client.config.js --mode=\"production\"",
-    "build:server": "webpack --config webpack.server.config.js --mode=\"production\"",
-    "start": "node dist/server.bundle.js",
+    "build:ssr": "webpack --config webpack.ssr.config.js --mode=\"production\"",
     "test": "jest"
   }
 }

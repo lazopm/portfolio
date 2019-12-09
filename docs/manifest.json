@@ -1,0 +1,8 @@
+{
+  "short_name": "Pablo Lazo - Portfolio",
+  "name": "Pablo Lazo - Developer Portfolio",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

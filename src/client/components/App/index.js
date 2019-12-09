@@ -32,10 +32,10 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const App = () => (
+const App = ({ githubData }) => (
     <Container>
         <Header />
-        <MainContent />
+        <MainContent githubData={githubData} />
         <Footer />
     </Container>
 );

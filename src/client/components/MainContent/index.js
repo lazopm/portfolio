@@ -22,7 +22,7 @@ const Inner = styled.div`
     color: ${theme[7]};
 `;
 
-const MainContent = () => (
+const MainContent = ({ githubData }) => (
     <Container>
         <Inner>
             <Line prefix>cat ./skills/languages.txt</Line>
@@ -38,7 +38,7 @@ const MainContent = () => (
             <br />
             <Line prefix>{'find ./projects -type f -exec open {} \\;'}</Line>
             <br />
-            <Projects />
+            <Projects githubData={githubData} />
         </Inner>
     </Container>
 );
