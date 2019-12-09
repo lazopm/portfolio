@@ -23,7 +23,7 @@
   "devDependencies": {
     "dotenv": "^6.0.0",
     "jest": "^22.4.4",
-    "webpack-bundle-analyzer": "^2.13.1"
+    "webpack-bundle-analyzer": "^3.3.2"
   },
   "scripts": {
     "build": "npm run build:client && npm run build:ssr",
