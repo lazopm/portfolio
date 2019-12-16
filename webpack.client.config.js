@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-    //plugins: [ new require('webpack-bundle-analyzer').BundleAnalyzerPlugin() ],
     entry: {
         client: ['@babel/polyfill', './src/client/index.js'],
     },
