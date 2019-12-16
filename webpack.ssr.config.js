@@ -7,7 +7,7 @@ module.exports = {
     target: 'node',
     output: {
         filename: 'render.bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
     },
     resolve: {
         modules: [path.resolve(__dirname, './src/client'), 'node_modules'],

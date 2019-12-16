@@ -29,6 +29,7 @@
     "build": "npm run build:client && npm run build:ssr",
     "build:client": "webpack --config webpack.client.config.js --mode=\"production\"",
     "build:ssr": "webpack --config webpack.ssr.config.js --mode=\"production\"",
+    "gh-pages": "bash build-static.sh", 
     "test": "jest"
   }
 }
