@@ -8,7 +8,6 @@ export default (html, css) => `
         <meta name="description" content="Pablo Lazo, Software Developer Portfolio. Pablo is front end focused developer based in Washington, DC."/>
         <meta name="keywords" content="pablo lazo, lazopm, software developer, portfolio, web developer, front end developer"/>
         <link rel="manifest" href="/assets/manifest.json">
-        <link rel="shortcut icon" href="/assets/favicon.ico">
         <title>Pablo Lazo - Software Developer</title>
         ${css}
       </head>
